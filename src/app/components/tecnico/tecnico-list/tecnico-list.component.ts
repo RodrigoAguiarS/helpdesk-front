@@ -12,17 +12,7 @@ import { Tecnico } from 'src/app/models/tecnico';
 })
 export class TecnicoListComponent implements OnInit {
 
-  ELEMENT_DATA: Tecnico[] = [
-    {
-      id: 1,
-      nome: 'Rodrigo Aguiar',
-      cpf: '123.456.789-10',
-      email: 'rodrigo@email.com',
-      senha: '1234',
-      perfis: ['0'],
-      dataCriacao: '20/09/2022'
-    }
-  ]
+  ELEMENT_DATA: Tecnico[] = []
 
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
   dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);

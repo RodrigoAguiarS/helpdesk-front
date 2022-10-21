@@ -1,3 +1,4 @@
+import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ const routes: Routes = [
         path: '', component: NavComponent, canActivate: [AuthGuard], children: [
             { path: 'home', component: HomeComponent },
             { path: 'tecnicos', component: TecnicoListComponent },
+            { path: 'tecnicos/create', component: TecnicoCreateComponent }
 
         ]
     }
