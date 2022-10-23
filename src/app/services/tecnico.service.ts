@@ -26,4 +26,8 @@ export class TecnicoService {
   findById(id: any): Observable<Tecnico> {
     return this.http.get<Tecnico>(`${API_CONFIG.baseUrl}/api/tecnicos/${id}`);
   }
+
+  delete(id: any): Observable<Tecnico> {
+    return this.http.delete<Tecnico>(`${API_CONFIG.baseUrl}/api/tecnicos/${id}`);
+  }
 }
