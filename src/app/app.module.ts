@@ -46,6 +46,7 @@ import { ClienteUpdateComponent } from './components/cliente/cliente-update/clie
 import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-list.component';
 import { ChamadoCreateComponent } from './components/chamado/chamado-create/chamado-create.component';
 import { CPFPipe } from './cpf.pipe';
+import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CPFPipe } from './cpf.pipe';
     ClienteUpdateComponent,
     ChamadoListComponent,
     ChamadoCreateComponent,
-    CPFPipe
+    CPFPipe,
+    ChamadoUpdateComponent
   ],
   imports: [
     BrowserModule,
