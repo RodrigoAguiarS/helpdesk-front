@@ -1,3 +1,4 @@
+import { LiderCreateComponent } from './components/lider/lider-create/lider-create.component';
 import { ChamadoCreateComponent } from './components/chamado/chamado-create/chamado-create.component';
 import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
 import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
         path: '', component: NavComponent, canActivate: [AuthGuard], children: [
             { path: 'home', component: HomeComponent },
 
+            { path: 'lider', component: LiderCreateComponent },
             { path: 'tecnicos', component: TecnicoListComponent },
             { path: 'tecnicos/create', component: TecnicoCreateComponent },
             { path: 'tecnicos/update/:id', component: TecnicoUpdateComponent },
