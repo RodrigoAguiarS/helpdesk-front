@@ -49,6 +49,9 @@ import { CPFPipe } from './cpf.pipe';
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { LiderCreateComponent } from './components/lider/lider-create/lider-create.component';
+import { LiderListComponent } from './components/lider/lider-list/lider-list.component';
+import { TelefonePipe } from './telefone.pipe';
+import { NumerosEumaLetraPipe } from './numero.pipe';
 
 @NgModule({
   declarations: [
@@ -68,9 +71,12 @@ import { LiderCreateComponent } from './components/lider/lider-create/lider-crea
     ChamadoListComponent,
     ChamadoCreateComponent,
     CPFPipe,
+    TelefonePipe,
     ChamadoUpdateComponent,
     ChamadoReadComponent,
-    LiderCreateComponent
+    LiderCreateComponent,
+    LiderListComponent,
+    NumerosEumaLetraPipe
   ],
   imports: [
     BrowserModule,

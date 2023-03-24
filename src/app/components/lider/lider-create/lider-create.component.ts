@@ -50,7 +50,7 @@ export class LiderCreateComponent implements OnInit {
   create(): void {
     this.service.create(this.lider).subscribe(() => {
       this.toast.success('Lider cadastrado com sucesso', 'Cadastro');
-      this.router.navigate(['lider'])
+      this.router.navigate(['lideres'])
     }, ex => {
       if(ex.error.errors) {
         ex.error.errors.forEach(element => {
@@ -64,6 +64,7 @@ export class LiderCreateComponent implements OnInit {
 
   validaCampos(): boolean {
     return this.nome.valid && this.email.valid 
+    && this.cep.valid
   }
 
   public buscaEnderecoPorCep(cep: string): void {
