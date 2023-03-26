@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { TecnicoService } from './../../../services/tecnico.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -16,10 +17,12 @@ export class TecnicoListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
   dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
 
-  constructor(private service: TecnicoService) { }
+  constructor(private service: TecnicoService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.findAll();
+    this.authService.loadUser();
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -39,5 +42,9 @@ export class TecnicoListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
 }
