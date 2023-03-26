@@ -52,6 +52,7 @@ import { LiderCreateComponent } from './components/lider/lider-create/lider-crea
 import { LiderListComponent } from './components/lider/lider-list/lider-list.component';
 import { TelefonePipe } from './telefone.pipe';
 import { NumerosEumaLetraPipe } from './numero.pipe';
+import { LiderUpdateComponent } from './components/lider/lider-update/lider-update.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { NumerosEumaLetraPipe } from './numero.pipe';
     ChamadoReadComponent,
     LiderCreateComponent,
     LiderListComponent,
-    NumerosEumaLetraPipe
+    NumerosEumaLetraPipe,
+    LiderUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { LiderListComponent } from './components/lider/lider-list/lider-list.component';
 import { LiderCreateComponent } from './components/lider/lider-create/lider-create.component';
+import { LiderUpdateComponent } from './components/lider/lider-update/lider-update.component';
 import { ChamadoCreateComponent } from './components/chamado/chamado-create/chamado-create.component';
 import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
 import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
@@ -28,6 +29,8 @@ const routes: Routes = [
 
             { path: 'lideres', component: LiderListComponent },
             { path: 'lideres/create', component: LiderCreateComponent },
+            { path: 'lideres/update/:id', component: LiderUpdateComponent },
+
             { path: 'tecnicos', component: TecnicoListComponent },
             { path: 'tecnicos/create', component: TecnicoCreateComponent },
             { path: 'tecnicos/update/:id', component: TecnicoUpdateComponent },

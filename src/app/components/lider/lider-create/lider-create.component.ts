@@ -33,9 +33,8 @@ export class LiderCreateComponent implements OnInit {
 
   nome: FormControl =  new FormControl(null, Validators.minLength(3));
   email: FormControl =        new FormControl(null, Validators.email);
-  cep: FormControl = new FormControl(null, [ Validators.required,
-    Validators.pattern(/^\d{5}-?\d{3}$/),
-  ]);
+  cep: FormControl = new FormControl(null, [ Validators.required, Validators.pattern(/^\d{5}-?\d{3}$/),]);
+  celular: FormControl = new FormControl(null, Validators.required);
 
   constructor(
     private service: LiderService,
@@ -64,7 +63,7 @@ export class LiderCreateComponent implements OnInit {
 
   validaCampos(): boolean {
     return this.nome.valid && this.email.valid 
-    && this.cep.valid
+    && this.cep.valid && this.celular.valid
   }
 
   public buscaEnderecoPorCep(cep: string): void {

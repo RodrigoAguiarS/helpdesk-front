@@ -1,3 +1,4 @@
+import { Endereco } from './../../../models/endereco';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,6 +13,7 @@ import { LiderService } from 'src/app/services/lider.service';
 export class LiderListComponent implements OnInit {
 
   ELEMENT_DATA: Lider[] = []
+  FILTERED_DATA: Endereco[] = []
 
   displayedColumns: string[] = ['id', 'nome', 'email', 'celular', 'whatsapp', 'cep', 'rua',
   'numero', 'bairro', 'cidade', 'estado', 'acoes'];

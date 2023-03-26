@@ -22,4 +22,12 @@ export class LiderService {
   findAll(): Observable<Lider[]> {
     return this.http.get<Lider[]>(`${API_CONFIG.baseUrl}/api/lideres`);
   }
+
+  update(lider: Lider): Observable<Lider> {
+    return this.http.put<Lider>(`${API_CONFIG.baseUrl}/api/lideres/${lider.id}`, lider);
+  }
+
+  findById(id: any): Observable<Lider> {
+    return this.http.get<Lider>(`${API_CONFIG.baseUrl}/api/lideres/${id}`);
+  }
 }

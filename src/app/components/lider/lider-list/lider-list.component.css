@@ -28,3 +28,25 @@
 .delete {
    color: red;
 }
+
+.mat-checkbox-layout {
+   display: flex;
+   align-items: center;
+   margin: 0;
+   padding: 0;
+ }
+ 
+ .mat-checkbox-frame {
+   margin: 0 8px 0 0;
+ }
+ 
+ .mat-checkbox-inner-container {
+   width: 18px;
+   height: 18px;
+ }
+ 
+ .mat-checkbox-label {
+   font-size: 16px;
+   line-height: 24px;
+   font-weight: normal;
+ }
