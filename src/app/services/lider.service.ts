@@ -30,4 +30,8 @@ export class LiderService {
   findById(id: any): Observable<Lider> {
     return this.http.get<Lider>(`${API_CONFIG.baseUrl}/api/lideres/${id}`);
   }
+
+  delete(id: any): Observable<Lider> {
+    return this.http.delete<Lider>(`${API_CONFIG.baseUrl}/api/lideres/${id}`);
+  }
 }

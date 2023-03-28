@@ -1,3 +1,4 @@
+import { LiderDeleteComponent } from './components/lider/lider-delete/lider-delete.component';
 import { GerarPdfComponent } from './components/gerar-pdf/gerar-pdf.component';
 import { LiderListComponent } from './components/lider/lider-list/lider-list.component';
 import { LiderCreateComponent } from './components/lider/lider-create/lider-create.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
 
             { path: 'gerarPdf', component: GerarPdfComponent },
             { path: 'lideres', component: LiderListComponent },
+            { path: 'lideres/delete/:id', component: LiderDeleteComponent },
             { path: 'lideres/create', component: LiderCreateComponent },
             { path: 'lideres/update/:id', component: LiderUpdateComponent },
 

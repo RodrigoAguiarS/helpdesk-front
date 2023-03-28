@@ -54,6 +54,7 @@ import { TelefonePipe } from './telefone.pipe';
 import { NumerosEumaLetraPipe } from './numero.pipe';
 import { LiderUpdateComponent } from './components/lider/lider-update/lider-update.component';
 import { GerarPdfComponent } from './components/gerar-pdf/gerar-pdf.component';
+import { LiderDeleteComponent } from './components/lider/lider-delete/lider-delete.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { GerarPdfComponent } from './components/gerar-pdf/gerar-pdf.component';
     LiderListComponent,
     NumerosEumaLetraPipe,
     LiderUpdateComponent,
-    GerarPdfComponent
+    GerarPdfComponent,
+    LiderDeleteComponent
   ],
   imports: [
     BrowserModule,
