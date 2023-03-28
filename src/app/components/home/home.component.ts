@@ -1,5 +1,6 @@
+import { LiderService } from 'src/app/services/lider.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +9,16 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  lideres?: number;
+  constructor(
+    private service: LiderService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.authService.loadName();
-    this.authService.loadPerfil();
-  }
-
-  isAdmin(): boolean {
-    return this.authService.isAdmin();
-  }
-
-  isNome(): string {
-    return this.authService.getName();
+    this.service.getQuantidadeLideres().subscribe((quantidade: number) => {
+      this.lideres = quantidade;
+      console.log(this.lideres)
+    });
   }
 }
 

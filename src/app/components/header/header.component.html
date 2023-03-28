@@ -1,3 +1,6 @@
-<div class="container">
-    <h1 class="mat-elevation-z8">VotEasy - Sistema Fácil e Prático para Cadastro e Controle de Votos</h1>
- </div>
+<mat-toolbar class="container">
+    <span class="example-spacer"></span>
+    <span><mat-icon>account_circle</mat-icon> {{ isNome() }}</span>
+    <span *ngIf="isAdmin()"><mat-icon>admin_panel_settings</mat-icon>ADM</span>
+    <button mat-icon-button (click)="logout()"><mat-icon>logout</mat-icon></button>
+</mat-toolbar>

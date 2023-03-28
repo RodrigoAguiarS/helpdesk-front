@@ -1,3 +1,4 @@
+import { GerarPdfComponent } from './components/gerar-pdf/gerar-pdf.component';
 import { LiderListComponent } from './components/lider/lider-list/lider-list.component';
 import { LiderCreateComponent } from './components/lider/lider-create/lider-create.component';
 import { LiderUpdateComponent } from './components/lider/lider-update/lider-update.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
         path: '', component: NavComponent, canActivate: [AuthGuard], children: [
             { path: 'home', component: HomeComponent },
 
+            { path: 'gerarPdf', component: GerarPdfComponent },
             { path: 'lideres', component: LiderListComponent },
             { path: 'lideres/create', component: LiderCreateComponent },
             { path: 'lideres/update/:id', component: LiderUpdateComponent },
