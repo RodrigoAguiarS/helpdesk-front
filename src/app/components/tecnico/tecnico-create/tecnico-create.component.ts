@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Tecnico } from 'src/app/models/tecnico';
+import { AuthService } from 'src/app/services/auth.service';
 import { TecnicoService } from 'src/app/services/tecnico.service';
 
 @Component({
@@ -28,12 +29,18 @@ export class TecnicoCreateComponent implements OnInit {
   senha: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
+    private authService: AuthService,
     private service: TecnicoService,
     private toast:    ToastrService,
     private router:          Router,
     ) { }
 
   ngOnInit(): void {
+    this.authService.loadPerfil();
+  }
+  
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
 
   create(): void {

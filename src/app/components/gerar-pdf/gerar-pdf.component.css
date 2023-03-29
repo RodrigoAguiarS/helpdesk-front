@@ -41,3 +41,22 @@
    justify-content: space-around;
    margin-bottom: 1rem;
 }
+
+.warning-message {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: #ffcccc;
+   color: #ff6666;
+   font-size: 14px;
+   font-weight: bold;
+   padding: 8px;
+   border-radius: 4px;
+   margin-top: 8px;
+}
+
+.warning-message::before {
+   content: "\26A0";
+   font-size: 20px;
+   margin-right: 8px;
+}

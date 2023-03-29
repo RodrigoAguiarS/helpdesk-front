@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Cliente } from 'src/app/models/cliente';
+import { AuthService } from 'src/app/services/auth.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 
 
@@ -29,6 +30,7 @@ export class ClienteUpdateComponent implements OnInit {
   senha: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
+    private authService: AuthService,
     private service: ClienteService,
     private toast:    ToastrService,
     private router:          Router,
@@ -38,7 +40,14 @@ export class ClienteUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.cliente.id = this.route.snapshot.paramMap.get('id');
     this.findById();
+    this.authService.loadPerfil();
    }
+   
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+
+   
 
   findById(): void {
     this.service.findById(this.cliente.id).subscribe(resposta => {

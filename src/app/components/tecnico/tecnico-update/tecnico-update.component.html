@@ -4,8 +4,9 @@
        <h1 class="fullWidth">Atualizar Técnico</h1>
        <img class="fullWidth" src="assets/img/tecnico-create.svg" alt="Help Desk">
  
+       <h3 class="fullWidth">Selecione o tipo de Perfil</h3>
        <section class="section">
-          <mat-checkbox (click)="addPerfil(0)" class="margin" color="primary">Admin</mat-checkbox>
+          <mat-checkbox [disabled]="!isAdmin()" (click)="addPerfil(0)" class="margin" color="primary">Admin</mat-checkbox>
           <mat-checkbox (click)="addPerfil(1)" [checked]="true" class="margin" color="primary">Cliente</mat-checkbox>
           <mat-checkbox (click)="addPerfil(2)" class="margin" color="primary">Tecnico</mat-checkbox>
         </section>

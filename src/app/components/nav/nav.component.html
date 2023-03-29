@@ -15,15 +15,15 @@
             <i class="material-icons">person_add</i>
             Lider
          </a>
-         <a mat-list-item routerLink="gerarPdf">
-            <i class="material-icons">insert_drive_file</i>
-            Relatórios
-         </a>
           <a mat-list-item routerLink="clientes">
              <i class="material-icons">person</i>
              Clientes
           </a>
-         <a mat-list-item routerLink="chamados">
+          <a mat-list-item routerLink="gerarPdf">
+            <i class="material-icons">insert_drive_file</i>
+            Relatórios
+         </a>
+         <a *ngIf="isAdmin()" mat-list-item routerLink="chamados">
             <i class="material-icons">support</i>
             Chamados
          </a>

@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Cliente } from 'src/app/models/cliente';
+import { AuthService } from 'src/app/services/auth.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
@@ -28,12 +29,19 @@ export class ClienteCreateComponent implements OnInit {
   senha: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
+    private authService: AuthService,
     private service: ClienteService,
     private toast:    ToastrService,
     private router:          Router,
     ) { }
 
-  ngOnInit(): void { }
+    ngOnInit(): void {
+      this.authService.loadPerfil();
+    }
+    
+    isAdmin(): boolean {
+      return this.authService.isAdmin();
+    }
 
   create(): void {
     this.service.create(this.cliente).subscribe(() => {

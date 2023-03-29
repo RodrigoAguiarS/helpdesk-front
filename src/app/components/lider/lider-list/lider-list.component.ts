@@ -7,6 +7,7 @@ import { Lider } from 'src/app/models/lider';
 import { LiderService } from 'src/app/services/lider.service';
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-lider-list',
@@ -23,7 +24,8 @@ export class LiderListComponent implements OnInit {
   dataSource = new MatTableDataSource<Lider>(this.ELEMENT_DATA);
 
   constructor(private service: LiderService,
-  private tableSerive: TableService) { }
+  private tableSerive: TableService,
+  private toastService:    ToastrService) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -50,9 +52,12 @@ export class LiderListComponent implements OnInit {
 
   exportarPDF() {
     const tableColumns = ['Nome', 'Celular', 'Rua','Bairro', 'Cidade', 'Estado'];
+    let totalRegistros = 0;
     const doc = new jsPDF();
     this.tableSerive.findAll().subscribe(
       (tableData: any[]) => {
+        totalRegistros = tableData.length;
+        this.toastService.success('Sucesso ao gerar relátorio');
         const tableRows = [];
         for (const data of tableData) {
           const dataRow = [
@@ -64,8 +69,8 @@ export class LiderListComponent implements OnInit {
             data.endereco.estado,
           ];
           tableRows.push(dataRow);
-          console.log(dataRow)
         }
+        tableRows.push(['', '', '', '', 'Total de registros:', totalRegistros]);
         doc.autoTable({
           head: [tableColumns],
           body: tableRows,
@@ -73,7 +78,7 @@ export class LiderListComponent implements OnInit {
         doc.save('tabela.pdf');
       },
       (error: any) => {
-        console.log(error);
+        this.toastService.error('Erro ao gerar relátorio');
       }
     );
   }

@@ -1,7 +1,7 @@
 import { Endereco } from './../../models/endereco';
 import { TableService } from './../../services/table.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { ToastrService } from 'ngx-toastr';
@@ -22,7 +22,7 @@ export class GerarPdfComponent implements OnInit {
   constructor(
     private pdfService: TableService,
     private fb: FormBuilder,
-    private toastService:    ToastrService) { }
+    private toastService: ToastrService) { }
 
   ngOnInit(): void {
     this.filtroForm = this.fb.group({
@@ -33,15 +33,15 @@ export class GerarPdfComponent implements OnInit {
     });
     this.filtroForm.get('selectedOption').valueChanges.subscribe(selectedOption => {
       switch (selectedOption) {
-        case '0':
+        case 'Estado':
           this.filtroForm.get('cidade').setValue('');
           this.filtroForm.get('bairro').setValue('');
           break;
-        case '1':
+        case 'Cidade':
           this.filtroForm.get('estado').setValue('');
           this.filtroForm.get('bairro').setValue('');
           break;
-        case '2':
+        case 'Bairro':
           this.filtroForm.get('estado').setValue('');
           this.filtroForm.get('cidade').setValue('');
           break;
@@ -58,31 +58,46 @@ export class GerarPdfComponent implements OnInit {
       this.toastService.error('Preencha pelo menos um campo para realizar a pesquisa.');
       return;
     }
-  
+    const filtro = this.filtroForm.get('selectedOption').value;
+    this.consultarLideres(estado, cidade, bairro, filtro);
+  }
+
+  consultarLideres(estado: string, cidade: string, bairro: string, filtro: string) {
     try {
       this.pdfService.pesquisarLideres(estado, cidade, bairro).subscribe((data) => {
-        this.toastService.success('Sucesso ao gerar relátorio');
-        const doc = new jsPDF();
-        const tableColumn = ['Nome', 'Telefone', 'Estado', 'Cidade', 'Bairro'];
-        const tableRows = [];
-        doc.setFontSize(16);
-        doc.text('Relatório de Líderes', 14, 22);
-        const newStartY = 30;
-        data.forEach(lider => {
-          const liderData = [
-            lider.nome,
-            lider.celular,
-            lider.endereco.estado,
-            lider.endereco.cidade,
-            lider.endereco.bairro,
-          ];
-          tableRows.push(liderData);
-        });
-        doc.autoTable(tableColumn, tableRows, { startY: newStartY });
-        doc.save('lideres.pdf');
+        if (data.length === 0) {
+          this.toastService.warning('A busca não obteve resultados.');
+          return;
+        }
+        this.gerarRelatorioPDF(data, filtro);
       });
     } catch (error) {
       this.toastService.error('Erro ao gerar relatório');
     }
+  }
+
+  gerarRelatorioPDF(lideres: any[], filtro: string) {
+    const doc = new jsPDF();
+    const tableColumn = ['Nome', 'Telefone', 'Estado', 'Cidade', 'Bairro'];
+    const tableRows = [];
+    doc.setFontSize(16);
+    doc.text(`Relatório de Líderes por ${filtro}`, 14, 22);
+    doc.setFontSize(12);
+    const totalRows = lideres.length;
+    doc.text(`Total de Registros: ${totalRows}`, doc.internal.pageSize.width - 15, 22, { align: 'right' });
+    const newStartY = 30;
+    lideres.forEach(lider => {
+      const liderData = [
+        lider.nome,
+        lider.celular,
+        lider.endereco.estado,
+        lider.endereco.cidade,
+        lider.endereco.bairro,
+      ];
+      tableRows.push(liderData);
+    });
+    doc.autoTable(tableColumn, tableRows, { startY: newStartY });
+    doc.save('lideres.pdf');
+    this.toastService.success('Sucesso ao gerar relatório');
   }
 }
