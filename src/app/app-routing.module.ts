@@ -1,3 +1,4 @@
+import { RelogioPontoComponent } from './components/relogio/relogio-ponto/relogio-ponto.component';
 import { LiderDeleteComponent } from './components/lider/lider-delete/lider-delete.component';
 import { GerarPdfComponent } from './components/gerar-pdf/gerar-pdf.component';
 import { LiderListComponent } from './components/lider/lider-list/lider-list.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
         path: '', component: NavComponent, canActivate: [AuthGuard], children: [
             { path: 'home', component: HomeComponent },
 
+            { path: 'registrar', component: RelogioPontoComponent },
             { path: 'gerarPdf', component: GerarPdfComponent },
             { path: 'lideres', component: LiderListComponent },
             { path: 'lideres/delete/:id', component: LiderDeleteComponent },

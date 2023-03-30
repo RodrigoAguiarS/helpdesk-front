@@ -8,10 +8,6 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
 
-    <div *ngIf="isAdmin()">
-      <h2>Conteúdo para ADMIN</h2>
-    </div>
-
     <div class="mat-elevation-z8">
  
        <table mat-table [dataSource]="dataSource">

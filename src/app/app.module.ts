@@ -55,6 +55,9 @@ import { NumerosEumaLetraPipe } from './numero.pipe';
 import { LiderUpdateComponent } from './components/lider/lider-update/lider-update.component';
 import { GerarPdfComponent } from './components/gerar-pdf/gerar-pdf.component';
 import { LiderDeleteComponent } from './components/lider/lider-delete/lider-delete.component';
+import { RelogioPontoComponent } from './components/relogio/relogio-ponto/relogio-ponto.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -82,7 +85,8 @@ import { LiderDeleteComponent } from './components/lider/lider-delete/lider-dele
     NumerosEumaLetraPipe,
     LiderUpdateComponent,
     GerarPdfComponent,
-    LiderDeleteComponent
+    LiderDeleteComponent,
+    RelogioPontoComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +99,8 @@ import { LiderDeleteComponent } from './components/lider/lider-delete/lider-dele
     HttpClientModule,
     // Angular Material
     MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatPaginatorModule,
     MatCheckboxModule,
     MatSnackBarModule,

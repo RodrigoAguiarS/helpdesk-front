@@ -41,6 +41,7 @@ export class ClienteUpdateComponent implements OnInit {
     this.cliente.id = this.route.snapshot.paramMap.get('id');
     this.findById();
     this.authService.loadPerfil();
+    this.addPerfil(1);
    }
    
   isAdmin(): boolean {

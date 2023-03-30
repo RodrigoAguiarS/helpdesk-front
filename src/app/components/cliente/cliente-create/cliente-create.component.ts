@@ -37,6 +37,7 @@ export class ClienteCreateComponent implements OnInit {
 
     ngOnInit(): void {
       this.authService.loadPerfil();
+      this.addPerfil(1);
     }
     
     isAdmin(): boolean {

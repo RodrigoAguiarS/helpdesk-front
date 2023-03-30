@@ -37,6 +37,7 @@ export class TecnicoCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.loadPerfil();
+    this.addPerfil(2);
   }
   
   isAdmin(): boolean {

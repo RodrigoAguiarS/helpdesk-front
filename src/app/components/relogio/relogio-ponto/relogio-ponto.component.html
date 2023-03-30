@@ -1,0 +1,21 @@
+<div class="container mat-elevation-z8">
+    <mat-card>
+        <mat-card-title>Registro de horário de trabalho</mat-card-title>
+        <mat-card-content>
+            <img src="assets/img/register-hours.svg" alt="Imagem do lado do relógio">
+            <div class="clock">
+                {{hora | date: 'HH:mm:ss'}}
+                <p>{{dataAtual | date: 'dd \'de\' MMMM \'de\' yyyy'}}</p>
+            </div>
+            <mat-form-field class="fullWidth" appearance="legacy">
+                <textarea matInput placeholder="Observações"
+                [formControl]="observacoes"
+                [(ngModel)]="registro.observacoes"></textarea>
+            </mat-form-field>
+            <button class="fullWidth mat-elevation-z4" mat-raised-button color="primary" 
+            (click)="registrarPonto()">
+                {{registrado ? 'Registrar saída' : 'Registrar entrada'}}
+            </button>
+        </mat-card-content>
+    </mat-card>
+</div>
