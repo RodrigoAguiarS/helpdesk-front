@@ -30,6 +30,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgxMaskModule } from 'ngx-mask';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 import { ToastrModule } from 'ngx-toastr';
@@ -58,6 +59,9 @@ import { LiderDeleteComponent } from './components/lider/lider-delete/lider-dele
 import { RelogioPontoComponent } from './components/relogio/relogio-ponto/relogio-ponto.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ConfirmacaoModalComponent } from './components/modal/confirmacao-modal-component/confirmacao-modal-component.component';
+import { RelogioPontoListComponent } from './components/relogio/relogio-ponto-list/relogio-ponto-list.component';
+
 
 @NgModule({
   declarations: [
@@ -86,7 +90,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     LiderUpdateComponent,
     GerarPdfComponent,
     LiderDeleteComponent,
-    RelogioPontoComponent
+    RelogioPontoComponent,
+    ConfirmacaoModalComponent,
+    RelogioPontoListComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -114,6 +121,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

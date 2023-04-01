@@ -5,27 +5,38 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Lider } from 'src/app/models/lider';
 import { LiderService } from 'src/app/services/lider.service';
-import * as jsPDF from 'jspdf';
-import 'jspdf-autotable';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-lider-list',
-  templateUrl: './lider-list.component.html',
-  styleUrls: ['./lider-list.component.css']
+  selector: "app-lider-list",
+  templateUrl: "./lider-list.component.html",
+  styleUrls: ["./lider-list.component.css"],
 })
 export class LiderListComponent implements OnInit {
+  ELEMENT_DATA: Lider[] = [];
+  FILTERED_DATA: Endereco[] = [];
 
-  ELEMENT_DATA: Lider[] = []
-  FILTERED_DATA: Endereco[] = []
-
-  displayedColumns: string[] = ['id', 'nome', 'email', 'celular', 'whatsapp', 'cep', 'rua',
-  'numero', 'bairro', 'cidade', 'estado', 'acoes'];
+  displayedColumns: string[] = [
+    "id",
+    "nome",
+    "email",
+    "celular",
+    "whatsapp",
+    "cep",
+    "rua",
+    "numero",
+    "bairro",
+    "cidade",
+    "estado",
+    "acoes",
+  ];
   dataSource = new MatTableDataSource<Lider>(this.ELEMENT_DATA);
 
-  constructor(private service: LiderService,
-  private tableSerive: TableService,
-  private toastService:    ToastrService) { }
+  constructor(
+    private service: LiderService,
+    private tableService: TableService,
+    private toastService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.findAll();
@@ -33,16 +44,14 @@ export class LiderListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
-  }
+  ngAfterViewInit() {}
 
   findAll() {
-    this.service.findAll().subscribe(resposta => {
-      this.ELEMENT_DATA = resposta
-      console.log(resposta)
+    this.service.findAll().subscribe((resposta) => {
+      this.ELEMENT_DATA = resposta;
       this.dataSource = new MatTableDataSource<Lider>(this.ELEMENT_DATA);
       this.dataSource.paginator = this.paginator;
-    })
+    });
   }
 
   applyFilter(event: Event) {
@@ -51,35 +60,14 @@ export class LiderListComponent implements OnInit {
   }
 
   exportarPDF() {
-    const tableColumns = ['Nome', 'Celular', 'Rua','Bairro', 'Cidade', 'Estado'];
-    let totalRegistros = 0;
-    const doc = new jsPDF();
-    this.tableSerive.findAll().subscribe(
-      (tableData: any[]) => {
-        totalRegistros = tableData.length;
-        this.toastService.success('Sucesso ao gerar relátorio');
-        const tableRows = [];
-        for (const data of tableData) {
-          const dataRow = [
-            data.nome,
-            data.celular,
-            data.endereco.rua,
-            data.endereco.bairro,
-            data.endereco.cidade,
-            data.endereco.estado,
-          ];
-          tableRows.push(dataRow);
-        }
-        tableRows.push(['', '', '', '', 'Total de registros:', totalRegistros]);
-        doc.autoTable({
-          head: [tableColumns],
-          body: tableRows,
-        });
-        doc.save('tabela.pdf');
-      },
-      (error: any) => {
-        this.toastService.error('Erro ao gerar relátorio');
-      }
-    );
+    this.tableService
+      .generatePDFReportForLider(this.ELEMENT_DATA)
+      .then((pdfBlob: Blob) => {
+        this.toastService.success("Sucesso ao gerar relatório");
+      })
+      .catch((error: any) => {
+        console.log("Error generating PDF:", error);
+        this.toastService.error("Erro ao gerar relatório");
+      });
   }
 }

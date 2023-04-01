@@ -1,0 +1,63 @@
+<div class="container">
+
+    <h1>Lista de Registros</h1>
+ 
+    <mat-form-field appearance="standard">
+       <mat-label>Filter</mat-label>
+       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+     </mat-form-field>
+ 
+    <div class="mat-elevation-z8">
+ 
+       <table mat-table [dataSource]="dataSource">
+ 
+          <ng-container matColumnDef="id">
+             <th mat-header-cell *matHeaderCellDef> ID </th>
+             <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+ 
+          <ng-container matColumnDef="data registro">
+             <th mat-header-cell *matHeaderCellDef> Data Atual </th>
+             <td mat-cell *matCellDef="let element"> {{element.dataRegistro}} </td>
+          </ng-container>
+ 
+          <ng-container matColumnDef="hora entrada">
+             <th mat-header-cell *matHeaderCellDef> Hora Entrada </th>
+             <td mat-cell *matCellDef="let element"> {{element.horaEntrada}}  </td>
+          </ng-container>
+ 
+          <ng-container matColumnDef="hora saída">
+             <th mat-header-cell *matHeaderCellDef> Hora Saida </th>
+             <td mat-cell *matCellDef="let element"> {{element.horaSaida}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="pornto registrado">
+            <th mat-header-cell *matHeaderCellDef> Ponto Registrado </th>
+            <td mat-cell *matCellDef="let element"> {{element.pontoRegistrado ? 'Sim' : 'Não'}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="observações">
+            <th mat-header-cell *matHeaderCellDef> Observações </th>
+            <td mat-cell *matCellDef="let element"> {{element.observacoes}} </td>
+         </ng-container>
+ 
+          <ng-container matColumnDef="acoes">
+             <th mat-header-cell *matHeaderCellDef> Ações </th>
+             <td mat-cell *matCellDef="let element">
+                <a routerLink="update/{{ element.id }}">
+                   <i class="material-icons edit">edit</i>
+                </a>
+                <a routerLink="delete/{{ element.id }}">
+                   <i class="material-icons delete">delete</i>
+                </a>
+             </td>
+          </ng-container>
+ 
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+       </table>
+ 
+       <mat-paginator [pageSizeOptions]="[5, 2, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+ 
+ </div>

@@ -1,0 +1,7 @@
+:host {
+    display: block;
+    top: 20%;
+  }
+  .confirmacao-modal {
+    top: calc(50% - 150px);
+  }

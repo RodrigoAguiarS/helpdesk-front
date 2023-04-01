@@ -1,4 +1,5 @@
-import { RegistroPonto } from './../models/RegistroPonto';
+import { RelogioPonto } from './../models/relogioPonto';
+import { RegistroPonto } from '../models/RegistroPonto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -17,5 +18,9 @@ export class RelogioService {
 
   consultarUltimoPonto(): Observable<boolean> {
     return this.http.get<boolean>(`${API_CONFIG.baseUrl}/api/registrar-ponto/is-entrada`);
+  }
+
+  findAll(): Observable<RelogioPonto[]> {
+    return this.http.get<RelogioPonto[]>(`${API_CONFIG.baseUrl}/api/registrar-ponto/registros`);
   }
 }

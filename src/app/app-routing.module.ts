@@ -22,6 +22,7 @@ import { TecnicoDeleteComponent } from './components/tecnico/tecnico-delete/tecn
 import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-list.component';
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
+import { RelogioPontoListComponent } from './components/relogio/relogio-ponto-list/relogio-ponto-list.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
             { path: 'home', component: HomeComponent },
 
             { path: 'registrar', component: RelogioPontoComponent },
+            { path: 'registrar/list', component: RelogioPontoListComponent },
             { path: 'gerarPdf', component: GerarPdfComponent },
             { path: 'lideres', component: LiderListComponent },
             { path: 'lideres/delete/:id', component: LiderDeleteComponent },
