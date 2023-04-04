@@ -1,0 +1,107 @@
+<div class="container mat-elevation-z8">
+    <form class="form">
+
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Realizar Venda</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <form>
+
+                    <form class="form">
+                        <mat-form-field class="fullWidth" appearance="legacy">
+                            <mat-label>Cliente</mat-label>
+                            <input type="text" matInput [formControl]="clienteControl" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayConsumidor">
+                                <mat-option *ngFor="let consumidor of filteredConsumidors | async" [value]="consumidor">
+                                    {{ consumidor.nome }}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </form>
+
+                    <mat-form-field class="fullWidth" appearance="legacy">
+                        <mat-label>Produto</mat-label>
+                        <input matInput placeholder="Digite o nome do produto" [formControl]="nomeDoProdutoControl"
+                            [matAutocomplete]="autoProduto">
+                        <mat-autocomplete #autoProduto="matAutocomplete">
+                            <mat-option *ngFor="let produto of filteredProdutos | async" [value]="produto.nome">
+                                {{ produto.nome }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                    <mat-form-field class="fullWidth" appearance="legacy">
+                        <mat-label>Quantidade</mat-label>
+                        <input matInput type="number" placeholder="Quantidade" [formControl]="quantidadeControl">
+                    </mat-form-field>
+
+                    <button mat-raised-button color="primary" type="button" (click)="adicionarProduto()">Adicionar
+                        Produto</button>
+                    <mat-divider></mat-divider>
+
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                        <ng-container matColumnDef="produto">
+                            <th mat-header-cell *matHeaderCellDef>Produto</th>
+                            <td mat-cell *matCellDef="let item">{{ item.produto.nome }}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="quantidade">
+                            <th mat-header-cell *matHeaderCellDef>Quantidade</th>
+                            <td mat-cell *matCellDef="let item">{{ item.quantidade }}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="valorUnitario">
+                            <th mat-header-cell *matHeaderCellDef>Valor Unitário</th>
+                            <td mat-cell *matCellDef="let item">{{ item.produto.preco | currency }}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="valorTotal">
+                            <th mat-header-cell *matHeaderCellDef>Valor Total</th>
+                            <td mat-cell *matCellDef="let item">{{ item.produto.preco * item.quantidade | currency }}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="remover">
+                            <th mat-header-cell *matHeaderCellDef></th>
+                            <td mat-cell *matCellDef="let i = index">
+                                <button mat-icon-button color="warn" (click)="removerItem(i)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row
+                            *matHeaderRowDef="['produto', 'quantidade', 'valorUnitario', 'valorTotal', 'remover']"></tr>
+                        <tr mat-row
+                            *matRowDef="let row; columns: ['produto', 'quantidade', 'valorUnitario', 'valorTotal', 'remover']">
+                        </tr>
+                    </table>
+
+                    <mat-form-field class="fullWidth" appearance="legacy">
+                        <mat-label>Forma de Pagamento</mat-label>
+                        <mat-select [formControl]="pagamentoControl">
+                            <mat-option *ngFor="let formaDePagamento of pagamento"
+                                [value]="formaDePagamento.value">
+                                {{formaDePagamento.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    
+                    <mat-divider></mat-divider>
+                    <mat-form-field class="fullWidth" appearance="legacy">
+                        <mat-label>Valor Total</mat-label>
+                        <input matInput type="number" placeholder="Valor Total" [formControl]="valorFinalControl" [readonly]="true" [value]="valorTotal">
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="realizarVenda()">Finalizar Venda</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
+
+

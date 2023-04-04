@@ -31,6 +31,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 import { ToastrModule } from 'ngx-toastr';
@@ -61,6 +62,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ConfirmacaoModalComponent } from './components/modal/confirmacao-modal-component/confirmacao-modal-component.component';
 import { RelogioPontoListComponent } from './components/relogio/relogio-ponto-list/relogio-ponto-list.component';
+import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
 
 
 @NgModule({
@@ -92,7 +94,8 @@ import { RelogioPontoListComponent } from './components/relogio/relogio-ponto-li
     LiderDeleteComponent,
     RelogioPontoComponent,
     ConfirmacaoModalComponent,
-    RelogioPontoListComponent
+    RelogioPontoListComponent,
+    VendaCreateComponent
     
   ],
   imports: [
@@ -122,6 +125,7 @@ import { RelogioPontoListComponent } from './components/relogio/relogio-ponto-li
     MatListModule,
     MatCardModule,
     MatDialogModule,
+    MatAutocompleteModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

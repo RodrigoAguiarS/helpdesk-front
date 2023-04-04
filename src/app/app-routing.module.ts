@@ -23,13 +23,15 @@ import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { RelogioPontoListComponent } from './components/relogio/relogio-ponto-list/relogio-ponto-list.component';
-
+import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
 
 const routes: Routes = [
     { path : 'login', component: LoginComponent },
     {
         path: '', component: NavComponent, canActivate: [AuthGuard], children: [
             { path: 'home', component: HomeComponent },
+
+            { path: 'vendas/create', component: VendaCreateComponent },
 
             { path: 'registrar', component: RelogioPontoComponent },
             { path: 'registrar/list', component: RelogioPontoListComponent },
