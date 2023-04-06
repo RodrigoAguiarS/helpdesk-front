@@ -18,7 +18,7 @@ export class ConfirmacaoModalComponent {
   ) {
     if (data) {
       this.title = data.title || 'Confirmação';
-      this.message = data.message || 'Salva comprovante de Registro?';
+      this.message = data.message || 'Deseja executar essa operação?';
       this.confirmButtonText = data.confirmButtonText || 'Sim';
       this.cancelButtonText = data.cancelButtonText || 'Não';
     }

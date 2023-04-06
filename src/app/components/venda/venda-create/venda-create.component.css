@@ -17,18 +17,24 @@
     height: 15rem;
   }
   
-  .status-prioridade {
+  .pagamento {
     display: flex;
     justify-content: space-between;
+    margin-top: 2rem;
   }
   
-  .status-prioridade mat-form-field {
-    width: 49%;
+  .pagamento > * {
+    margin-right: 2rem;
   }
   
-  .observacoes {
-    min-height: 6rem;
-    max-height: 10rem;
+  table {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .table-produtos {
+    width: 100%;
+    margin-top: 2rem;
   }
   
   button {
@@ -39,4 +45,6 @@
     margin-top: 3rem;
     opacity: .5;
   }
-  
+  mat-card-title {
+    justify-content: center;
+ }

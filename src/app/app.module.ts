@@ -63,7 +63,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ConfirmacaoModalComponent } from './components/modal/confirmacao-modal-component/confirmacao-modal-component.component';
 import { RelogioPontoListComponent } from './components/relogio/relogio-ponto-list/relogio-ponto-list.component';
 import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
-
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -126,6 +126,7 @@ import { VendaCreateComponent } from './components/venda/venda-create/venda-crea
     MatCardModule,
     MatDialogModule,
     MatAutocompleteModule,
+    CommonModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

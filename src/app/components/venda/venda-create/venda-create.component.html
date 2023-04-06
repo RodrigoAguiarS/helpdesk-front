@@ -3,14 +3,15 @@
 
         <mat-card>
             <mat-card-header>
-                <mat-card-title>Realizar Venda</mat-card-title>
+                <mat-card-title class="">Realizar Venda</mat-card-title>
             </mat-card-header>
+            <img class="full-width" src="assets/img/vendas-create.svg" alt="Chamado image">
 
             <mat-card-content>
                 <form>
 
                     <form class="form">
-                        <mat-form-field class="fullWidth" appearance="legacy">
+                        <mat-form-field class="full-width" appearance="legacy">
                             <mat-label>Cliente</mat-label>
                             <input type="text" matInput [formControl]="clienteControl" [matAutocomplete]="auto">
                             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayConsumidor">
@@ -21,18 +22,18 @@
                         </mat-form-field>
                     </form>
 
-                    <mat-form-field class="fullWidth" appearance="legacy">
+                    <mat-form-field class="full-width" appearance="legacy">
                         <mat-label>Produto</mat-label>
-                        <input matInput placeholder="Digite o nome do produto" [formControl]="nomeDoProdutoControl"
+                        <input matInput placeholder="Digite o nome ou código de barras do produto" [formControl]="produtoControl"
                             [matAutocomplete]="autoProduto">
-                        <mat-autocomplete #autoProduto="matAutocomplete">
+                        <mat-autocomplete #autoProduto="matAutocomplete" (optionSelected)="selecionarProduto($event)"> >
                             <mat-option *ngFor="let produto of filteredProdutos | async" [value]="produto.nome">
                                 {{ produto.nome }}
                             </mat-option>
                         </mat-autocomplete>
                     </mat-form-field>
 
-                    <mat-form-field class="fullWidth" appearance="legacy">
+                    <mat-form-field class="full-width" appearance="legacy">
                         <mat-label>Quantidade</mat-label>
                         <input matInput type="number" placeholder="Quantidade" [formControl]="quantidadeControl">
                     </mat-form-field>
@@ -41,9 +42,9 @@
                         Produto</button>
                     <mat-divider></mat-divider>
 
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-produtos">
 
-                        <ng-container matColumnDef="produto">
+                        <ng-container class="full-width" matColumnDef="produto">
                             <th mat-header-cell *matHeaderCellDef>Produto</th>
                             <td mat-cell *matCellDef="let item">{{ item.produto.nome }}</td>
                         </ng-container>
@@ -80,7 +81,7 @@
                         </tr>
                     </table>
 
-                    <mat-form-field class="fullWidth" appearance="legacy">
+                    <mat-form-field class="full-width" appearance="legacy">
                         <mat-label>Forma de Pagamento</mat-label>
                         <mat-select [formControl]="pagamentoControl">
                             <mat-option *ngFor="let formaDePagamento of pagamento"
@@ -91,9 +92,10 @@
                     </mat-form-field>
                     
                     <mat-divider></mat-divider>
-                    <mat-form-field class="fullWidth" appearance="legacy">
-                        <mat-label>Valor Total</mat-label>
-                        <input matInput type="number" placeholder="Valor Total" [formControl]="valorFinalControl" [readonly]="true" [value]="valorTotal">
+                    <mat-form-field class="fullwidth" appearance="legacy">
+                        <mat-label>Valor a pagar</mat-label>
+                        <input matInput type="text" placeholder="Valor Total" 
+                        [formControl]="valorFinalControl" [readonly]="true" [value]="valorTotalFormatado">
                     </mat-form-field>
                 </form>
             </mat-card-content>

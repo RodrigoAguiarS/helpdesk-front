@@ -15,11 +15,15 @@ export class ProdutoService {
     return this.http.get<Produto[]>(`${API_CONFIG.baseUrl}/api/produtos`);
   }
 
-  buscarProdutos(nome: string): Observable<Produto[]> {
+  buscarProdutosPorNome(nome: string): Observable<Produto[]> {
     return this.http.get<Produto[]>(`/api/produtos/buscar${nome}`);
   }
 
   buscarProdutosCodigoBarras(codigoBarras: string): Observable<Produto[]> {
     return this.http.get<Produto[]>(`/api/produtos/produtos/${codigoBarras}`);
+  }
+
+  verificarEstoque(id: number): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/api/produtos/${id}/estoque`);
   }
 }
