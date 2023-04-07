@@ -19,6 +19,7 @@
                                     {{ consumidor.nome }}
                                 </mat-option>
                             </mat-autocomplete>
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                         </mat-form-field>
                     </form>
 
@@ -31,11 +32,13 @@
                                 {{ produto.nome }}
                             </mat-option>
                         </mat-autocomplete>
+                        <mat-icon matSuffix>border_all</mat-icon>
                     </mat-form-field>
 
                     <mat-form-field class="full-width" appearance="legacy">
                         <mat-label>Quantidade</mat-label>
                         <input matInput type="number" placeholder="Quantidade" [formControl]="quantidadeControl">
+                        <mat-icon matSuffix>storage</mat-icon>
                     </mat-form-field>
 
                     <button mat-raised-button color="primary" type="button" (click)="adicionarProduto()">Adicionar
@@ -89,6 +92,7 @@
                                 {{formaDePagamento.viewValue}}
                             </mat-option>
                         </mat-select>
+                        <mat-icon matSuffix>monetization_on</mat-icon>
                     </mat-form-field>
                     
                     <mat-divider></mat-divider>
@@ -96,11 +100,13 @@
                         <mat-label>Valor a pagar</mat-label>
                         <input matInput type="text" placeholder="Valor Total" 
                         [formControl]="valorFinalControl" [readonly]="true" [value]="valorTotalFormatado">
+                        <mat-icon matSuffix>monetization_on</mat-icon>
                     </mat-form-field>
                 </form>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="primary" (click)="realizarVenda()">Finalizar Venda</button>
+                <button mat-raised-button color="primary" class="button" (click)="realizarVenda()">Finalizar Venda</button>
+                <button mat-raised-button color="accent" routerLink="/produtos/create">Novo Produto</button>
             </mat-card-actions>
         </mat-card>
     </form>

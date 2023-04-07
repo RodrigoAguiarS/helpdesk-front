@@ -160,12 +160,7 @@ export class VendaCreateComponent implements OnInit {
               quantidade: quantidade,
               estoque: quantidadeEmEstoque,
             };
-            this.itensVenda.push(novoItem);
-            this.dataSource = new MatTableDataSource(this.itensVenda);
-
-            this.produtoControl.reset();
-            this.quantidadeControl.reset();
-            this.calcularValorTotal();
+            this.adicionarItemVenda(novoItem);
           } else {
             this.snackBar.open("Quantidade insuficiente no estoque!", "", {
               duration: 3000,
@@ -180,6 +175,14 @@ export class VendaCreateComponent implements OnInit {
         }
       );
     }
+  }
+
+  adicionarItemVenda(novoItem: any): void {
+    this.itensVenda.push(novoItem);
+    this.dataSource = new MatTableDataSource(this.itensVenda);
+    this.produtoControl.reset();
+    this.quantidadeControl.reset();
+    this.calcularValorTotal();
   }
 
   verificarEstoque(id: number): Observable<number> {
@@ -224,7 +227,10 @@ export class VendaCreateComponent implements OnInit {
     if (!this.validarCliente() || !this.validarPagamento() || !this.validarItens()) {
       return;
     }
+    this.confirmarVenda();
+  }
   
+  confirmarVenda(): void {
     const dialogRef = this.dialog.open(ConfirmacaoModalComponent, {
       width: "350px",
       data: "Deseja confirmar a venda?",
@@ -232,45 +238,59 @@ export class VendaCreateComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        const venda = {
-          cliente: this.clienteControl.value,
-          itens: this.itensVenda,
-          pagamento: this.pagamentoControl.value,
-        };
-        this.vendaService.finalizarVenda(venda).subscribe((idVenda) => {
-          this.snackBar.open("Venda realizada com sucesso!", "", {
-            duration: 3000,
-          });
-          this.clienteControl.reset();
-          this.produtoControl.reset();
-          this.quantidadeControl.reset();
-          this.pagamentoControl.reset();
-          this.valorFinalControl.reset();
-          this.itensVenda = [];
-          this.dataSource = new MatTableDataSource(this.itensVenda);
-          this.vendaService.buscarItensVenda(idVenda.id).subscribe(
-            (venda) => {
-              this.venda = venda;
-              this.tableService.gerarPdfCompra(this.venda);
-            },
-            (error) => {
-              if (
-                error.status === 500 &&
-                error.error.message &&
-                error.error.message.includes("Quantidade insuficiente")
-              ) {
-                this.snackBar.open("Quantidade insuficiente no estoque!", "", {
-                  duration: 3000,
-                });
-              } else {
-                this.snackBar.open("Erro ao realizar a venda!", "", {
-                  duration: 3000,
-                });
-              }
-            }
-          );
-        });
+        this.finalizarVenda();
       }
     });
+  }
+  
+  finalizarVenda(): void {
+    const venda = {
+      cliente: this.clienteControl.value,
+      itens: this.itensVenda,
+      pagamento: this.pagamentoControl.value,
+    };
+  
+    this.vendaService.finalizarVenda(venda).subscribe((idVenda) => {
+      this.snackBar.open("Venda realizada com sucesso!", "", {
+        duration: 3000,
+      });
+  
+      this.resetarCampos();
+      this.buscarItensVenda(idVenda.id);
+    });
+  }
+  
+  resetarCampos(): void {
+    this.clienteControl.reset();
+    this.produtoControl.reset();
+    this.quantidadeControl.reset();
+    this.pagamentoControl.reset();
+    this.valorFinalControl.reset();
+    this.itensVenda = [];
+    this.dataSource = new MatTableDataSource(this.itensVenda);
+  }
+  
+  buscarItensVenda(idVenda: number): void {
+    this.vendaService.buscarItensVenda(idVenda).subscribe(
+      (venda) => {
+        this.venda = venda;
+        this.tableService.gerarPdfCompra(this.venda);
+      },
+      (error) => {
+        if (
+          error.status === 500 &&
+          error.error.message &&
+          error.error.message.includes("Quantidade insuficiente")
+        ) {
+          this.snackBar.open("Quantidade insuficiente no estoque!", "", {
+            duration: 3000,
+          });
+        } else {
+          this.snackBar.open("Erro ao realizar a venda!", "", {
+            duration: 3000,
+          });
+        }
+      }
+    );
   }
 }

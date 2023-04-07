@@ -64,7 +64,9 @@ import { ConfirmacaoModalComponent } from './components/modal/confirmacao-modal-
 import { RelogioPontoListComponent } from './components/relogio/relogio-ponto-list/relogio-ponto-list.component';
 import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
 import { CommonModule } from '@angular/common';
-
+import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
+import { CurrencyPipe } from './currency.pipe';
+import { CurrencyFormatDirective } from './currency-format.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +97,11 @@ import { CommonModule } from '@angular/common';
     RelogioPontoComponent,
     ConfirmacaoModalComponent,
     RelogioPontoListComponent,
-    VendaCreateComponent
+    VendaCreateComponent,
+    ProdutoCreateComponent,
+    CurrencyPipe,
+    CurrencyFormatDirective
+
     
   ],
   imports: [

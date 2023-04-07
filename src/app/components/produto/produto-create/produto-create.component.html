@@ -1,0 +1,73 @@
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <mat-card>
+            <h1 class="fullWidth">Cadastrar Produto</h1>
+            <img class="fullWidth" src="assets/img/produto-create.svg" alt="Produto">
+
+
+            <mat-form-field class="fullWidth" appearance="legacy">
+                <mat-label>Código de Barras</mat-label>
+                <input [(ngModel)]="produto.codigoBarras" (change)="buscarProdutoPorCodigo(produto.codigoBarras)"
+                    name="codigoBarras" [formControl]="codigoBarras" required matInput placeholder="Ex. 7891234567890"
+                    maxlength="13">
+                <mat-icon matSuffix>border_all</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth" appearance="legacy">
+                <mat-label>Nome</mat-label>
+                <input [(ngModel)]="produto.nome" name="nome" [formControl]="nome" required matInput 
+                    
+                    placeholder="Ex. Arroz" maxlength="50">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth" appearance="legacy">
+                <mat-label>Preço</mat-label>
+                <input [(ngModel)]="produto.preco" name="preco" [formControl]="preco" required matInput
+                       placeholder="Ex. 15.00" type="text" mask="separator.2" thousandSeparator="." decimalMarker=",">
+                <mat-icon matSuffix>monetization_on</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth" appearance="legacy">
+                <mat-label>Descrição</mat-label>
+                <input [(ngModel)]="produto.descricao" name="descricao" [formControl]="descricao" required matInput
+                    placeholder="Ex. Arroz branco de qualidade">
+                <mat-icon matSuffix>description</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth" appearance="legacy">
+                <mat-label>Categoria</mat-label>
+                <mat-select [(ngModel)]="produto.categoria" name="categoria" [formControl]="categoria" required>
+                    <mat-option value="ALIMENTOS">Alimentos</mat-option>
+                    <mat-option value="ELETRONICOS">Eletrônicos</mat-option>
+                    <mat-option value="VESTUARIO">Vestuário</mat-option>
+                    <mat-option value="OUTROS">Outros</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>local_offer</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth" appearance="legacy">
+                <mat-label>Quantidade em Estoque</mat-label>
+                <input [(ngModel)]="produto.estoque.quantidadeEmEstoque"  name="quantidadeEmEstoque"
+                    [formControl]="quantidadeEmEstoque" required matInput placeholder="Ex. 50" type="number">
+                <mat-icon matSuffix>storage</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth" appearance="legacy">
+                <mat-label>Quantidade Máxima em Estoque</mat-label>
+                <input [(ngModel)]="produto.estoque.quantidadeMaxima" name="quantidadeMaxima"
+                    [formControl]="quantidadeMaxima" required type="number" matInput placeholder="Ex.. 10" >
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth" appearance="legacy">
+                <mat-label>Quantidade Mínima em Estoque</mat-label>
+                <input [(ngModel)]="produto.estoque.quantidadeMinima" name="quantidadeMinima"
+                    [formControl]="quantidadeMinima" [disabled]="produtoExiste" required type="number" matInput placeholder="Ex.. 10" >
+            </mat-form-field>
+            <mat-card-actions>
+                <button  (click)="create()" mat-raised-button color="primary" [disabled]="!validaCampos()" class="button" >Cadastrar</button>
+                <button mat-raised-button color="warn" routerLink="/vendas/create">Cancelar</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

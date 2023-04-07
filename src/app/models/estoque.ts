@@ -1,8 +1,7 @@
 import { Produto } from "./produto";
 
 export interface Estoque {
-    id: number;
-    produto: Produto;
+    id?: any;
     quantidadeEmEstoque: number;
     quantidadeMinima: number;
     quantidadeMaxima: number;

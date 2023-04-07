@@ -3,13 +3,13 @@
     margin: auto auto 3rem auto;
     padding: 1rem;
     border-radius: 1rem;
-  }
-  
-  .full-width {
+ }
+ 
+ .fullWidth {
     width: 100%;
-  }
-  
-  h1, img, p {
+ }
+ 
+ h1, img, p {
     text-align: center;
   }
   
@@ -17,27 +17,18 @@
     height: 15rem;
   }
   
-  .pagamento {
+ h3, p {
+   text-align: center;
+}
+ 
+
+ .section {
+    margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
-    margin-top: 2rem;
-  }
-  
-  .pagamento > * {
-    margin-right: 2rem;
-  }
-  
-  table {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .table-produtos {
-    width: 100%;
-    margin-top: 2rem;
-  }
-  
-  button {
+ }
+ 
+ button {
     margin-top: .5rem;
   }
 
@@ -46,11 +37,16 @@
     justify-content: center;
     align-items: center;
   }
-  
-  p {
-    margin-top: 3rem;
+ 
+ p {
+    margin-top: 4rem;
     opacity: .5;
-  }
-  mat-card-title {
+ }
+
+ mat-icon {
+   opacity: .8;
+ }
+
+ mat-card-title {
     justify-content: center;
  }

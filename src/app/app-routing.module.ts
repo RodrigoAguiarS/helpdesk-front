@@ -24,7 +24,7 @@ import { ChamadoUpdateComponent } from './components/chamado/chamado-update/cham
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { RelogioPontoListComponent } from './components/relogio/relogio-ponto-list/relogio-ponto-list.component';
 import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
-
+import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
 const routes: Routes = [
     { path : 'login', component: LoginComponent },
     {
@@ -32,6 +32,8 @@ const routes: Routes = [
             { path: 'home', component: HomeComponent },
 
             { path: 'vendas/create', component: VendaCreateComponent },
+
+            { path: 'produtos/create', component: ProdutoCreateComponent},
 
             { path: 'registrar', component: RelogioPontoComponent },
             { path: 'registrar/list', component: RelogioPontoListComponent },

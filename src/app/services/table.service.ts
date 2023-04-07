@@ -135,24 +135,23 @@ export class TableService {
     // Definir fonte e tamanho dos textos abaixo da tabela
     doc.setFontSize(10);
     doc.text(
-      `Total a pagar: ${compra.valorTotal.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      })}`,
-      14,
-      doc.lastAutoTable.finalY + 10
-    );
-    doc.text(
       `Cliente: ${compra.nomeCliente}`,
       14,
-      doc.lastAutoTable.finalY + 30
+      doc.lastAutoTable.finalY + 10
     );
     doc.text(
       `Forma de pagamento: ${compra.pagamento}`,
       14,
       doc.lastAutoTable.finalY + 20
     );
-
+    doc.text(
+      `Total a pagar: ${compra.valorTotal.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      })}`,
+      14,
+      doc.lastAutoTable.finalY + 30
+    );
     // Definir cor do texto abaixo da tabela
     doc.setTextColor(255, 0, 0);
     doc.text("Obrigado pela compra!", 14, doc.lastAutoTable.finalY + 50);
