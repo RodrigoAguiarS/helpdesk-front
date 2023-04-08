@@ -1,5 +1,4 @@
 import { TableService } from './../../../services/table.service';
-import { Endereco } from './../../../models/endereco';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,7 +13,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LiderListComponent implements OnInit {
   ELEMENT_DATA: Lider[] = [];
-  FILTERED_DATA: Endereco[] = [];
 
   displayedColumns: string[] = [
     "id",

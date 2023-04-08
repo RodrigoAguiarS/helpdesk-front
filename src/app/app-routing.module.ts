@@ -25,6 +25,7 @@ import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-
 import { RelogioPontoListComponent } from './components/relogio/relogio-ponto-list/relogio-ponto-list.component';
 import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
 import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
+import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
 const routes: Routes = [
     { path : 'login', component: LoginComponent },
     {
@@ -33,8 +34,9 @@ const routes: Routes = [
 
             { path: 'vendas/create', component: VendaCreateComponent },
 
+            { path: 'produtos', component: ProdutoListComponent},
             { path: 'produtos/create', component: ProdutoCreateComponent},
-
+        
             { path: 'registrar', component: RelogioPontoComponent },
             { path: 'registrar/list', component: RelogioPontoListComponent },
             { path: 'gerarPdf', component: GerarPdfComponent },

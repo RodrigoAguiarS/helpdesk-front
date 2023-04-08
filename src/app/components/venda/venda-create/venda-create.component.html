@@ -29,7 +29,7 @@
                             [matAutocomplete]="autoProduto">
                         <mat-autocomplete #autoProduto="matAutocomplete" (optionSelected)="selecionarProduto($event)"> >
                             <mat-option *ngFor="let produto of filteredProdutos | async" [value]="produto.nome">
-                                {{ produto.nome }}
+                                {{ produto.nome }} - Quantidade Atual em Estoque {{ produto.estoque.quantidadeEmEstoque}}
                             </mat-option>
                         </mat-autocomplete>
                         <mat-icon matSuffix>border_all</mat-icon>
@@ -107,6 +107,7 @@
             <mat-card-actions>
                 <button mat-raised-button color="primary" class="button" (click)="realizarVenda()">Finalizar Venda</button>
                 <button mat-raised-button color="accent" routerLink="/produtos/create">Novo Produto</button>
+                <button mat-raised-button routerLink="/produtos/">Lista de Produtos</button>
             </mat-card-actions>
         </mat-card>
     </form>

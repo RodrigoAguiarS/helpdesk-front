@@ -15,6 +15,10 @@ export class ProdutoService {
     return this.http.post<Produto>(`${API_CONFIG.baseUrl}/api/produtos`, produto);
   }
 
+  findAll(): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${API_CONFIG.baseUrl}/api/produtos`);
+  }
+
   getProdutos(): Observable<Produto[]> {
     return this.http.get<Produto[]>(`${API_CONFIG.baseUrl}/api/produtos`);
   }

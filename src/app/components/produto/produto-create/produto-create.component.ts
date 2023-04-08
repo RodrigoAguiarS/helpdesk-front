@@ -16,7 +16,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 })
 export class ProdutoCreateComponent implements OnInit {
 
-  camposAtivos: boolean = true;
+  produtoExiste: boolean = false;
 
   public produto: Produto = {
     nome: "",
@@ -31,7 +31,7 @@ export class ProdutoCreateComponent implements OnInit {
     },
   };
 
-  produtoExiste = false;
+  
 
   nome: FormControl = new FormControl(null, Validators.minLength(3));
   preco: FormControl = new FormControl(null, Validators.required);
@@ -49,10 +49,10 @@ export class ProdutoCreateComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router:          Router,
     ) { }
+    
 
 
   ngOnInit(): void {
-    console.log('camposAtivos:', this.camposAtivos);
   }
 
   create(): void {
@@ -85,7 +85,6 @@ export class ProdutoCreateComponent implements OnInit {
     this.http.get<ProdutoResposta>(`http://localhost:8080/api/produtos/produtos/${codigoBarras}`).subscribe(
       (produto) => {
         this.atualizarProduto(produto);
-        this.camposAtivos = false;
         this.snackBar.open("Produto já cadastrado no banco, atualize suas informações!", "", {
           duration: 3000,
         });
@@ -93,7 +92,6 @@ export class ProdutoCreateComponent implements OnInit {
       (error) => {
         if (error.status === 404) {
           this.limparCampos();
-          this.camposAtivos = true;
           this.snackBar.open("Nenhum produto encontrado', 'Produto não encontrado!", "", {
             duration: 3000,
           });
@@ -113,9 +111,8 @@ export class ProdutoCreateComponent implements OnInit {
     this.produto.estoque.quantidadeEmEstoque = produto.estoque.quantidadeEmEstoque;
     this.produto.estoque.quantidadeMaxima = produto.estoque.quantidadeMaxima;
     this.produto.estoque.quantidadeMinima = produto.estoque.quantidadeMinima;
-    this.produtoExiste = true;
   }
-  
+
   private limparCampos(): void {
     this.nome.reset();
     this.preco.reset();

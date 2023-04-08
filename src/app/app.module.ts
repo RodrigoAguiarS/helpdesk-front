@@ -67,6 +67,7 @@ import { CommonModule } from '@angular/common';
 import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
 import { CurrencyPipe } from './currency.pipe';
 import { CurrencyFormatDirective } from './currency-format.directive';
+import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,7 +101,8 @@ import { CurrencyFormatDirective } from './currency-format.directive';
     VendaCreateComponent,
     ProdutoCreateComponent,
     CurrencyPipe,
-    CurrencyFormatDirective
+    CurrencyFormatDirective,
+    ProdutoListComponent
 
     
   ],
