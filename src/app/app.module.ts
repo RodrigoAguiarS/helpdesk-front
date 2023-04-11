@@ -68,6 +68,7 @@ import { ProdutoCreateComponent } from './components/produto/produto-create/prod
 import { CurrencyPipe } from './currency.pipe';
 import { CurrencyFormatDirective } from './currency-format.directive';
 import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
+import { VendaListComponent } from './components/venda/venda-list/venda-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +103,8 @@ import { ProdutoListComponent } from './components/produto/produto-list/produto-
     ProdutoCreateComponent,
     CurrencyPipe,
     CurrencyFormatDirective,
-    ProdutoListComponent
+    ProdutoListComponent,
+    VendaListComponent
 
     
   ],

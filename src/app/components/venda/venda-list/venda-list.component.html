@@ -1,0 +1,58 @@
+<div class="container">
+    <h1>Listando Vendas</h1>
+
+    
+    <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput placeholder="Ex. pelo nome.." [(ngModel)]="clienteFilter" (keyup)="applyCliente()">
+    </mat-form-field>
+
+    <mat-radio-group color="primary">
+        <mat-radio-button (click)="orderByStatus('DINHEIRO')" value="0">DINHEIRO</mat-radio-button>
+        <mat-radio-button (click)="orderByStatus('CARTAO')" value="1">CARTÃO</mat-radio-button>
+        <mat-radio-button (click)="orderByStatus('PIX')" value="2">PIX</mat-radio-button>
+    </mat-radio-group>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+            <caption>Lista de vendas realizadas</caption>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="consumidor">
+                <th mat-header-cell *matHeaderCellDef>Cliente</th>
+                <td mat-cell *matCellDef="let element">{{ element.cliente.nome }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="dataVenda">
+                <th mat-header-cell *matHeaderCellDef>Data Venda</th>
+                <td mat-cell ngxMask="00/00/0000" *matCellDef="let element">{{ element.dataVenda | date: 'dd/MM/yyyy \'às\' HH:mm:ss' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="itens">
+                <th mat-header-cell *matHeaderCellDef>Itens</th>
+                <td mat-cell *matCellDef="let element">
+                    <ul>
+                        <li *ngFor="let item of element.itens">{{ item.nomeProduto }} - {{ item.quantidade }} Unidades</li>
+                    </ul>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pagamento">
+                <th mat-header-cell *matHeaderCellDef>Pagamento</th>
+                <td mat-cell *matCellDef="let element">{{ element.pagamento }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="valorTotal">
+                <th mat-header-cell *matHeaderCellDef> Valor Total </th>
+                <td mat-cell *matCellDef="let element"> {{element.valorTotal | currency}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 2, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

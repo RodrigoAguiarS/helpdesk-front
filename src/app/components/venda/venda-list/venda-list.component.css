@@ -1,0 +1,59 @@
+.container {
+    width: 90%;
+    margin: auto;
+ }
+ 
+ table {
+    width: 100%;
+ }
+
+ mat-form-field {
+    width: 100%;
+ }
+ 
+ button {
+    width: 100%;
+    margin-bottom: 1rem;
+ }
+ 
+ h1 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+ }
+ 
+.edit {
+   color: rgb(0, 153, 255);
+}
+
+.delete {
+   color: red;
+}
+
+.mat-checkbox-layout {
+   display: flex;
+   align-items: center;
+   margin: 0;
+   padding: 0;
+ }
+ 
+ .mat-checkbox-frame {
+   margin: 0 8px 0 0;
+ }
+ 
+ .mat-checkbox-inner-container {
+   width: 18px;
+   height: 18px;
+ }
+ 
+ .mat-checkbox-label {
+   font-size: 16px;
+   line-height: 24px;
+   font-weight: normal;
+ }
+
+ mat-radio-group {
+   display: flex;
+   justify-content: space-around;
+   margin-bottom: 1rem;
+}

@@ -7,6 +7,8 @@ import { API_CONFIG } from '../config/api.config';
 import { Lider } from '../models/lider';
 import { RegistroPonto } from '../models/RegistroPonto';
 import { Produto } from '../models/produto';
+import { Venda } from '../models/venda';
+import { ItemVenda } from '../models/itemVenda';
 
 @Injectable({
   providedIn: "root",
@@ -14,6 +16,9 @@ import { Produto } from '../models/produto';
 export class TableService {
   constructor(private http: HttpClient) {}
   produtos: Produto[];
+  itensVenda: ItemVenda[] = [];
+
+  
   findAll(): Observable<Lider[]> {
     return this.http.get<Lider[]>(`${API_CONFIG.baseUrl}/api/lideres`);
   }
@@ -106,6 +111,7 @@ export class TableService {
   }
 
   gerarPdfCompra(compra: any) {
+    console.log(compra);
     const doc = new jsPDF();
     const columns = ["Produto", "Quantidade", "Preço Unitário", "Preço Total"];
     const rows = [];

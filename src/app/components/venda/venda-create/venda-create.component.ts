@@ -1,3 +1,4 @@
+import { ItemVenda } from './../../../models/itemVenda';
 import { TableService } from './../../../services/table.service';
 import { ConfirmacaoModalComponent } from "./../../modal/confirmacao-modal-component/confirmacao-modal-component.component";
 import { Component, OnInit } from "@angular/core";
@@ -8,9 +9,9 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, map, startWith} from "rxjs";
 import { Consumidor } from "src/app/models/consumidor";
-import { ItemVenda } from 'src/app/models/itemVenda';
 import { Pagamento } from "src/app/models/pagamento";
 import { Produto } from "src/app/models/produto";
+import { Venda } from 'src/app/models/venda';
 import { ConsumidorService } from "src/app/services/consumidor.service";
 import { ProdutoService } from "src/app/services/produto.service";
 import { VendaService } from "src/app/services/venda.service";
@@ -21,7 +22,7 @@ import { VendaService } from "src/app/services/venda.service";
   styleUrls: ["./venda-create.component.css"],
 })
 export class VendaCreateComponent implements OnInit {
-  valorTotalFormatado: string = '';
+  valorTotalFormatado: string = "";
   valorTotal: number = 0;
   venda: any;
   dataSource: MatTableDataSource<ItemVenda>;
@@ -32,7 +33,7 @@ export class VendaCreateComponent implements OnInit {
 
   pagamento = [
     { value: Pagamento.DINHEIRO, viewValue: "Dinheiro" },
-    { value: Pagamento.CARTAO, viewValue: "Cartão de crédito" },
+    { value: Pagamento.CARTAO, viewValue: "Cartão" },
     { value: Pagamento.PIX, viewValue: "Pix" },
   ];
   filteredConsumidors: Observable<Consumidor[]>;
@@ -60,6 +61,9 @@ export class VendaCreateComponent implements OnInit {
     this.carregarProdutos();
     this.calcularValorTotal();
     
+    
+
+
 
     this.filteredConsumidors = this.clienteControl.valueChanges.pipe(
       startWith(""),
@@ -116,7 +120,10 @@ export class VendaCreateComponent implements OnInit {
       (total, item) => total + item.produto.preco * item.quantidade,
       0
     );
-    this.valorTotalFormatado = this.valorTotal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+    this.valorTotalFormatado = this.valorTotal.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
   }
 
   carregarConsumidors(): void {
@@ -202,7 +209,7 @@ export class VendaCreateComponent implements OnInit {
     }
     return true;
   }
-  
+
   validarPagamento(): boolean {
     if (!this.pagamentoControl.value) {
       this.snackBar.open("Selecione uma forma de pagamento", "", {
@@ -212,7 +219,7 @@ export class VendaCreateComponent implements OnInit {
     }
     return true;
   }
-  
+
   validarItens(): boolean {
     if (this.itensVenda.length === 0) {
       this.snackBar.open("Adicione pelo menos um produto.", "", {
@@ -222,44 +229,48 @@ export class VendaCreateComponent implements OnInit {
     }
     return true;
   }
-  
+
   realizarVenda(): void {
-    if (!this.validarCliente() || !this.validarPagamento() || !this.validarItens()) {
+    if (
+      !this.validarCliente() ||
+      !this.validarPagamento() ||
+      !this.validarItens()
+    ) {
       return;
     }
     this.confirmarVenda();
   }
-  
+
   confirmarVenda(): void {
     const dialogRef = this.dialog.open(ConfirmacaoModalComponent, {
       width: "350px",
       data: "Deseja confirmar a venda?",
     });
-  
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.finalizarVenda();
       }
     });
   }
-  
+
   finalizarVenda(): void {
     const venda = {
       cliente: this.clienteControl.value,
       itens: this.itensVenda,
       pagamento: this.pagamentoControl.value,
     };
-  
+
     this.vendaService.finalizarVenda(venda).subscribe((idVenda) => {
       this.snackBar.open("Venda realizada com sucesso!", "", {
         duration: 3000,
       });
-  
+
       this.resetarCampos();
       this.buscarItensVenda(idVenda.id);
     });
   }
-  
+
   resetarCampos(): void {
     this.clienteControl.reset();
     this.produtoControl.reset();

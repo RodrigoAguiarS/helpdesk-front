@@ -46,6 +46,7 @@
                     <mat-divider></mat-divider>
 
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-produtos">
+                        <caption>Carrinho de Compras</caption>
 
                         <ng-container class="full-width" matColumnDef="produto">
                             <th mat-header-cell *matHeaderCellDef>Produto</th>
@@ -106,6 +107,7 @@
             </mat-card-content>
             <mat-card-actions>
                 <button mat-raised-button color="primary" class="button" (click)="realizarVenda()">Finalizar Venda</button>
+                <button mat-raised-button routerLink="/vendas/">Lista de Vendas</button>
                 <button mat-raised-button color="accent" routerLink="/produtos/create">Novo Produto</button>
                 <button mat-raised-button routerLink="/produtos/">Lista de Produtos</button>
             </mat-card-actions>

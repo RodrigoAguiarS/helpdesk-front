@@ -19,4 +19,8 @@ export class VendaService {
   buscarItensVenda(vendaId: number): Observable<ItemVenda[]> {
     return this.http.get<ItemVenda[]>(`${API_CONFIG.baseUrl}/api/vendas/${vendaId}/comprovante`);
   }
+
+  findAll(): Observable<Venda[]> {
+    return this.http.get<Venda[]>(`${API_CONFIG.baseUrl}/api/vendas/`);
+  }
 }

@@ -4,9 +4,9 @@ import { Pagamento } from "./pagamento";
 
 export interface Venda {
     id?: any;
-    consumidor: Consumidor;
+    cliente: Consumidor;
     itens: ItemVenda[];
-    dataVenda?: Date | string;
-    valorTotal?: any;
+    dataVenda: Date;
+    valorTotal: number;
     pagamento: Pagamento;
 }
