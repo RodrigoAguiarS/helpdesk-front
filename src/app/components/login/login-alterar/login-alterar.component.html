@@ -1,0 +1,37 @@
+<div *ngIf="uidValido" class="container">
+    <form [formGroup]="recuperarForm" class="form mat-elevation-z8">
+        <h1>Help Desk</h1>
+        <img src="assets/img/login-image.svg" alt="Help Desk">
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nova Senha</mat-label>
+            <input matInput formControlName="novaSenha" [(ngModel)]="recuperarSenha.novaSenha"
+                placeholder="Digite sua nova senha" type="password">
+            <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Confirmar Senha</mat-label>
+            <input matInput formControlName="confirmarSenha" placeholder="Confirme sua nova senha" type="password">
+            <mat-icon matSuffix>password</mat-icon>
+            <mat-error> </mat-error>
+        </mat-form-field>
+
+        <button mat-stroked-button color="primary" class="full-width mat-elevation-z4" [disabled]="!recuperarForm.valid"
+            (click)="atualizarSenha()">Alterar senha!</button>
+        <button mat-stroked-button color="basic" class="full-width mat-elevation-z4"
+            (click)="cancel()">Cancelar</button>
+    </form>
+</div>
+
+<div *ngIf="!uidValido" class="container">
+    <div *ngIf="!uidValido" class="container">
+        <form [formGroup]="recuperarForm" class="form mat-elevation-z8">
+            <h1>Help Desk</h1>
+            <img src="assets/img/login-image.svg" alt="Help Desk">
+    
+            <button mat-stroked-button color="basic" class="full-width mat-elevation-z4"
+                (click)="cancel()">Cancelar</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+    <form class="form mat-elevation-z8">
+ 
+       <h1>Help Desk</h1>
+ 
+       <img src="assets/img/login-image-recuperar.svg" alt="Help Desk">
+ 
+       <mat-form-field class="full-width" appearance="outline">
+        <mat-label>E-mail</mat-label>
+          <input 
+          [formControl]="email"
+          required
+          [(ngModel)]="creds.email" 
+          name="email" 
+          matInput 
+          placeholder="Ex. fulano@mail.com">
+          <mat-icon matSuffix>email</mat-icon>
+       </mat-form-field>
+ 
+       <button (click)="recuperarSenha()" [disabled]="!validaCampos()" class="full-width mat-elevation-z4" mat-stroked-button color="primary">Recuperar senha</button>
+       <button (click)="cancel()" class="full-width mat-elevation-z4" mat-stroked-button color="basic">Cancelar</button>
+    </form>
+ 
+ </div>

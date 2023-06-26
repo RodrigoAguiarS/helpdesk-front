@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Credenciais } from 'src/app/models/credenciais';
@@ -29,9 +29,11 @@ export class LoginComponent implements OnInit {
 
   logar() {
     this.service.authenticate(this.creds).subscribe(resposta => {
+      this.toast.success('Login realizado com sucesso!');
       this.service.sucessFulLogin(resposta.headers.get('Authorization').substring(7));
       this.router.navigate(['']);
-    }, () => {
+    }, (error) => {
+      console.log(error)
       this.toast.error('Usuário e/ou senha inválidas');
     })
   }
