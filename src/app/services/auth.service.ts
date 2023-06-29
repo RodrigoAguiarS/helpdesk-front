@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { Email } from '../models/email';
-import { RecuperarSenha } from '../models/recuperarSenha';
 
 @Injectable({
   providedIn: 'root'

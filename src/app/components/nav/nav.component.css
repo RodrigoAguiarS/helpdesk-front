@@ -25,5 +25,5 @@
  .menu {
     margin: 1rem 0 0 1rem;
     color: white;
-    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(37,97,207,1) 0%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgb(21, 25, 33) 0%, rgb(13, 27, 29) 100%);
  }

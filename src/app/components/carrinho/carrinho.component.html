@@ -1,0 +1,31 @@
+<ng-container *ngIf="carrinhoService.getQuantidadeItens() > 0; else emptyCart">
+  <mat-list>
+    <mat-list-item *ngFor="let item of carrinhoService.getItensVenda()">
+      <mat-icon mat-list-icon>shopping_cart</mat-icon>
+      <div mat-line>{{ item.produto.nome }}</div>
+      <div mat-line>Quantidade: {{ item.quantidade }}</div>
+      <div mat-line>Preço Unitário: {{ item.produto.preco | currency }}</div>
+      <div mat-line>Total: {{ item.produto.preco * item.quantidade | currency }}</div>
+      <button mat-icon-button (click)="decreaseQuantity(item.produto)">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <span class="product-card-quantity">{{ getQuantidade(item.produto.id) }}</span>
+      <button mat-icon-button (click)="increaseQuantity(item.produto)">
+        <mat-icon>add</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+    <div class="valor-total">Valor Total: {{ carrinhoService.getValorTotal() | currency }}</div>
+    <button mat-raised-button color="primary" class="carrinho-button">Finalizar Venda</button>
+</ng-container>
+
+<ng-template #emptyCart>
+  <div class="empty-cart">
+    <p>Não há produtos no carrinho.</p>
+  </div>
+</ng-template>
+
+
+  
+

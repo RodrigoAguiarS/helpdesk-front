@@ -1,9 +1,27 @@
 .card {
     width: 90%;
     margin: 1rem auto;
+    position: relative;
     background-color: rgb(235, 235, 235);
  }
  
  img {
     height: 20rem;
  }
+
+ .pagina-lateral {
+   position: fixed;
+   top: 0;
+   right: 0;
+   width: 300px;
+   height: 100vh;
+   background-color: white;
+   /* Outros estilos desejados */
+ }
+
+ .carrinho-icon {
+   position: absolute;
+   bottom: 20px;
+   right: 20px;
+ }
+ 

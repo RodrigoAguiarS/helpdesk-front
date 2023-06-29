@@ -30,4 +30,12 @@ export class TecnicoService {
   delete(id: any): Observable<Tecnico> {
     return this.http.delete<Tecnico>(`${API_CONFIG.baseUrl}/api/tecnicos/${id}`);
   }
+
+  ObterDadosUsuario(): Observable<Tecnico> {
+    return this.http.get<Tecnico>(`${API_CONFIG.baseUrl}/api/usuario/dados`);
+  }
+
+  verificarPerfilAdm(): Observable<boolean> {
+    return this.http.get<boolean>(`${API_CONFIG.baseUrl}/api/usuario/adm`);
+  }
 }

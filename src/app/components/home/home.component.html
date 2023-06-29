@@ -1,18 +1,29 @@
+
 <mat-card class="card mat-elevation-z8">
-    <mat-card-header>
-      <mat-card-title>Help Desk</mat-card-title>
-      <mat-card-subtitle>Sistema</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="assets/img/home-image.svg" alt="Image Home Help Desk">
-    <mat-card-content>
-      <p>
-       Olá! Seja bem vindo ao sistema Help Desk desenvolvido por mim no curso Desenvolvedor Full Stack.<br />
-       Esse é um sistema para gerenciamento de chamados simulando um simples Help Desk desenvolvido em Angular 12 e
-       Spring Boot 2. <br />O sistema está rodando na nuvem sendo o front na Vercel e o back na Heroku.<br />
-       O projeto tem como objetivo principal abordar os conceitos de aplicações SPAs, Autenticação e Autorização com
-       Tokens JWT e muito mais. O código fonte do projeto pode ser acessado clicando no link Github no menu lateral.
-       <br /><br /> Fique a vontade para testar o sistema e deixar sua sugestão.
-       <br /> At.te: Rodrigo Aguiar
-      </p>
-    </mat-card-content>
-  </mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ tecnico.nome }}</mat-card-title>
+    <mat-card-subtitle>Sistema</mat-card-subtitle>
+    <p *ngIf="isAdm">Você possui perfil de administrador.</p>
+    <p *ngIf="!isAdm">Você não possui perfil de administrador.</p>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="carrinho_icon">
+      <mat-badge class="carrinho-badge" [matBadge]="carrinhoService.getQuantidadeItens()"
+        *ngIf="getCarrinhoQuantity() !== 0" matBadgeColor="accent" matBadgeOverlap="rectangle" matBadgeSize="small">
+      </mat-badge>
+      <mat-icon (click)="abrirCarrinho()">shopping_cart</mat-icon>
+      <mat-icon (click)="fecharCarrinho()">remove_shopping_cart</mat-icon>
+    </div>
+  </mat-card-content>
+
+  <mat-card-content>
+    <app-produto-list></app-produto-list>
+  </mat-card-content>
+
+</mat-card>
+
+<!-- Página lateral do carrinho -->
+<div class="pagina-lateral" *ngIf="isAbrirLateralCarrinho">
+  <app-carrinho></app-carrinho>
+</div>

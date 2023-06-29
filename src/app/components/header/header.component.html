@@ -1,3 +1,24 @@
-<div class="container">
-    <h1 class="mat-elevation-z8">Help Desk</h1>
- </div>
+<p>
+    <mat-toolbar>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span [ngClass]="{'status-true': empresa?.status}">
+            <mat-icon>{{ empresa?.status ? 'business' : 'business_off' }}</mat-icon>
+            {{ empresa?.nome }}
+        </span>
+        <span class="example-spacer"></span>
+        <span>
+            <mat-icon>phone</mat-icon>
+            {{ empresa?.telefone }}
+        </span>
+        <span [ngClass]="{'status-true': empresa?.status}">
+            {{ empresa?.status ? 'Loja Aberta' : 'Loja Fechada' }}
+            <mat-icon>info</mat-icon>
+        </span>
+    </mat-toolbar>
+</p>
+
+
+
+

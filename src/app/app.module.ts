@@ -30,6 +30,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgxMaskModule } from 'ngx-mask';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 import { ToastrModule } from 'ngx-toastr';
@@ -50,6 +52,10 @@ import { ChamadoUpdateComponent } from './components/chamado/chamado-update/cham
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
+import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
+import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { CabecalhoComponent } from './components/cabecalho/cabecalho/cabecalho.component';
+
 
 @NgModule({
   declarations: [
@@ -72,7 +78,10 @@ import { LoginAlterarComponent } from './components/login/login-alterar/login-al
     ChamadoUpdateComponent,
     ChamadoReadComponent,
     LoginRecuperarComponent,
-    LoginAlterarComponent
+    LoginAlterarComponent,
+    ProdutoListComponent,
+    CarrinhoComponent,
+    CabecalhoComponent
   ],
   imports: [
     BrowserModule,
@@ -98,6 +107,8 @@ import { LoginAlterarComponent } from './components/login/login-alterar/login-al
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatBadgeModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
