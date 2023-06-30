@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Cliente } from 'src/app/models/cliente';
@@ -13,14 +12,18 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class ClienteDeleteComponent implements OnInit {
 
   cliente: Cliente = {
-    id:         '',
-    nome:       '',
-    cpf:        '',
-    email:      '',
-    senha:      '',
-    perfis:     [],
-    dataCriacao: ''
-  }
+    nome: '',
+    telefone: '',
+    endereco: {
+      rua: '',
+      bairro: '',
+      estado: '',
+      cidade: '',
+      cep: '',
+      numero: ''
+    },
+    perfis: []
+  };
 
   constructor(
     private service: ClienteService,
@@ -55,5 +58,4 @@ export class ClienteDeleteComponent implements OnInit {
       }
     })
   }
-
 }

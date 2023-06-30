@@ -11,7 +11,15 @@ import { CarrinhoService } from "src/app/services/carrinho.service";
 })
 export class HomeComponent implements OnInit {
 
-  tecnico: Tecnico;
+  tecnico: Tecnico = {
+    id:         '',
+    nome:       '',
+    cpf:        '',
+    email:      '',
+    senha:      '',
+    perfis:     [],
+    dataCriacao: ''
+  }
 
   isAdm: boolean;
 

@@ -55,6 +55,8 @@ import { LoginAlterarComponent } from './components/login/login-alterar/login-al
 import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { CabecalhoComponent } from './components/cabecalho/cabecalho/cabecalho.component';
+import { TelefonePipe } from './telefone.pipe';
+import { CepPipe } from './cep.pipe';
 
 
 @NgModule({
@@ -75,6 +77,8 @@ import { CabecalhoComponent } from './components/cabecalho/cabecalho/cabecalho.c
     ChamadoListComponent,
     ChamadoCreateComponent,
     CPFPipe,
+    TelefonePipe,
+    CepPipe,
     ChamadoUpdateComponent,
     ChamadoReadComponent,
     LoginRecuperarComponent,

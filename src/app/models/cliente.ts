@@ -1,9 +1,8 @@
+import { Endereco } from './endereco';
 export interface Cliente {
     id?:         any;
     nome:     string;
-    cpf:      string;
-    email:    string;
-    senha:    string;
+    telefone: string;
+    endereco: Endereco;
     perfis: string[];
-    dataCriacao: any;
   }

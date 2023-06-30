@@ -1,3 +1,4 @@
+import { EnderecoService } from './../../../services/endereco.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,24 +14,37 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class ClienteCreateComponent implements OnInit {
 
   cliente: Cliente = {
-    id:         '',
-    nome:       '',
-    cpf:        '',
-    email:      '',
-    senha:      '',
-    perfis:     [],
-    dataCriacao: ''
-  }
+    nome: '',
+    telefone: '',
+    endereco: {
+      rua: '',
+      bairro: '',
+      estado: '',
+      cidade: '',
+      cep: '',
+      numero: ''
+    },
+    perfis: []
+  };
 
-  nome: FormControl =  new FormControl(null, Validators.minLength(3));
-  cpf: FormControl =       new FormControl(null, Validators.required);
-  email: FormControl =        new FormControl(null, Validators.email);
-  senha: FormControl = new FormControl(null, Validators.minLength(3));
+  enderecoPreenchido: boolean = false;
+  
+  nome: FormControl = new FormControl(null, Validators.minLength(3));
+  cpf: FormControl = new FormControl(null, Validators.required);
+  telefone: FormControl = new FormControl(null, Validators.required);
+  rua: FormControl = new FormControl(null, Validators.required);
+  bairro: FormControl = new FormControl(null, Validators.required);
+  estado: FormControl = new FormControl(null, Validators.required);
+  cidade: FormControl = new FormControl(null, Validators.required);
+  cep: FormControl = new FormControl(null, Validators.required);
+  numero: FormControl = new FormControl(null, Validators.required);
+
 
   constructor(
     private service: ClienteService,
     private toast:    ToastrService,
     private router:          Router,
+    private enderecoService: EnderecoService
     ) { }
 
   ngOnInit(): void { }
@@ -60,7 +74,18 @@ export class ClienteCreateComponent implements OnInit {
   }
 
   validaCampos(): boolean {
-    return this.nome.valid && this.cpf.valid
-     && this.email.valid && this.senha.valid
+    return this.nome.valid && this.cep.valid
+    && this.numero.valid
+  }
+
+  buscarEnderecoPorCep(): void {
+    const cep = this.cep.value;
+    this.enderecoService.buscaEnderecoPorCep(cep).subscribe((endereco) => {
+      this.rua.setValue(endereco.logradouro);
+      this.bairro.setValue(endereco.bairro);
+      this.estado.setValue(endereco.uf);
+      this.cidade.setValue(endereco.localidade);
+      this.enderecoPreenchido = true;
+    });
   }
 }

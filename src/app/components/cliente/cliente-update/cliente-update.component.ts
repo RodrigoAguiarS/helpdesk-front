@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Cliente } from 'src/app/models/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { EnderecoService } from 'src/app/services/endereco.service';
 
 
 @Component({
@@ -14,25 +15,36 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class ClienteUpdateComponent implements OnInit {
 
   cliente: Cliente = {
-    id:         '',
-    nome:       '',
-    cpf:        '',
-    email:      '',
-    senha:      '',
-    perfis:     [],
-    dataCriacao: ''
-  }
+    id: '',
+    nome: '',
+    telefone: '',
+    endereco: {
+      rua: '',
+      bairro: '',
+      estado: '',
+      cidade: '',
+      cep: '',
+      numero: ''
+    },
+    perfis: []
+  };
 
-  nome: FormControl =  new FormControl(null, Validators.minLength(3));
-  cpf: FormControl =       new FormControl(null, Validators.required);
-  email: FormControl =        new FormControl(null, Validators.email);
-  senha: FormControl = new FormControl(null, Validators.minLength(3));
+  nome: FormControl = new FormControl(null, Validators.minLength(3));
+  cpf: FormControl = new FormControl(null, Validators.required);
+  telefone: FormControl = new FormControl(null, Validators.required);
+  rua: FormControl = new FormControl(null, Validators.required);
+  bairro: FormControl = new FormControl(null, Validators.required);
+  estado: FormControl = new FormControl(null, Validators.required);
+  cidade: FormControl = new FormControl(null, Validators.required);
+  cep: FormControl = new FormControl(null, Validators.required);
+  numero: FormControl = new FormControl(null, Validators.required);
 
   constructor(
     private service: ClienteService,
     private toast:    ToastrService,
     private router:          Router,
     private route:   ActivatedRoute,
+    private enderecoService: EnderecoService
     ) { }
 
   ngOnInit(): void {
@@ -40,10 +52,20 @@ export class ClienteUpdateComponent implements OnInit {
     this.findById();
    }
 
-  findById(): void {
+   findById(): void {
     this.service.findById(this.cliente.id).subscribe(resposta => {
       resposta.perfis = []
       this.cliente = resposta;
+      if (!this.cliente.endereco) {
+        this.cliente.endereco = {
+          rua: '',
+          bairro: '',
+          estado: '',
+          cidade: '',
+          cep: '',
+          numero: ''
+        };
+      }
     })
   }
 
@@ -72,7 +94,17 @@ export class ClienteUpdateComponent implements OnInit {
   }
 
   validaCampos(): boolean {
-    return this.nome.valid && this.cpf.valid
-     && this.email.valid && this.senha.valid
+    return this.nome.valid && this.cep.valid
+    && this.numero.valid
+  }
+
+  buscarEnderecoPorCep(): void {
+    const cep = this.cep.value;
+    this.enderecoService.buscaEnderecoPorCep(cep).subscribe((endereco) => {
+      this.rua.setValue(endereco.logradouro);
+      this.bairro.setValue(endereco.bairro);
+      this.estado.setValue(endereco.uf);
+      this.cidade.setValue(endereco.localidade);
+    });
   }
 }
