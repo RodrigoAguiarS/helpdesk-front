@@ -18,7 +18,7 @@ import { ChamadoUpdateComponent } from './components/chamado/chamado-update/cham
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
-import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
+
 
 
 
@@ -30,8 +30,6 @@ const routes: Routes = [
         path: '', component: NavComponent, canActivate: [AuthGuard], children: [
             { path: 'home', component: HomeComponent },
             
-            { path: 'produtos', component: ProdutoListComponent },
-
             { path: 'tecnicos', component: TecnicoListComponent },
             { path: 'tecnicos/create', component: TecnicoCreateComponent },
             { path: 'tecnicos/update/:id', component: TecnicoUpdateComponent },

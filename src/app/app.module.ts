@@ -52,8 +52,6 @@ import { ChamadoUpdateComponent } from './components/chamado/chamado-update/cham
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
-import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
-import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { CabecalhoComponent } from './components/cabecalho/cabecalho/cabecalho.component';
 import { TelefonePipe } from './telefone.pipe';
 import { CepPipe } from './cep.pipe';
@@ -83,8 +81,6 @@ import { CepPipe } from './cep.pipe';
     ChamadoReadComponent,
     LoginRecuperarComponent,
     LoginAlterarComponent,
-    ProdutoListComponent,
-    CarrinhoComponent,
     CabecalhoComponent
   ],
   imports: [

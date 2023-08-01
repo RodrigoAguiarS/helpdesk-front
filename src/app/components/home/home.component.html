@@ -6,24 +6,5 @@
     <p *ngIf="isAdm">Você possui perfil de administrador.</p>
     <p *ngIf="!isAdm">Você não possui perfil de administrador.</p>
   </mat-card-header>
-
-  <mat-card-content>
-    <div class="carrinho_icon">
-      <mat-badge class="carrinho-badge" [matBadge]="carrinhoService.getQuantidadeItens()"
-        *ngIf="getCarrinhoQuantity() !== 0" matBadgeColor="accent" matBadgeOverlap="rectangle" matBadgeSize="small">
-      </mat-badge>
-      <mat-icon (click)="abrirCarrinho()">shopping_cart</mat-icon>
-      <mat-icon (click)="fecharCarrinho()">remove_shopping_cart</mat-icon>
-    </div>
-  </mat-card-content>
-
-  <mat-card-content>
-    <app-produto-list></app-produto-list>
-  </mat-card-content>
-
 </mat-card>
 
-<!-- Página lateral do carrinho -->
-<div class="pagina-lateral" *ngIf="isAbrirLateralCarrinho">
-  <app-carrinho></app-carrinho>
-</div>
