@@ -32,6 +32,9 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatNativeDateModule } from "@angular/material/core";
 
 
 import { ToastrModule } from 'ngx-toastr';
@@ -53,10 +56,10 @@ import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
 import { CabecalhoComponent } from './components/cabecalho/cabecalho/cabecalho.component';
+import { RelatorioUsuarioComponent } from './components/relatorio/relatorio-autitoria/relatorio-autitoria.component';
 import { TelefonePipe } from './telefone.pipe';
 import { CepPipe } from './cep.pipe';
-
-
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +84,8 @@ import { CepPipe } from './cep.pipe';
     ChamadoReadComponent,
     LoginRecuperarComponent,
     LoginAlterarComponent,
-    CabecalhoComponent
+    CabecalhoComponent,
+    RelatorioUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -109,6 +113,10 @@ import { CepPipe } from './cep.pipe';
     MatCardModule,
     MatBadgeModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatAutocompleteModule,
+    MatNativeDateModule,
+    DatePipe,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

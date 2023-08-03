@@ -1,0 +1,56 @@
+/* Estilos do Container */
+.container {
+    width: 45%;
+    margin: auto auto 3rem auto;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  
+  /* Estilos para ocupar a largura total */
+  .full-width {
+    width: 100%;
+  }
+  
+  /* Centralizar os elementos h1, img e p */
+  h1, img, p {
+    text-align: center;
+  }
+  
+  /* Estilos para a imagem */
+  img {
+    height: 15rem;
+  }
+
+  /* Estilos para o campo mat-form-field dentro do grupo de status e prioridade */
+  .status-prioridade mat-form-field {
+    width: 49%;
+  }
+  
+  /* Estilos para o campo de observações */
+  .observacoes {
+    min-height: 6rem;
+    max-height: 10rem;
+  }
+  
+  /* Estilos para o botão */
+  button {
+    margin-top: 0.5rem;
+  }
+  
+  /* Estilos para o parágrafo */
+  p {
+    margin-top: 3rem;
+    opacity: 0.5;
+  }
+
+  /* Estilos para a classe form-group-date */
+  .form-group-date {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 8px 16px 0;
+  }
+  
+  /* Estilos para o campo mat-form-field dentro de form-group-date */
+  .form-group-date mat-form-field {
+    width: 45%;
+  }
