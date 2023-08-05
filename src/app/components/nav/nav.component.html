@@ -10,10 +10,16 @@
              <i class="material-icons">account_circle</i>
              Técnicos
           </a>
+         <a mat-list-item routerLink="pacientes">
+            <i class="material-icons">account_circle</i>
+            Pacientes
+         </a>
+          <div *ngIf="isAdm">
           <a mat-list-item routerLink="relatorio">
             <i class="material-icons">account_circle</i>
             Relatorio
          </a>
+         </div>
           <a mat-list-item routerLink="clientes">
              <i class="material-icons">person</i>
              Clientes

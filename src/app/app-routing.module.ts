@@ -19,7 +19,7 @@ import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
 import { RelatorioUsuarioComponent } from './components/relatorio/relatorio-autitoria/relatorio-autitoria.component';
-
+import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
 
 const routes: Routes = [
     { path : 'login', component: LoginComponent },
@@ -31,6 +31,8 @@ const routes: Routes = [
 
         
             { path: 'relatorio', component: RelatorioUsuarioComponent },
+
+            { path: 'pacientes', component: PacienteCreateComponent },
             
             { path: 'tecnicos', component: TecnicoListComponent },
             { path: 'tecnicos/create', component: TecnicoCreateComponent },

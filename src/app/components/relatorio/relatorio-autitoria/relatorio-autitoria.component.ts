@@ -65,10 +65,17 @@ export class RelatorioUsuarioComponent implements OnInit {
     if (this.tecnicoSelecionado) {
       this.relatorioUsuario.idTecnico = this.tecnicoSelecionado.id;
     }
+    // Validar se a data de início não é posterior à data de fim
+    if (this.relatorioUsuario.dataInicio && this.relatorioUsuario.dataFim &&
+      this.relatorioUsuario.dataInicio > this.relatorioUsuario.dataFim) {
+      this.toast.warning('A Data de Início não pode ser posterior à Data de Fim', 'Erro');
+      return;
+    }
+
     console.log("Valor de relatorioUsuario:", this.relatorioUsuario);
     this.relatorioService.gerarRelatorio(this.relatorioUsuario).subscribe(
       (response: HttpResponse<Blob>) => {
-        this.toast.success('Relatório geradp com sucesso', 'Relatório');
+        this.toast.success('Relatório gerado com sucesso', 'Relatório');
         this.downloadRelatorio(response);
         this.limparCampos();
       },

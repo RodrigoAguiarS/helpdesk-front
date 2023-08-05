@@ -41,6 +41,7 @@ export class ClienteDeleteComponent implements OnInit {
     this.service.findById(this.cliente.id).subscribe(resposta => {
       resposta.perfis = []
       this.cliente = resposta;
+      console.log(resposta)
     })
   }
 

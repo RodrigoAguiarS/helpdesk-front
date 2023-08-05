@@ -1,12 +1,15 @@
 <div class="container mat-elevation-z8">
-    <h1 class="full-width">Gerar Relatório</h1>
+    <h1 class="full-width">Relatório de Autitoria de Ações</h1>
+
+    <img class="fullWidth" src="assets/img/relatorio-autitoria.svg" alt="Help Desk">
+
 
     <form class="form">
         <div class="form-group">
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Nome do Usuário</mat-label>
-                <input matInput [formControl]="tecnicoControl" [matAutocomplete]="auto"
-                    [(ngModel)]="tecnicoSelecionado">
+                <input matInput [formControl]="tecnicoControl" [matAutocomplete]="auto" [(ngModel)]="tecnicoSelecionado"
+                    placeholder="Digite o nome do usuário">
                 <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayTecnico">
                     <mat-option *ngFor="let tec of filtroTecnicos | async" [value]="tec">
                         {{ tec.nome }}
@@ -19,8 +22,8 @@
             <!-- Campo de Data de Início -->
             <mat-form-field>
                 <mat-label>Data de Início</mat-label>
-                <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="relatorioUsuario.dataInicio" name="dataInicio"
-                [formControl]="dataInicio">
+                <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="relatorioUsuario.dataInicio"
+                    name="dataInicio" [formControl]="dataInicio" placeholder="Digite a Data de Inicio">
                 <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
                 <mat-datepicker #pickerInicio></mat-datepicker>
             </mat-form-field>
@@ -29,15 +32,15 @@
             <mat-form-field>
                 <mat-label>Data de Fim</mat-label>
                 <input matInput [matDatepicker]="pickerFim" [(ngModel)]="relatorioUsuario.dataFim" name="dataFim"
-                [formControl]="dataFim">
+                    [formControl]="dataFim" placeholder="Digite a Data de Fim">
                 <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
                 <mat-datepicker #pickerFim></mat-datepicker>
             </mat-form-field>
         </div>
 
-        <button type="button" [disabled]="!validaCampos()" class="full-width mat-elevation-z4" mat-raised-button color="primary"
-            (click)="gerarRelatorio()">Gerar Relatório</button>
+        <button type="button" [disabled]="!validaCampos()" class="full-width mat-elevation-z4" mat-raised-button
+            color="primary" (click)="gerarRelatorio()">Gerar Relatório</button>
     </form>
+
+    <p class="fullWidth">by Rodrigo Aguiar</p>
 </div>
-
-

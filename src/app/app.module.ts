@@ -60,6 +60,7 @@ import { RelatorioUsuarioComponent } from './components/relatorio/relatorio-auti
 import { TelefonePipe } from './telefone.pipe';
 import { CepPipe } from './cep.pipe';
 import { DatePipe } from '@angular/common';
+import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +86,8 @@ import { DatePipe } from '@angular/common';
     LoginRecuperarComponent,
     LoginAlterarComponent,
     CabecalhoComponent,
-    RelatorioUsuarioComponent
+    RelatorioUsuarioComponent,
+    PacienteCreateComponent
   ],
   imports: [
     BrowserModule,

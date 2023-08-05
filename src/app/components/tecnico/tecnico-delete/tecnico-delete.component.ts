@@ -42,20 +42,23 @@ export class TecnicoDeleteComponent implements OnInit {
   }
 
   delete(): void {
-    this.service.delete(this.tecnico.id).subscribe((resposta) => {
-      console.log(resposta)
-      this.toast.success('Técnico deletado com sucesso', 'Delete');
-      this.router.navigate(['tecnicos'])
-    }, ex => {
-      if(ex.error.errors) {
-        ex.error.errors.forEach(element => {
-          this.toast.error(element.message);
-          console.log(element.message)
-        });
-      } else {
-        this.toast.error(ex.error.message);
-        console.log(ex.error.message)
+    this.service.delete(this.tecnico.id).subscribe(
+      (resposta) => {
+        console.log(resposta);
+        this.toast.success("Técnico deletado com sucesso", "Delete");
+        this.router.navigate(["tecnicos"]);
+      },
+      (ex) => {
+        if (ex.status === 403) {
+          this.toast.error("Acesso Negado");
+        } else if (ex.error.errors) {
+          ex.error.errors.forEach((element: any) => {
+            this.toast.error(element.message);
+          });
+        } else {
+          this.toast.error(ex.error.message);
+        }
       }
-    })
+    );
   }
 }
