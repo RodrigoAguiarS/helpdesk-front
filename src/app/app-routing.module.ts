@@ -22,7 +22,7 @@ import { RelatorioUsuarioComponent } from './components/relatorio/relatorio-auti
 import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
 import { PacienteListComponent } from './components/paciente/paciente-list/paciente-list.component';
 import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
-
+import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
 const routes: Routes = [
     { path : 'login', component: LoginComponent },
     { path : 'login-recuperar', component: LoginRecuperarComponent },
@@ -37,6 +37,7 @@ const routes: Routes = [
             { path: 'pacientes', component: PacienteListComponent },
             { path: 'pacientes/create', component: PacienteCreateComponent },
             { path: 'pacientes/update/:id', component: PacienteUpdateComponent },
+            { path: 'pacientes/delete/:id', component: PacienteDeleteComponent},
 
             { path: 'tecnicos', component: TecnicoListComponent },
             { path: 'tecnicos/create', component: TecnicoCreateComponent },

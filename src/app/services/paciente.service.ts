@@ -27,4 +27,8 @@ export class PacienteService {
   findById(id: number): Observable<Paciente> {
     return this.http.get<Paciente>(`${API_CONFIG.baseUrl}/api/pacientes/${id}`);
   }
+
+  delete(id: any): Observable<Paciente> {
+    return this.http.delete<Paciente>(`${API_CONFIG.baseUrl}/api/pacientes/${id}`);
+  }
 }

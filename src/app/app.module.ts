@@ -64,6 +64,7 @@ import { DatePipe } from '@angular/common';
 import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
 import { PacienteListComponent } from './components/paciente/paciente-list/paciente-list.component';
 import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
+import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +93,8 @@ import { PacienteUpdateComponent } from './components/paciente/paciente-update/p
     RelatorioUsuarioComponent,
     PacienteCreateComponent,
     PacienteListComponent,
-    PacienteUpdateComponent
+    PacienteUpdateComponent,
+    PacienteDeleteComponent
   ],
   imports: [
     BrowserModule,
