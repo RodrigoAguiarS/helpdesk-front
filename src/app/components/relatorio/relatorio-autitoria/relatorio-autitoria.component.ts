@@ -14,6 +14,7 @@ import { TecnicoService } from "src/app/services/tecnico.service";
   templateUrl: './relatorio-autitoria.component.html',
   styleUrls: ['./relatorio-autitoria.component.css']
 })
+
 export class RelatorioUsuarioComponent implements OnInit {
   relatorioUsuario: RelatorioAutitoria = {
     idTecnico: 0,
@@ -45,7 +46,7 @@ export class RelatorioUsuarioComponent implements OnInit {
   }
 
   private _filterTecnicos(value: string | Tecnico): Tecnico[] {
-    const filterValue = typeof value === 'string' ? value.toLowerCase() : value.nome.toLowerCase();
+    const filterValue = typeof value === 'string' ? value.toLowerCase() : value?.nome?.toLowerCase() || '';
     return this.tecnicos.filter(tecnico => tecnico.nome.toLowerCase().includes(filterValue));
   }
 

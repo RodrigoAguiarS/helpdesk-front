@@ -15,4 +15,16 @@ export class PacienteService {
   create(paciente: Paciente): Observable<Paciente> {
     return this.http.post<Paciente>(`${API_CONFIG.baseUrl}/api/pacientes`, paciente);
   }
+
+  findAll(): Observable<Paciente[]> {
+    return this.http.get<Paciente[]>(`${API_CONFIG.baseUrl}/api/pacientes`);
+  }
+
+  update(paciente: Paciente): Observable<Paciente> {
+    return this.http.put<Paciente>(`${API_CONFIG.baseUrl}/api/pacientes/${paciente.id}`, paciente);
+  }
+
+  findById(id: number): Observable<Paciente> {
+    return this.http.get<Paciente>(`${API_CONFIG.baseUrl}/api/pacientes/${id}`);
+  }
 }

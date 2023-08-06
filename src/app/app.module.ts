@@ -35,6 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatNativeDateModule } from "@angular/material/core";
+import { MatMenuModule } from '@angular/material/menu';
 
 
 import { ToastrModule } from 'ngx-toastr';
@@ -61,6 +62,8 @@ import { TelefonePipe } from './telefone.pipe';
 import { CepPipe } from './cep.pipe';
 import { DatePipe } from '@angular/common';
 import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
+import { PacienteListComponent } from './components/paciente/paciente-list/paciente-list.component';
+import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,7 +90,9 @@ import { PacienteCreateComponent } from './components/paciente/paciente-create/p
     LoginAlterarComponent,
     CabecalhoComponent,
     RelatorioUsuarioComponent,
-    PacienteCreateComponent
+    PacienteCreateComponent,
+    PacienteListComponent,
+    PacienteUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -119,6 +124,7 @@ import { PacienteCreateComponent } from './components/paciente/paciente-create/p
     MatAutocompleteModule,
     MatNativeDateModule,
     DatePipe,
+    MatMenuModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

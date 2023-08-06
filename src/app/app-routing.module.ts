@@ -20,6 +20,8 @@ import { LoginRecuperarComponent } from './components/login/login-recuperar/logi
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
 import { RelatorioUsuarioComponent } from './components/relatorio/relatorio-autitoria/relatorio-autitoria.component';
 import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
+import { PacienteListComponent } from './components/paciente/paciente-list/paciente-list.component';
+import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
 
 const routes: Routes = [
     { path : 'login', component: LoginComponent },
@@ -32,8 +34,10 @@ const routes: Routes = [
         
             { path: 'relatorio', component: RelatorioUsuarioComponent },
 
-            { path: 'pacientes', component: PacienteCreateComponent },
-            
+            { path: 'pacientes', component: PacienteListComponent },
+            { path: 'pacientes/create', component: PacienteCreateComponent },
+            { path: 'pacientes/update/:id', component: PacienteUpdateComponent },
+
             { path: 'tecnicos', component: TecnicoListComponent },
             { path: 'tecnicos/create', component: TecnicoCreateComponent },
             { path: 'tecnicos/update/:id', component: TecnicoUpdateComponent },

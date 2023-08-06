@@ -1,7 +1,7 @@
 import { Endereco } from "./endereco";
 
 export interface Paciente {
-  id: number;
+  id?: any;
   nome: string;
   cpf: string;
   email: string;

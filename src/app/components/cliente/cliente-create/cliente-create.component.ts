@@ -4,6 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Cliente } from 'src/app/models/cliente';
+import { EnderecoResposta } from 'src/app/models/enderecoResposta';
 import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
@@ -32,10 +33,6 @@ export class ClienteCreateComponent implements OnInit {
   nome: FormControl = new FormControl(null, Validators.minLength(3));
   cpf: FormControl = new FormControl(null, Validators.required);
   telefone: FormControl = new FormControl(null, Validators.required);
-  rua: FormControl = new FormControl(null, Validators.required);
-  bairro: FormControl = new FormControl(null, Validators.required);
-  estado: FormControl = new FormControl(null, Validators.required);
-  cidade: FormControl = new FormControl(null, Validators.required);
   cep: FormControl = new FormControl(null, Validators.required);
   numero: FormControl = new FormControl(null, Validators.required);
 
@@ -78,14 +75,20 @@ export class ClienteCreateComponent implements OnInit {
     && this.numero.valid
   }
 
-  buscarEnderecoPorCep(): void {
-    const cep = this.cep.value;
-    this.enderecoService.buscaEnderecoPorCep(cep).subscribe((endereco) => {
-      this.rua.setValue(endereco.logradouro);
-      this.bairro.setValue(endereco.bairro);
-      this.estado.setValue(endereco.uf);
-      this.cidade.setValue(endereco.localidade);
-      this.enderecoPreenchido = true;
-    });
+  buscarEnderecoPorCep(cep: string) {
+    this.enderecoService.buscaEnderecoPorCep(cep).subscribe(
+      (endereco: EnderecoResposta) => {
+        this.cliente.endereco.cep = endereco.cep;
+        this.cliente.endereco.rua = endereco.logradouro;
+        this.cliente.endereco.bairro = endereco.bairro;
+        this.cliente.endereco.cidade = endereco.localidade;
+        this.cliente.endereco.estado = endereco.uf;
+        this.enderecoPreenchido = true;
+      },
+      (error: any) => {
+        this.enderecoPreenchido = false;
+        this.toast.error("Cep pode está errado ou incompleto");
+      }
+    );
   }
 }

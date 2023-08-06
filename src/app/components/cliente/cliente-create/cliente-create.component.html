@@ -47,7 +47,7 @@
       <input 
         [(ngModel)]="cliente.endereco.cep"
         name="cep"
-        (change)="buscarEnderecoPorCep()"
+        (change)="buscarEnderecoPorCep(cliente.endereco.cep)"
         [formControl]="cep"
         required
         matInput 
@@ -62,7 +62,6 @@
         [(ngModel)]="cliente.endereco.rua"
         name="rua"
         [disabled]="enderecoPreenchido"
-        [formControl]="rua"
         required
         matInput 
         placeholder="Ex.. Rua A">
@@ -74,7 +73,6 @@
       <input 
         [(ngModel)]="cliente.endereco.bairro"
         name="bairro"
-        [formControl]="bairro"
         [disabled]="enderecoPreenchido"
         required
         matInput 
@@ -87,7 +85,6 @@
       <input 
         [(ngModel)]="cliente.endereco.cidade"
         name="cidade"
-        [formControl]="cidade"
         [disabled]="enderecoPreenchido"
         required
         matInput 
@@ -100,7 +97,6 @@
       <input 
         [(ngModel)]="cliente.endereco.estado"
         name="estado"
-        [formControl]="estado"
         [disabled]="enderecoPreenchido"
         required
         matInput 

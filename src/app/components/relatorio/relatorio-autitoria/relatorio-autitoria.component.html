@@ -1,9 +1,9 @@
 <div class="container mat-elevation-z8">
-    <h1 class="full-width">Relatório de Autitoria de Ações</h1>
+    <h1 class="full-width">Relatório de Auditoria de Ações</h1>
 
     <img class="fullWidth" src="assets/img/relatorio-autitoria.svg" alt="Help Desk">
 
-
+    <!-- Campo do Auto Complete -->    
     <form class="form">
         <div class="form-group">
             <mat-form-field class="full-width" appearance="outline">
@@ -18,8 +18,8 @@
             </mat-form-field>
         </div>
 
+        <!-- Campo de Data de Início -->
         <div class="form-group-date">
-            <!-- Campo de Data de Início -->
             <mat-form-field>
                 <mat-label>Data de Início</mat-label>
                 <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="relatorioUsuario.dataInicio"
@@ -28,7 +28,7 @@
                 <mat-datepicker #pickerInicio></mat-datepicker>
             </mat-form-field>
 
-            <!-- Campo de Data de Fim -->
+        <!-- Campo de Data de Fim -->
             <mat-form-field>
                 <mat-label>Data de Fim</mat-label>
                 <input matInput [matDatepicker]="pickerFim" [(ngModel)]="relatorioUsuario.dataFim" name="dataFim"

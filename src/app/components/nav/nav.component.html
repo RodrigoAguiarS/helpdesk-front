@@ -1,49 +1,100 @@
 <mat-drawer-container class="container" autosize>
-    <mat-drawer #drawer class="sidenav" mode="side">
-       <img src="assets/img/side-image.svg" alt="Imagem de navegação">
-       <mat-nav-list class="nav-list">
-          <a mat-list-item routerLink="home">
-             <i class="material-icons">home</i>
-             Home
-          </a>
-          <a mat-list-item routerLink="tecnicos">
-             <i class="material-icons">account_circle</i>
-             Técnicos
-          </a>
-         <a mat-list-item routerLink="pacientes">
+   <mat-drawer #drawer class="sidenav" mode="side">
+      <img src="assets/img/side-image.svg" alt="Imagem de navegação">
+      <mat-nav-list class="nav-list">
+         <a mat-list-item routerLink="home">
+            <i class="material-icons">home</i>
+            Home
+         </a>
+         <button mat-button [matMenuTriggerFor]="tecnicoMenu">
+            <i class="material-icons">assignment_ind</i>
+            Técnico
+         </button>
+         <mat-menu #tecnicoMenu="matMenu">
+            <button mat-menu-item routerLink="tecnicos">
+               <i class="material-icons">list_alt</i>
+               Listar
+            </button>
+            <button mat-menu-item routerLink="tecnicos/create">
+               <i class="material-icons">add_box</i>
+               Cadastrar
+            </button>
+            <!-- Coloque outros itens de menu para os Pacientes aqui -->
+         </mat-menu>
+
+         <button mat-button [matMenuTriggerFor]="pacientesMenu">
             <i class="material-icons">account_circle</i>
             Pacientes
-         </a>
-          <div *ngIf="isAdm">
-          <a mat-list-item routerLink="relatorio">
-            <i class="material-icons">account_circle</i>
-            Relatorio
-         </a>
-         </div>
-          <a mat-list-item routerLink="clientes">
-             <i class="material-icons">person</i>
-             Clientes
-          </a>
-         <a mat-list-item routerLink="chamados">
+         </button>
+         <mat-menu #pacientesMenu="matMenu">
+            <button mat-menu-item routerLink="pacientes">
+               <i class="material-icons">list_alt</i>
+               Listar
+            </button>
+            <button mat-menu-item routerLink="pacientes/create">
+               <i class="material-icons">add_box</i>
+               Cadastrar
+            </button>
+            <!-- Coloque outros itens de menu para os Pacientes aqui -->
+         </mat-menu>
+
+         <button mat-button [matMenuTriggerFor]="clienteMenu">
+            <i class="material-icons">assignment_ind</i>
+            Cliente
+         </button>
+         <mat-menu #clienteMenu="matMenu">
+            <button mat-menu-item routerLink="clientes">
+               <i class="material-icons">list_alt</i>
+               Listar
+            </button>
+            <button mat-menu-item routerLink="clientes/create">
+               <i class="material-icons">add_box</i>
+               Cadastrar
+            </button>
+            <!-- Coloque outros itens de menu para os Pacientes aqui -->
+         </mat-menu>
+
+         <button mat-button [matMenuTriggerFor]="chamadoMenu">
             <i class="material-icons">support</i>
             Chamados
+         </button>
+         <mat-menu #chamadoMenu="matMenu">
+            <button mat-menu-item routerLink="chamados">
+               <i class="material-icons">list_alt</i>
+               Listar
+            </button>
+            <button mat-menu-item routerLink="chamados/create">
+               <i class="material-icons">add_box</i>
+               Cadastrar
+            </button>
+            <!-- Coloque outros itens de menu para os Pacientes aqui -->
+         </mat-menu>
+         
+
+         <div *ngIf="isAdm">
+            <a mat-list-item routerLink="relatorio">
+               <i class="material-icons">poll</i>
+               Relatórios
+            </a>
+         </div>
+
+
+         <a mat-list-item href="https://github.com/RodrigoAguiarS" target="_blank">
+            <i class="material-icons">code</i>
+            Github
          </a>
-          <a mat-list-item href="https://github.com/RodrigoAguiarS" target="_blank">
-             <i class="material-icons">code</i>
-             Github
-          </a>
-          <a mat-list-item routerLink (click)="logout()">
-             <i class="material-icons">logout</i>
-             Logout
-          </a>
-       </mat-nav-list>
-    </mat-drawer>
- 
-    <div class="sidenav-content">
-        <app-header></app-header>
-       <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
-          <mat-icon>menu</mat-icon>
-       </button>
-       <router-outlet></router-outlet>
-    </div>
- </mat-drawer-container>
+         <a mat-list-item routerLink (click)="logout()">
+            <i class="material-icons">logout</i>
+            Logout
+         </a>
+      </mat-nav-list>
+   </mat-drawer>
+
+   <div class="sidenav-content">
+      <app-header></app-header>
+      <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
+         <mat-icon>menu</mat-icon>
+      </button>
+      <router-outlet></router-outlet>
+   </div>
+</mat-drawer-container>
