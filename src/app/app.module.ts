@@ -65,6 +65,8 @@ import { PacienteCreateComponent } from './components/paciente/paciente-create/p
 import { PacienteListComponent } from './components/paciente/paciente-list/paciente-list.component';
 import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
 import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
+import { MedicoCreateComponent } from './components/medico/medico-create/medico-create.component';
+import { MedicoListComponent } from './components/medico/medico-list/medico-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +96,9 @@ import { PacienteDeleteComponent } from './components/paciente/paciente-delete/p
     PacienteCreateComponent,
     PacienteListComponent,
     PacienteUpdateComponent,
-    PacienteDeleteComponent
+    PacienteDeleteComponent,
+    MedicoCreateComponent,
+    MedicoListComponent
   ],
   imports: [
     BrowserModule,

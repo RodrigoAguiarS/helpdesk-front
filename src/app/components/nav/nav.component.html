@@ -9,18 +9,30 @@
          <button mat-button [matMenuTriggerFor]="tecnicoMenu">
             <i class="material-icons">assignment_ind</i>
             Técnico
-         </button>
-         <mat-menu #tecnicoMenu="matMenu">
+          </button>
+          <mat-menu #tecnicoMenu="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="subMenuListar">
+              Listar
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuCadastrar">
+              Cadastrar
+            </button>
+          </mat-menu>
+          
+          <mat-menu #subMenuListar="matMenu">
             <button mat-menu-item routerLink="tecnicos">
-               <i class="material-icons">list_alt</i>
-               Listar
+              <i class="material-icons">list_alt</i>
+              Lista
             </button>
+          </mat-menu>
+          
+          <mat-menu #subMenuCadastrar="matMenu">
             <button mat-menu-item routerLink="tecnicos/create">
-               <i class="material-icons">add_box</i>
-               Cadastrar
+              <i class="material-icons">person_add</i>
+              Cadastrar Novo
             </button>
-            <!-- Coloque outros itens de menu para os Pacientes aqui -->
-         </mat-menu>
+          </mat-menu>
+          
 
          <button mat-button [matMenuTriggerFor]="pacientesMenu">
             <i class="material-icons">account_circle</i>
@@ -32,7 +44,7 @@
                Listar
             </button>
             <button mat-menu-item routerLink="pacientes/create">
-               <i class="material-icons">add_box</i>
+               <i class="material-icons">person_add</i>
                Cadastrar
             </button>
             <!-- Coloque outros itens de menu para os Pacientes aqui -->
@@ -48,7 +60,7 @@
                Listar
             </button>
             <button mat-menu-item routerLink="clientes/create">
-               <i class="material-icons">add_box</i>
+               <i class="material-icons">person_add</i>
                Cadastrar
             </button>
             <!-- Coloque outros itens de menu para os Pacientes aqui -->
@@ -64,12 +76,28 @@
                Listar
             </button>
             <button mat-menu-item routerLink="chamados/create">
-               <i class="material-icons">add_box</i>
+               <i class="material-icons">person_add</i>
                Cadastrar
             </button>
             <!-- Coloque outros itens de menu para os Pacientes aqui -->
          </mat-menu>
-         
+
+         <button mat-button [matMenuTriggerFor]="medicoMenu">
+            <i class="material-icons">local_hospital</i>
+            Medicos
+         </button>
+         <mat-menu #medicoMenu="matMenu">
+            <button mat-menu-item routerLink="medicos">
+               <i class="material-icons">list_alt</i>
+               Listar
+            </button>
+            <button mat-menu-item routerLink="medicos/create">
+               <i class="material-icons">person_add</i>
+               Cadastrar
+            </button>
+            <!-- Coloque outros itens de menu para os Pacientes aqui -->
+         </mat-menu>
+
 
          <div *ngIf="isAdm">
             <a mat-list-item routerLink="relatorio">

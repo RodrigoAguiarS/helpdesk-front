@@ -4,35 +4,35 @@
         <h1 class="fullWidth">Delete Paciente</h1>
         <img class="fullWidth" src="assets/img/paciente-image.svg" alt="Help Desk">
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Nome</mat-label>
             <input [(ngModel)]="paciente.nome" name="nome" [disabled]="true" required matInput
                 placeholder="Ex.. fulano de tal" maxlength="50">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>CPF</mat-label>
             <input [(ngModel)]="paciente.cpf" name="cpf" [disabled]="true" required matInput
                 placeholder="Ex..000.000.000-00" mask="000.000.000-00">
             <mat-icon matSuffix>pin </mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Telefone</mat-label>
             <input [(ngModel)]="paciente.telefone" name="telefone" [disabled]="true" required matInput
                 placeholder="Ex.. (00) 11234-5678" mask="(00) 00000-0000">
             <mat-icon matSuffix>phone</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>E-mail</mat-label>
             <input [(ngModel)]="paciente.email" name="email" [disabled]="true" required matInput
                 placeholder="Ex.. fulano@mail.com">
             <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Senha</mat-label>
             <input 
             [(ngModel)]="paciente.senha"
@@ -43,7 +43,7 @@
             <mat-icon matSuffix>password</mat-icon>
           </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Confirme sua senha</mat-label>
             <input name="confirmaSenha"  required matInput type="password"
                 [disabled]="true"
@@ -51,7 +51,7 @@
             <mat-icon matSuffix>password</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Numero</mat-label>
             <input type="number" required [(ngModel)]="paciente.endereco.numero" 
                 name="numero" matInput [disabled]="true"
@@ -59,7 +59,7 @@
             <mat-icon matSuffix>pin</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Cep</mat-label>
             <input [(ngModel)]="paciente.endereco.cep"
                 name="cep" matInput [disabled]="true" placeholder="Ex.. 59000-000"
@@ -67,28 +67,28 @@
             <mat-icon matSuffix>location_on</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Rua</mat-label>
             <input [(ngModel)]="paciente.endereco.rua" name="rua" matInput [disabled]="true"
                 placeholder="Ex.. Rua do Fulano">
             <mat-icon matSuffix>location_on</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Bairro</mat-label>
             <input [(ngModel)]="paciente.endereco.bairro" name="bairro" matInput [disabled]="true"
                 placeholder="Ex.. Bairro onde mora">
             <mat-icon matSuffix>location_city</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Cidade</mat-label>
             <input [(ngModel)]="paciente.endereco.cidade" name="cidade" matInput [disabled]="true"
                 placeholder="Ex.. Cidade onde mora">
             <mat-icon matSuffix>location_city</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="fullWidth" appearance="legacy">
+        <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Estado</mat-label>
             <input [(ngModel)]="paciente.endereco.estado" name="estado" matInput [disabled]="true"
                 placeholder="Ex.. Estado onde mora">
