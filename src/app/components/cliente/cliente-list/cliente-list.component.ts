@@ -46,8 +46,31 @@ export class ClienteListComponent implements OnInit {
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+  
+    this.dataSource.filterPredicate = (data: Cliente) => {
+      const nomeCliente = data.nome?.toLowerCase()|| '';
+      const telefoneCliente = data.telefone?.toLowerCase()|| '';
+      const cepCliente = data.endereco.cep?.toLowerCase()|| '';
+      const ruaCliente = data.endereco.rua?.toLowerCase()|| '';
+      const numeroCliente = data.endereco.numero?.toLowerCase()|| '';
+      const bairroCliente = data.endereco.bairro?.toLowerCase()|| '';
+      const cidadeCliente = data.endereco.cidade?.toLowerCase()|| '';
+      const estadoCliente = data.endereco.estado?.toLowerCase()|| '';
+  
+      return (
+        nomeCliente.includes(filterValue) ||
+        telefoneCliente.includes(filterValue) ||
+        cepCliente.includes(filterValue) ||
+        ruaCliente.includes(filterValue) ||
+        numeroCliente.includes(filterValue) ||
+        bairroCliente.includes(filterValue) ||
+        cidadeCliente.includes(filterValue) ||
+        estadoCliente.includes(filterValue)
+      );
+    };
+  
+    this.dataSource.filter = filterValue;
   }
 
 }

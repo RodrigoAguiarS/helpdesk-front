@@ -108,6 +108,7 @@ export class RelatorioUsuarioComponent implements OnInit {
     this.tecnicoControl.reset();
     this.dataInicio.reset();
     this.dataFim.reset();
+    this.idTecnico.reset();
     this.tecnicoSelecionado = null;
     this.relatorioUsuario.idTecnico = null;
     this.relatorioUsuario.dataInicio = null;

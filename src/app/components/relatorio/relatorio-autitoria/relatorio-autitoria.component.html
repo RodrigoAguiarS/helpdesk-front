@@ -20,7 +20,7 @@
 
         <!-- Campo de Data de Início -->
         <div class="form-group-date">
-            <mat-form-field>
+            <mat-form-field appearance="outline">
                 <mat-label>Data de Início</mat-label>
                 <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="relatorioUsuario.dataInicio"
                     name="dataInicio" [formControl]="dataInicio" placeholder="Digite a Data de Inicio">
@@ -29,7 +29,7 @@
             </mat-form-field>
 
         <!-- Campo de Data de Fim -->
-            <mat-form-field>
+            <mat-form-field appearance="outline">
                 <mat-label>Data de Fim</mat-label>
                 <input matInput [matDatepicker]="pickerFim" [(ngModel)]="relatorioUsuario.dataFim" name="dataFim"
                     [formControl]="dataFim" placeholder="Digite a Data de Fim">

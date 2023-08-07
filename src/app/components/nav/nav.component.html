@@ -98,14 +98,19 @@
             <!-- Coloque outros itens de menu para os Pacientes aqui -->
          </mat-menu>
 
-
          <div *ngIf="isAdm">
-            <a mat-list-item routerLink="relatorio">
+            <button mat-button [matMenuTriggerFor]="relatorioMenu">
                <i class="material-icons">poll</i>
                Relatórios
-            </a>
+            </button>
+            <mat-menu #relatorioMenu="matMenu">
+               <button mat-menu-item routerLink="relatorio">
+                  <i class="material-icons">list_alt</i>
+                  Relatório de Auditoria de Ações
+               </button>
+               <!-- Coloque outros itens de menu para os Pacientes aqui -->
+            </mat-menu>
          </div>
-
 
          <a mat-list-item href="https://github.com/RodrigoAguiarS" target="_blank">
             <i class="material-icons">code</i>

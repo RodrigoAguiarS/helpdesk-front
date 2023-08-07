@@ -23,17 +23,6 @@
     margin: 0 auto; /* Add this to center the image horizontally */
   }
 
-  /* Estilos para o campo mat-form-field dentro do grupo de status e prioridade */
-  .status-prioridade mat-form-field {
-    width: 49%;
-  }
-  
-  /* Estilos para o campo de observações */
-  .observacoes {
-    min-height: 6rem;
-    max-height: 10rem;
-  }
-  
   /* Estilos para o botão */
   button {
     margin-top: 0.5rem;
@@ -54,5 +43,5 @@
   
   /* Estilos para o campo mat-form-field dentro de form-group-date */
   .form-group-date mat-form-field {
-    width: 45%;
+    width: 49%;
   }

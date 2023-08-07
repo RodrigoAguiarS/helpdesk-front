@@ -45,8 +45,35 @@ export class PacienteListComponent implements OnInit {
   ngAfterViewInit() { /* TODO document why this method 'ngAfterViewInit' is empty */ }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+  
+    this.dataSource.filterPredicate = (data: Paciente) => {
+      const nomePaciente = data.nome?.toLowerCase() || '';
+      const emailPaciente = data.email?.toLowerCase()|| '';
+      const cpfPaciente = data.cpf?.toLowerCase()|| '';
+      const telefonePaciente = data.telefone?.toLowerCase()|| '';
+      const cepPaciente = data.endereco.cep?.toLowerCase()|| '';
+      const ruaPaciente = data.endereco.rua?.toLowerCase()|| '';
+      const numeroPaciente = data.endereco.numero?.toLowerCase()|| '';
+      const bairroPaciente = data.endereco.bairro?.toLowerCase()|| '';
+      const cidadePaciente = data.endereco.cidade?.toLowerCase()|| '';
+      const estadoPaciente = data.endereco.estado?.toLowerCase()|| '';
+  
+      return (
+        nomePaciente.includes(filterValue) ||
+        emailPaciente.includes(filterValue) ||
+        cpfPaciente.includes(filterValue) ||
+        telefonePaciente.includes(filterValue) ||
+        cepPaciente.includes(filterValue) ||
+        ruaPaciente.includes(filterValue) ||
+        numeroPaciente.includes(filterValue) ||
+        bairroPaciente.includes(filterValue) ||
+        cidadePaciente.includes(filterValue) ||
+        estadoPaciente.includes(filterValue)
+      );
+    };
+  
+    this.dataSource.filter = filterValue;
   }
 
   findAll() {
@@ -57,3 +84,4 @@ export class PacienteListComponent implements OnInit {
     });
   }
 }
+

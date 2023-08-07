@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
     senha: ''
   }
 
+  hide = true;
+
   email = new FormControl(null, Validators.email);
   senha = new FormControl(null, Validators.minLength(3));
 
@@ -40,5 +42,9 @@ export class LoginComponent implements OnInit {
 
   validaCampos(): boolean {
     return this.email.valid && this.senha.valid ? true : false;
+  }
+
+  togglePasswordVisibility(): void {
+    this.hide = !this.hide;
   }
 }

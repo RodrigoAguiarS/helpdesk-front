@@ -6,7 +6,7 @@
        <img src="assets/img/login-image.svg" alt="Help Desk">
  
        <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Insira seu email aqui!</mat-label>
+        <mat-label>Insira seu Login de Acesso</mat-label>
           <input 
           [formControl]="email"
           required
@@ -23,12 +23,15 @@
           required
           [(ngModel)]="creds.senha" 
           name="senha" 
-          type="password" 
+          [type]="hide ? 'password' : 'text'"
           matInput 
           placeholder="Ex. 123">
-          <mat-icon matSuffix>password</mat-icon>
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()"
+             [attr.aria-label]="hide ? 'Show password' : 'Hide password'" [attr.aria-pressed]="hide">
+             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+         </button>
        </mat-form-field>
- 
+
        <button (click)="logar()" [disabled]="!validaCampos()" class="full-width mat-elevation-z4" mat-stroked-button color="primary">Login</button>
        <button routerLink="/login-recuperar" class="full-width mat-elevation-z4" mat-stroked-button color="basic">Esqueceu a Senha?</button>
     </form>
