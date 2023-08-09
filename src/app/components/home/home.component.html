@@ -3,8 +3,9 @@
   <mat-card-header>
     <mat-card-title>{{ tecnico.nome }}</mat-card-title>
     <mat-card-subtitle>Sistema</mat-card-subtitle>
-    <p *ngIf="isAdm">Você possui perfil de administrador.</p>
-    <p *ngIf="!isAdm">Você não possui perfil de administrador.</p>
+    <p *ngIf="roles.includes('ROLE_ADMIN')">Você possui perfil de administrador.</p>
+    <p *ngIf="!roles.includes('ROLE_ADMIN')">Você não possui perfil de administrador.</p>
   </mat-card-header>
+  <button *ngIf="roles.includes('ROLE_TECNICO')">Funcionalidade para Técnicos</button>
 </mat-card>
 

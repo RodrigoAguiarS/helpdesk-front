@@ -14,22 +14,20 @@ export class NavComponent implements OnInit {
 
   tecnico: Tecnico;
 
-  isAdm: boolean;
+  roles: string[] = [];
 
   constructor(private router: Router,
     private authService: AuthService,
-    private toast: ToastrService,
-    public tecnicoService: TecnicoService) { }
+    private toast: ToastrService) { }
 
   ngOnInit(): void {
     this.router.navigate(['home'])
-    this.verificarPerfilAdm();
-    this.tecnicoService.ObterDadosUsuario().subscribe(
-      (tecnico: Tecnico) => {
-        this.tecnico = tecnico;
+    this.authService.getUserRoles().subscribe(
+      (roles: string[]) => {
+        this.roles = roles;
       },
-      (error: any) => {
-        console.error(error);
+      (error) => {
+        // Trate o erro, se necessário
       }
     );
   }
@@ -38,16 +36,5 @@ export class NavComponent implements OnInit {
     this.router.navigate(['login'])
     this.authService.logout();
     this.toast.info('Logout realizado com sucesso', 'Logout', { timeOut: 7000})
-  }
-  
-  verificarPerfilAdm(): void {
-    this.tecnicoService.verificarPerfilAdm().subscribe(
-      (isAdm: boolean) => {
-        this.isAdm = isAdm;
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
   }
 }

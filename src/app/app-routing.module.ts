@@ -26,6 +26,7 @@ import { PacienteDeleteComponent } from './components/paciente/paciente-delete/p
 import { MedicoCreateComponent } from './components/medico/medico-create/medico-create.component';
 import { MedicoListComponent } from './components/medico/medico-list/medico-list.component';
 import { MedicoUpdateComponent } from './components/medico/medico-update/medico-update.component';
+import { AgendaCreateComponent } from './components/agenda/agenda-create/agenda-create.component';
 
 const routes: Routes = [
     { path : 'login', component: LoginComponent },
@@ -37,6 +38,8 @@ const routes: Routes = [
 
         
             { path: 'relatorio', component: RelatorioUsuarioComponent },
+
+            { path: 'agendas/create', component: AgendaCreateComponent },
 
             { path: 'medicos', component: MedicoListComponent },
             { path: 'medicos/create', component: MedicoCreateComponent },

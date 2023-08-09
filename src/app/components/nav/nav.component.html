@@ -2,113 +2,189 @@
    <mat-drawer #drawer class="sidenav" mode="side">
       <img src="assets/img/side-image.svg" alt="Imagem de navegação">
       <mat-nav-list class="nav-list">
+
          <a mat-list-item routerLink="home">
             <i class="material-icons">home</i>
             Home
          </a>
-         <button mat-button [matMenuTriggerFor]="tecnicoMenu">
-            <i class="material-icons">assignment_ind</i>
-            Técnico
-          </button>
-          <mat-menu #tecnicoMenu="matMenu">
-            <button mat-menu-item [matMenuTriggerFor]="subMenuListar">
-              Listar
-            </button>
-            <button mat-menu-item [matMenuTriggerFor]="subMenuCadastrar">
-              Cadastrar
-            </button>
-          </mat-menu>
-          
-          <mat-menu #subMenuListar="matMenu">
-            <button mat-menu-item routerLink="tecnicos">
-              <i class="material-icons">list_alt</i>
-              Lista
-            </button>
-          </mat-menu>
-          
-          <mat-menu #subMenuCadastrar="matMenu">
-            <button mat-menu-item routerLink="tecnicos/create">
-              <i class="material-icons">person_add</i>
-              Cadastrar Novo
-            </button>
-          </mat-menu>
-          
 
-         <button mat-button [matMenuTriggerFor]="pacientesMenu">
-            <i class="material-icons">account_circle</i>
-            Pacientes
+      <!-- Menu do Técnico -->
+         <button mat-button [matMenuTriggerFor]="tecnicoMenu">
+            <mat-icon>build</mat-icon>
+            Técnico
          </button>
-         <mat-menu #pacientesMenu="matMenu">
-            <button mat-menu-item routerLink="pacientes">
-               <i class="material-icons">list_alt</i>
+         <mat-menu #tecnicoMenu="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="subMenuListar">
+               <mat-icon>list_alt</mat-icon>
                Listar
             </button>
-            <button mat-menu-item routerLink="pacientes/create">
-               <i class="material-icons">person_add</i>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuCadastrar">
+               <mat-icon>person_add</mat-icon>
                Cadastrar
             </button>
-            <!-- Coloque outros itens de menu para os Pacientes aqui -->
          </mat-menu>
 
+         <mat-menu #subMenuListar="matMenu">
+            <button mat-menu-item routerLink="tecnicos">
+               <mat-icon>list_alt</mat-icon>
+               Lista de Técnicos
+            </button>
+         </mat-menu>
+
+         <mat-menu #subMenuCadastrar="matMenu">
+            <button mat-menu-item routerLink="tecnicos/create">
+               <mat-icon>person_add</mat-icon>
+               Cadastrar Técnico
+            </button>
+         </mat-menu>
+
+      <!-- Menu do Paciente -->
+         <button mat-button [matMenuTriggerFor]="pacientesMenu">
+            <mat-icon>local_hospital</mat-icon>
+            Paciente
+         </button>
+         <mat-menu #pacientesMenu="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="subMenuListarPaciente">
+               <mat-icon>list_alt</mat-icon>
+               Listar
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuCadastrarPaciente">
+               <mat-icon>person_add</mat-icon>
+               Cadastrar
+            </button>
+         </mat-menu>
+
+         <mat-menu #subMenuListarPaciente="matMenu">
+            <button mat-menu-item routerLink="pacientes">
+               <mat-icon>list_alt</mat-icon>
+               Lista de Pacientes
+            </button>
+         </mat-menu>
+
+         <mat-menu #subMenuCadastrarPaciente="matMenu">
+            <button mat-menu-item routerLink="pacientes/create">
+               <mat-icon>person_add</mat-icon>
+               Cadastrar Paciente
+            </button>
+         </mat-menu>
+
+         <!-- Menu do Cliente -->
          <button mat-button [matMenuTriggerFor]="clienteMenu">
-            <i class="material-icons">assignment_ind</i>
+            <mat-icon>person</mat-icon>
             Cliente
          </button>
          <mat-menu #clienteMenu="matMenu">
-            <button mat-menu-item routerLink="clientes">
-               <i class="material-icons">list_alt</i>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuListarCliente">
+               <mat-icon>list_alt</mat-icon>
                Listar
             </button>
-            <button mat-menu-item routerLink="clientes/create">
-               <i class="material-icons">person_add</i>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuCadastrarCliente">
+               <mat-icon>person_add</mat-icon>
                Cadastrar
             </button>
-            <!-- Coloque outros itens de menu para os Pacientes aqui -->
+         </mat-menu>
+
+         <mat-menu #subMenuListarCliente="matMenu">
+            <button mat-menu-item routerLink="clientes">
+               <mat-icon>list_alt</mat-icon>
+               Lista de Clientes
+            </button>
+         </mat-menu>
+
+         <mat-menu #subMenuCadastrarCliente="matMenu">
+            <button mat-menu-item routerLink="clientes/create">
+               <mat-icon>person_add</mat-icon>
+               Cadastrar Cliente
+            </button>
          </mat-menu>
 
          <button mat-button [matMenuTriggerFor]="chamadoMenu">
-            <i class="material-icons">support</i>
-            Chamados
+            <mat-icon>email</mat-icon>
+            Chamado
          </button>
          <mat-menu #chamadoMenu="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="subMenuListarChamado">
+               <mat-icon>list_alt</mat-icon>
+               Listar
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuCadastrarChamado">
+               <mat-icon>email</mat-icon>
+               Cadastrar
+            </button>
+         </mat-menu>
+
+         <mat-menu #subMenuListarChamado="matMenu">
             <button mat-menu-item routerLink="chamados">
-               <i class="material-icons">list_alt</i>
-               Listar
+               <mat-icon>list_alt</mat-icon>
+               Lista de Chamado
             </button>
+         </mat-menu>
+
+         <mat-menu #subMenuCadastrarChamado="matMenu">
             <button mat-menu-item routerLink="chamados/create">
-               <i class="material-icons">person_add</i>
-               Cadastrar
+               <mat-icon>person_add</mat-icon>
+               Cadastrar Chamado
             </button>
-            <!-- Coloque outros itens de menu para os Pacientes aqui -->
          </mat-menu>
 
+         <!-- Menu Médico -->
          <button mat-button [matMenuTriggerFor]="medicoMenu">
-            <i class="material-icons">local_hospital</i>
-            Medicos
-         </button>
-         <mat-menu #medicoMenu="matMenu">
+            <mat-icon>person_outline</mat-icon>
+            Médico
+          </button>
+          <mat-menu #medicoMenu="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="subMenuListarMedico">
+              <mat-icon>list_alt</mat-icon>
+              Listar
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuCadastrarMedico">
+              <mat-icon>person_add</mat-icon>
+              Cadastrar
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuAgendaMedico">
+              <mat-icon>calendar_today</mat-icon>
+              Agenda do Médico
+            </button>
+          </mat-menu>
+          
+          <mat-menu #subMenuListarMedico="matMenu">
             <button mat-menu-item routerLink="medicos">
-               <i class="material-icons">list_alt</i>
-               Listar
+              <mat-icon>list_alt</mat-icon>
+              Lista de Médicos
             </button>
+          </mat-menu>
+          
+          <mat-menu #subMenuCadastrarMedico="matMenu">
             <button mat-menu-item routerLink="medicos/create">
-               <i class="material-icons">person_add</i>
-               Cadastrar
+              <mat-icon>person_add</mat-icon>
+              Cadastrar Médico
             </button>
-            <!-- Coloque outros itens de menu para os Pacientes aqui -->
-         </mat-menu>
-
-         <div *ngIf="isAdm">
+          </mat-menu>
+          
+          <mat-menu #subMenuAgendaMedico="matMenu">
+            <button mat-menu-item routerLink="agendas/create">
+              <mat-icon>calendar_today</mat-icon>
+              Agenda do Médico
+            </button>
+          </mat-menu>
+          
+         <div *ngIf="roles.includes('ROLE_ADMIN')">
             <button mat-button [matMenuTriggerFor]="relatorioMenu">
-               <i class="material-icons">poll</i>
-               Relatórios
+               <mat-icon>bar_chart</mat-icon>
+               Relatório
             </button>
             <mat-menu #relatorioMenu="matMenu">
+               <button mat-menu-item [matMenuTriggerFor]="subMenuRelatorio">
+                  <mat-icon>bar_chart</mat-icon>
+                  Selecione
+               </button>
+            </mat-menu>
+   
+            <mat-menu #subMenuRelatorio="matMenu">
                <button mat-menu-item routerLink="relatorio">
-                  <i class="material-icons">list_alt</i>
+                  <mat-icon>bar_chart</mat-icon>
                   Relatório de Auditoria de Ações
                </button>
-               <!-- Coloque outros itens de menu para os Pacientes aqui -->
             </mat-menu>
          </div>
 

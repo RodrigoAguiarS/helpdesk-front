@@ -7,6 +7,7 @@ import { RelatorioAutitoria } from "src/app/models/relatorioAutitoria";
 import { Tecnico } from "src/app/models/tecnico";
 import { RelatorioService } from "src/app/services/relatorio.service";
 import { TecnicoService } from "src/app/services/tecnico.service";
+import { DatePipe } from '@angular/common'
 
 
 @Component({
@@ -21,6 +22,8 @@ export class RelatorioUsuarioComponent implements OnInit {
     dataInicio: null,
     dataFim: null
   };
+
+  datePipe = new DatePipe('pt-BR');
 
   tecnicos: Tecnico[] = [];
   filtroTecnicos: Observable<Tecnico[]>;
@@ -76,6 +79,7 @@ export class RelatorioUsuarioComponent implements OnInit {
     console.log("Valor de relatorioUsuario:", this.relatorioUsuario);
     this.relatorioService.gerarRelatorio(this.relatorioUsuario).subscribe(
       (response: HttpResponse<Blob>) => {
+        console.log(response);
         this.toast.success('Relatório gerado com sucesso', 'Relatório');
         this.downloadRelatorio(response);
         this.limparCampos();

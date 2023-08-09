@@ -21,20 +21,20 @@
         <!-- Campo de Data de Início -->
         <div class="form-group-date">
             <mat-form-field appearance="outline">
-                <mat-label>Data de Início</mat-label>
-                <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="relatorioUsuario.dataInicio"
-                    name="dataInicio" [formControl]="dataInicio" placeholder="Digite a Data de Inicio">
-                <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
-                <mat-datepicker #pickerInicio></mat-datepicker>
+            <mat-label>Data de Início</mat-label>
+            <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="relatorioUsuario.dataInicio"
+                name="dataInicio" [formControl]="dataInicio" placeholder="Digite a Data de Inicio">
+            <mat-datepicker-toggle matSuffix [for]="pickerInicio">{{ relatorioUsuario.dataInicio | date: 'dd/MM/yyyy HH:mm:ss' }}</mat-datepicker-toggle>
+            <mat-datepicker #pickerInicio></mat-datepicker>
             </mat-form-field>
-
-        <!-- Campo de Data de Fim -->
+        
+            <!-- Campo de Data de Fim -->
             <mat-form-field appearance="outline">
-                <mat-label>Data de Fim</mat-label>
-                <input matInput [matDatepicker]="pickerFim" [(ngModel)]="relatorioUsuario.dataFim" name="dataFim"
-                    [formControl]="dataFim" placeholder="Digite a Data de Fim">
-                <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
-                <mat-datepicker #pickerFim></mat-datepicker>
+            <mat-label>Data de Fim</mat-label>
+            <input matInput [matDatepicker]="pickerFim" [(ngModel)]="relatorioUsuario.dataFim" name="dataFim"
+                [formControl]="dataFim" placeholder="Digite a Data de Fim">
+            <mat-datepicker-toggle matSuffix [for]="pickerFim">{{ relatorioUsuario.dataFim | date: 'dd/MM/yyyy HH:mm:ss' }}</mat-datepicker-toggle>
+            <mat-datepicker #pickerFim></mat-datepicker>
             </mat-form-field>
         </div>
 

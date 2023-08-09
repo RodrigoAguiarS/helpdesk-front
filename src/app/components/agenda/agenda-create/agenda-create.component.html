@@ -1,0 +1,37 @@
+<div class="container mat-elevation-z8">
+    <h2 class="fullWidth">Cadastro de Agenda</h2>
+    <img class="full-width" src="assets/img/agenda-create.svg" alt="Chamado image">
+  
+    <form class="form">
+      <!-- Campo de Data de Início -->
+      <div class="form-group-date">
+        <mat-form-field appearance="outline">
+          <mat-label>Data de Início</mat-label>
+          <input matInput [matDatepicker]="pickerInicio" 
+          [(ngModel)]="agenda.horarioInicio" name="dataInicio"
+          [formControl]="horarioInicio"
+            placeholder="Digite a Data de Início">
+          <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+          <mat-datepicker #pickerInicio></mat-datepicker>
+        </mat-form-field>
+      </div>
+  
+      <!-- Campo de Data de Fim -->
+      <div class="form-group-date">
+        <mat-form-field appearance="outline">
+          <mat-label>Data de Fim</mat-label>
+          <input matInput [matDatepicker]="pickerFim" 
+          [(ngModel)]="agenda.horarioFim" name="dataFim"
+          [formControl]="horarioFim"
+            placeholder="Digite a Data de Fim">
+          <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFim></mat-datepicker>
+        </mat-form-field>
+      </div>
+  
+      <button class="fullWidth" [disabled]="!validaCampos()" mat-raised-button color="primary" (click)="cadastrarAgenda()">Cadastrar Agenda</button>
+    </form>
+  
+    <p class="fullWidth">by Rodrigo Aguiar</p>
+  </div>
+  

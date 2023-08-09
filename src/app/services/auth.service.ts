@@ -54,4 +54,8 @@ export class AuthService {
   logout() {
     localStorage.clear();
   }
+
+  getUserRoles(): Observable<string[]> {
+    return this.http.get<string[]>(`${API_CONFIG.baseUrl}/api/usuario/papel`);
+  }
 }
