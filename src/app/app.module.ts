@@ -69,6 +69,7 @@ import { MedicoCreateComponent } from './components/medico/medico-create/medico-
 import { MedicoListComponent } from './components/medico/medico-list/medico-list.component';
 import { MedicoUpdateComponent } from './components/medico/medico-update/medico-update.component';
 import { AgendaCreateComponent } from './components/agenda/agenda-create/agenda-create.component';
+import { AgendaListComponent } from './components/agenda/agenda-list/agenda-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +103,8 @@ import { AgendaCreateComponent } from './components/agenda/agenda-create/agenda-
     MedicoCreateComponent,
     MedicoListComponent,
     MedicoUpdateComponent,
-    AgendaCreateComponent
+    AgendaCreateComponent,
+    AgendaListComponent
   ],
   imports: [
     BrowserModule,

@@ -14,4 +14,8 @@ export class AgendaService {
   create(agenda: Agenda): Observable<Agenda> {
     return this.http.post<Agenda>(`${API_CONFIG.baseUrl}/api/agendas`, agenda);
   }
+
+  findAll(): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(`${API_CONFIG.baseUrl}/api/agendas`);
+  }
 }

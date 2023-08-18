@@ -162,12 +162,11 @@
           </mat-menu>
           
           <mat-menu #subMenuAgendaMedico="matMenu">
-            <button mat-menu-item routerLink="agendas/create">
+            <button mat-menu-item routerLink="agendas">
               <mat-icon>calendar_today</mat-icon>
               Agenda do Médico
             </button>
           </mat-menu>
-          
          <div *ngIf="roles.includes('ROLE_ADMIN')">
             <button mat-button [matMenuTriggerFor]="relatorioMenu">
                <mat-icon>bar_chart</mat-icon>

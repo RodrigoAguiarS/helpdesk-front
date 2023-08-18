@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Agenda } from 'src/app/models/agenda';
 import { AgendaService } from 'src/app/services/agenda.service';
@@ -22,7 +23,8 @@ export class AgendaCreateComponent implements OnInit {
   horarioFim:  FormControl = new FormControl(null, [Validators.required]);
 
   constructor(private agendaService: AgendaService,
-    private toast:    ToastrService,) { }
+    private toast:    ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -41,6 +43,7 @@ export class AgendaCreateComponent implements OnInit {
     this.agendaService.create(this.agenda).subscribe(
       response => {
         this.toast.success('Agenda cadastrada com sucesso:');
+        this.router.navigate(['agendas']);
       },
       error => {
         this.toast.error(error.error.message);
