@@ -10,12 +10,22 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
+  roles: string[] = [];
+
   constructor(private router: Router,
     private authService: AuthService,
     private toast: ToastrService) { }
 
   ngOnInit(): void {
     this.router.navigate(['home'])
+    this.authService.getUserRoles().subscribe(
+      (roles: string[]) => {
+        this.roles = roles;
+      },
+      (error) => {
+        this.toast.error('Ocorreu um erro ao obter as funções do usuário.', error);
+      }
+    );
   }
 
   logout() {

@@ -30,6 +30,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgxMaskModule } from 'ngx-mask';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 import { ToastrModule } from 'ngx-toastr';
@@ -48,6 +49,9 @@ import { ChamadoCreateComponent } from './components/chamado/chamado-create/cham
 import { CPFPipe } from './cpf.pipe';
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
+import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
+import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
+import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-list.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +72,10 @@ import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-
     ChamadoCreateComponent,
     CPFPipe,
     ChamadoUpdateComponent,
-    ChamadoReadComponent
+    ChamadoReadComponent,
+    UsuarioCreateComponent,
+    UsuarioUpdateComponent,
+    UsuarioListComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +101,7 @@ import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatMenuModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
