@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { API_CONFIG } from './../config/api.config';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../models/usuario';
@@ -37,5 +37,9 @@ export class UsuarioService {
 
   alternarParaUsuario(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${API_CONFIG.baseUrl}/api/admin/alternar-usuario/${usuario.id}`, {});
+  }
+
+  getUserInfo(token: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${API_CONFIG.baseUrl}/api/admin/info?token=${token}`);
   }
 }

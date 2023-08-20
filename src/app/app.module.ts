@@ -52,6 +52,7 @@ import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-list.component';
+import { AdminComponent } from './components/admin/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-
     ChamadoReadComponent,
     UsuarioCreateComponent,
     UsuarioUpdateComponent,
-    UsuarioListComponent
+    UsuarioListComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

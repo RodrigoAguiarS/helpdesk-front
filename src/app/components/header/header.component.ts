@@ -60,17 +60,4 @@ export class HeaderComponent implements OnInit {
       error => console.error(error)
     );
   }
-
-  alternarParaUsuario(): void {
-    if (this.selectedUsuario) {
-      this.usuarioService.alternarParaUsuario(this.selectedUsuario).subscribe(
-        usuarioAlternado => this.usuarioEmVisualizacao = usuarioAlternado,
-        error => console.error(error)
-      );
-    }
-  }
-
-  voltarParaAdmin(): void {
-    this.usuarioEmVisualizacao = null;
-  }
 }

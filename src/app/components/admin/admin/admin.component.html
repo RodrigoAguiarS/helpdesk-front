@@ -1,0 +1,21 @@
+<div class="container mat-elevation-z8">
+  <form class="form">
+
+    <h1 class="fullWidth">Logar como</h1>
+    <img class="fullWidth" src="assets/img/admin-create.svg" alt="Help Desk">
+
+    <mat-form-field class="fullWidth" appearance="outline">
+      <mat-label>Login</mat-label>
+      <input matInput placeholder="Login do Usuário" [(ngModel)]="loginComoUsuario" required matInput
+      name="login" [formControl]="login">
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+    <button class="fullWidth mat-elevation-z4" mat-flat-button color="primary" (click)="logarComoUsuario()">Logar como
+      Usuário</button>
+  </form>
+</div>
+<div *ngIf="usuario">
+  <p>Nome: {{ usuario.nome }}</p>
+  <p>Email: {{ usuario.email }}</p>
+  <button (click)="voltarAoUsuarioAnterior()">Voltar ao Usuário Antigo</button>
+</div>
