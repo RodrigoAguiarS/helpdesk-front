@@ -22,7 +22,7 @@
              <i class="material-icons">code</i>
              Github
           </a>
-          <a mat-list-item  routerLink="administrador">
+          <a mat-list-item *ngIf="roles.includes('ROLE_ADMIN_GERAL')" routerLink="administrador">
             <i class="material-icons">supervisor_account</i>
             Adminstração
          </a>

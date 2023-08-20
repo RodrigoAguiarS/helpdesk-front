@@ -1,14 +1,26 @@
 <mat-toolbar>
-    <!-- Nome do usuário -->
+    <!-- Nome e Perfis do usuário -->
     <span class="user-info">
         <mat-icon>account_circle</mat-icon>
         {{ usuario?.nome }}
     </span>
-
-    <span  class="user-info">
+    <span class="user-info">
         <mat-icon>dashboard</mat-icon>
         {{ usuario?.perfis }}
     </span>
+
+    <!-- Espaçador flexível -->
+    <span class="example-spacer"></span>
+
+    <div class="user-actions">
+        <mat-form-field *ngIf="roles.includes('ROLE_ADMIN_GERAL')">
+          <input matInput placeholder="Login do Usuário" [(ngModel)]="loginComoUsuario">
+        </mat-form-field>
+      
+        <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-raised-button (click)="toggleLogarDeslogar()">
+          {{ usuarioTrocado ? 'Voltar ao Usuário' : 'Logar' }}
+        </button>
+    </div>
 
     <!-- Espaçador flexível -->
     <span class="example-spacer"></span>
@@ -19,21 +31,14 @@
         {{ usuario?.email }}
     </span>
 
-    <mat-form-field *ngIf="roles.includes('ROLE_ADMIN_GERAL')">
-        <input matInput placeholder="Login do Usuário" [(ngModel)]="loginComoUsuario">
-    </mat-form-field>
-    <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-raised-button (click)="logarComoUsuario()">Logar como Usuário</button>
-    
-    <button mat-raised-button (click)="voltarAoUsuarioAnterior()" *ngIf="usuarioTrocado">
-      Voltar ao Usuário Anterior
-    </button>
-
-    <!-- Botão de dropdown (adicione a lógica para abrir o dropdown) -->
+    <!-- Botão de dropdown -->
     <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="'usuarios/update/' + usuario?.id">Editar Usuário</button>
+        <button mat-menu-item [routerLink]="'usuarios/update/' + usuario?.id">
+            Editar Usuário
+        </button>
         <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
 </mat-toolbar>

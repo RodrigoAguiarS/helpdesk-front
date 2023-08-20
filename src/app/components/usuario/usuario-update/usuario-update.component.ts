@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/models/usuario';
+import { MensagemService } from 'src/app/services/mensagem.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class UsuarioUpdateComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private toast:    ToastrService,
+    private mensagemService: MensagemService,
     private router:          Router,
     private route:   ActivatedRoute,
     ) { }
@@ -47,18 +47,21 @@ export class UsuarioUpdateComponent implements OnInit {
   }
 
   update(): void {
-    this.usuarioService.update(this.usuario).subscribe(() => {
-      this.toast.success('Usuário atualizado com sucesso', 'Update');
-      this.router.navigate(['home'])
-    }, ex => {
-      if(ex.error.errors) {
-        ex.error.errors.forEach(element => {
-          this.toast.error(element.message);
-        });
-      } else {
-        this.toast.error(ex.error.message);
+    this.usuarioService.update(this.usuario).subscribe({
+      next: () => {
+        this.mensagemService.showSuccessoMensagem('Usuário atualizado com sucesso');
+        this.router.navigate(['home']);
+      },
+      error: (ex) => {
+        if (ex.error.errors) {
+          ex.error.errors.forEach((element) => {
+            this.mensagemService.showErrorMensagem(element.message);
+          });
+        } else {
+          this.mensagemService.showErrorMensagem(ex.error.message);
+        }
       }
-    })
+    });
   }
 
 
@@ -81,7 +84,7 @@ export class UsuarioUpdateComponent implements OnInit {
       this.confirmaSenha.value !== this.usuario.senha &&
       this.confirmaSenha.dirty
     ) {
-      this.toast.warning("As senhas não são iguais", "Senha");
+      this.mensagemService.showErrorMensagem("As senhas não são iguais");
     }
   }
 

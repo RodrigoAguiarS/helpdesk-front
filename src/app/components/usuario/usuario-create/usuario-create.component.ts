@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from 'src/app/services/auth.service';
+import { MensagemService } from 'src/app/services/mensagem.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -26,44 +26,44 @@ export class UsuarioCreateComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private authService: AuthService,
-    private toast: ToastrService,
+    private mensagemService: MensagemService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.usuario = new Usuario();
-    this.authService.getUserRoles().subscribe(
-      (roles: string[]) => {
+    this.authService.getUserRoles().subscribe({
+      next: (roles: string[]) => {
         this.roles = roles;
       },
-      (error) => {
-        // Trate o erro, se necessário
+      error: (error) => {
+        this.mensagemService.showErrorMensagem(error.error.message)
       }
-    );
+    });
   }
   
-
   create(): void {
     this.usuario.nome = this.nome.value;
     this.usuario.cpf = this.cpf.value;
     this.usuario.email = this.email.value;
     this.usuario.senha = this.senha.value;
-    this.usuarioService.create(this.usuario).subscribe(
-      (resposta) => {
+    
+    this.usuarioService.create(this.usuario).subscribe({
+      next: (resposta) => {
         console.log(resposta);
-        this.toast.success("Usuário cadastrado com sucesso", "Cadastro");
-        this.router.navigate(["usuarios"]);
+        this.mensagemService.showSuccessoMensagem("Usuário cadastrado com sucesso");
+        this.router.navigate(["home"]);
       },
-      (ex) => {
+      error: (ex) => {
         if (ex.error.errors) {
           ex.error.errors.forEach((element) => {
-            this.toast.error(element.message);
+            this.mensagemService.showErrorMensagem(element.message);
           });
         } else {
-          this.toast.error(ex.error.message);
+          this.mensagemService.showErrorMensagem(ex.error.message);
         }
       }
-    );
+    });
   }
 
   validaCampos(): boolean {
@@ -77,7 +77,7 @@ export class UsuarioCreateComponent implements OnInit {
       this.confirmaSenha.value !== this.usuario.senha &&
       this.confirmaSenha.dirty
     ) {
-      this.toast.warning("As senhas não são iguais", "Senha");
+      this.mensagemService.showErrorMensagem("As senhas não são iguais");
     }
   }
 

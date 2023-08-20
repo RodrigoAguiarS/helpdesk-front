@@ -19,7 +19,6 @@
    padding: 0 10px; /* Alinhamento ao centro */
  }
  
- 
 /* Estilo para a barra de ferramentas */
 .mat-toolbar {
    background-color: #1976d2; /* Cor de fundo da barra de ferramentas */
@@ -62,4 +61,16 @@
    text-transform: uppercase; /* Transforma o texto em maiúsculas */
    font-weight: bold; /* Peso da fonte dos itens do menu */
  }
+ .user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-actions mat-form-field {
+  margin-right: 10px;
+}
+
+.user-actions button {
+  margin-left: 10px;
+}
  
