@@ -47,6 +47,8 @@ import { ClienteUpdateComponent } from './components/cliente/cliente-update/clie
 import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-list.component';
 import { ChamadoCreateComponent } from './components/chamado/chamado-create/chamado-create.component';
 import { CPFPipe } from './cpf.pipe';
+import { CnpjFormatPipe } from './cnpjFormatPipe';
+import { InscricaoEstadualFormatPipe } from './inscricaoEstadualFormatPipe';
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
@@ -55,6 +57,7 @@ import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
 import { ClinicaCreateComponent } from './components/clinica/clinica-create/clinica-create.component';
+import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-list.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +77,8 @@ import { ClinicaCreateComponent } from './components/clinica/clinica-create/clin
     ChamadoListComponent,
     ChamadoCreateComponent,
     CPFPipe,
+    InscricaoEstadualFormatPipe,
+    CnpjFormatPipe,
     ChamadoUpdateComponent,
     ChamadoReadComponent,
     UsuarioCreateComponent,
@@ -81,7 +86,8 @@ import { ClinicaCreateComponent } from './components/clinica/clinica-create/clin
     UsuarioListComponent,
     AdminComponent,
     UsuarioDeleteComponent,
-    ClinicaCreateComponent
+    ClinicaCreateComponent,
+    ClinicaListComponent
   ],
   imports: [
     BrowserModule,
