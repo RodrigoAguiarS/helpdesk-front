@@ -42,6 +42,12 @@
             <mat-icon matSuffix>password</mat-icon>
         </mat-form-field>
 
+
+        <mat-checkbox [(ngModel)]="usuario.ativo" name="ativo" class="fullWidth" color="primary" [checked]="usuario.ativo">
+            {{ retornaStatus(usuario.ativo) }}
+        </mat-checkbox>
+
+
         <div class="password-mismatch" *ngIf="confirmaSenha.value !== usuario.senha && confirmaSenha.dirty"
             (blur)="checkPasswordMatch()">
             As senhas não são iguais.

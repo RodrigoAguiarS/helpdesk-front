@@ -13,7 +13,11 @@ export class UsuarioListComponent implements OnInit {
 
   ELEMENT_DATA: Usuario[] = []
 
+
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'clinica', 'acoes'];
+
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'clinica', 'ativo', 'acoes'];
+
   dataSource = new MatTableDataSource<Usuario>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

@@ -6,9 +6,17 @@ import { MensagemService } from 'src/app/services/mensagem.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
+
   selector: 'app-usuario-update',
   templateUrl: './usuario-update.component.html',
   styleUrls: ['./usuario-update.component.css']
+})
+export class UsuarioUpdateComponent implements OnInit {
+
+
+  selector: "app-usuario-update",
+  templateUrl: "./usuario-update.component.html",
+  styleUrls: ["./usuario-update.component.css"],
 })
 export class UsuarioUpdateComponent implements OnInit {
 
@@ -16,18 +24,30 @@ export class UsuarioUpdateComponent implements OnInit {
   hide = true;
   roles: string[] = [];
 
+
   nome: FormControl =  new FormControl(null, Validators.minLength(3));
   cpf: FormControl =       new FormControl(null, Validators.required);
   email: FormControl =        new FormControl(null, Validators.email);
+
+  nome: FormControl = new FormControl(null, Validators.minLength(3));
+  cpf: FormControl = new FormControl(null, Validators.required);
+  email: FormControl = new FormControl(null, Validators.email);
+
   senha: FormControl = new FormControl(null, Validators.minLength(3));
   confirmaSenha: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
     private usuarioService: UsuarioService,
     private mensagemService: MensagemService,
+
     private router:          Router,
     private route:   ActivatedRoute,
     ) { }
+
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
 
   ngOnInit(): void {
     this.usuario = new Usuario();
@@ -35,6 +55,7 @@ export class UsuarioUpdateComponent implements OnInit {
     this.usuario.cpf = this.cpf.value;
     this.usuario.email = this.email.value;
     this.usuario.senha = this.senha.value;
+
     this.usuario.id = this.route.snapshot.paramMap.get('id');
     this.findById();
    }
@@ -44,13 +65,31 @@ export class UsuarioUpdateComponent implements OnInit {
       resposta.perfis = []
       this.usuario = resposta;
     })
+
+    this.usuario.id = this.route.snapshot.paramMap.get("id");
+    this.findById();
+  }
+
+  findById(): void {
+    this.usuarioService.findById(this.usuario.id).subscribe((resposta) => {
+      resposta.perfis = [];
+      this.usuario = resposta;
+    });
+
   }
 
   update(): void {
     this.usuarioService.update(this.usuario).subscribe({
       next: () => {
+
         this.mensagemService.showSuccessoMensagem('Usuário atualizado com sucesso');
         this.router.navigate(['home']);
+
+        this.mensagemService.showSuccessoMensagem(
+          "Usuário atualizado com sucesso"
+        );
+        this.router.navigate(["usuarios"]);
+
       },
       error: (ex) => {
         if (ex.error.errors) {
@@ -60,6 +99,7 @@ export class UsuarioUpdateComponent implements OnInit {
         } else {
           this.mensagemService.showErrorMensagem(ex.error.message);
         }
+
       }
     });
   }
@@ -67,6 +107,14 @@ export class UsuarioUpdateComponent implements OnInit {
 
   addPerfil(perfil: any): void {
     if(this.usuario.perfis.includes(perfil)) {
+
+      },
+    });
+  }
+
+  addPerfil(perfil: any): void {
+    if (this.usuario.perfis.includes(perfil)) {
+
       this.usuario.perfis.splice(this.usuario.perfis.indexOf(perfil), 1);
     } else {
       this.usuario.perfis.push(perfil);
@@ -74,9 +122,19 @@ export class UsuarioUpdateComponent implements OnInit {
   }
 
   validaCampos(): boolean {
+
     return this.nome.valid && this.cpf.valid
      && this.email.valid && this.senha.valid
-     && this.confirmaSenha.valid && this.senha.value === this.confirmaSenha.value 
+
+    return (
+      this.nome.valid &&
+      this.cpf.valid &&
+      this.email.valid &&
+      this.senha.valid &&
+      this.confirmaSenha.valid &&
+      this.senha.value === this.confirmaSenha.value
+    );
+
   }
 
   checkPasswordMatch(): void {
@@ -91,5 +149,10 @@ export class UsuarioUpdateComponent implements OnInit {
   togglePasswordVisibility(): void {
     this.hide = !this.hide;
   }
+
+  retornaStatus(status: boolean): string {
+    return status ? "ATIVO" : "NÃO ATIVO";
+  }
+
 }
 

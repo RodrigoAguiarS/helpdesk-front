@@ -35,18 +35,4 @@
 
  mat-icon {
    opacity: .8;
-
  }
-
- }
- /* Estilização para o campo de checkbox */
-.checkbox-container {
-   display: flex;
-   align-items: center;
-   margin-top: 10px;
-}
-
-.checkbox-label {
-   margin-left: 10px;
-}
-

@@ -54,6 +54,10 @@ import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usua
 import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-list.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 
+
+import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +81,12 @@ import { AdminComponent } from './components/admin/admin/admin.component';
     UsuarioCreateComponent,
     UsuarioUpdateComponent,
     UsuarioListComponent,
+
     AdminComponent
+
+    AdminComponent,
+    UsuarioDeleteComponent
+
   ],
   imports: [
     BrowserModule,
