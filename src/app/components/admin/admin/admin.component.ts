@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { RefreshTokenRequest } from 'src/app/models/refreshTokenRequest';
 import { RefreshTokenResponse } from 'src/app/models/refreshTokenResponse';
 import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from 'src/app/services/auth.service';
