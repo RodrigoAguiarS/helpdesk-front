@@ -16,6 +16,10 @@ import { TecnicoDeleteComponent } from './components/tecnico/tecnico-delete/tecn
 import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-list.component';
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
+import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
+import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
+import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-list.component';
+import { AdminComponent } from './components/admin/admin/admin.component';
 
 
 const routes: Routes = [
@@ -23,6 +27,12 @@ const routes: Routes = [
     {
         path: '', component: NavComponent, canActivate: [AuthGuard], children: [
             { path: 'home', component: HomeComponent },
+
+            { path: 'usuarios', component: UsuarioListComponent },
+            { path: 'usuarios/create', component: UsuarioCreateComponent },
+            { path: 'usuarios/update/:id', component: UsuarioUpdateComponent },
+
+            { path: 'administrador', component: AdminComponent },
 
             { path: 'tecnicos', component: TecnicoListComponent },
             { path: 'tecnicos/create', component: TecnicoCreateComponent },

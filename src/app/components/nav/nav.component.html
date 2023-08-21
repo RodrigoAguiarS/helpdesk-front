@@ -6,9 +6,9 @@
              <i class="material-icons">home</i>
              Home
           </a>
-          <a mat-list-item routerLink="tecnicos">
+          <a mat-list-item *ngIf="roles.includes('ROLE_ADMIN_GERAL')" routerLink="usuarios">
              <i class="material-icons">account_circle</i>
-             Técnicos
+             Usuários
           </a>
           <a mat-list-item routerLink="clientes">
              <i class="material-icons">person</i>
@@ -22,10 +22,10 @@
              <i class="material-icons">code</i>
              Github
           </a>
-          <a mat-list-item routerLink (click)="logout()">
-             <i class="material-icons">logout</i>
-             Logout
-          </a>
+          <a mat-list-item *ngIf="roles.includes('ROLE_ADMIN_GERAL')" routerLink="administrador">
+            <i class="material-icons">supervisor_account</i>
+            Adminstração
+         </a>
        </mat-nav-list>
     </mat-drawer>
  

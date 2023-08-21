@@ -1,3 +1,44 @@
-<div class="container">
-    <h1 class="mat-elevation-z8">Help Desk</h1>
- </div>
+<mat-toolbar>
+    <!-- Nome e Perfis do usuário -->
+    <span class="user-info">
+        <mat-icon>account_circle</mat-icon>
+        {{ usuario?.nome }}
+    </span>
+    <span class="user-info">
+        <mat-icon>dashboard</mat-icon>
+        {{ usuario?.perfis }}
+    </span>
+
+    <!-- Espaçador flexível -->
+    <span class="example-spacer"></span>
+
+    <div class="user-actions">
+        <mat-form-field *ngIf="roles.includes('ROLE_ADMIN_GERAL')">
+          <input matInput placeholder="Login do Usuário" [(ngModel)]="loginComoUsuario">
+        </mat-form-field>
+      
+        <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-raised-button (click)="toggleLogarDeslogar()">
+          {{ usuarioTrocado ? 'Voltar ao Usuário' : 'Logar' }}
+        </button>
+    </div>
+
+    <!-- Espaçador flexível -->
+    <span class="example-spacer"></span>
+
+    <!-- E-mail do usuário -->
+    <span class="user-info">
+        <mat-icon>email</mat-icon>
+        {{ usuario?.email }}
+    </span>
+
+    <!-- Botão de dropdown -->
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'usuarios/update/' + usuario?.id">
+            Editar Usuário
+        </button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+</mat-toolbar>
