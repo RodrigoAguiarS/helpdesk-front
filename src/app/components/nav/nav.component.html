@@ -1,39 +1,81 @@
 <mat-drawer-container class="container" autosize>
-    <mat-drawer #drawer class="sidenav" mode="side">
-       <img src="assets/img/side-image.svg" alt="Imagem de navegação">
-       <mat-nav-list class="nav-list">
-          <a mat-list-item routerLink="home">
-             <i class="material-icons">home</i>
-             Home
-          </a>
-          <a mat-list-item *ngIf="roles.includes('ROLE_ADMIN_GERAL')" routerLink="usuarios">
-             <i class="material-icons">account_circle</i>
-             Usuários
-          </a>
-          <a mat-list-item routerLink="clientes">
-             <i class="material-icons">person</i>
-             Clientes
-          </a>
+   <mat-drawer #drawer class="sidenav" mode="side">
+      <img src="assets/img/side-image.svg" alt="Imagem de navegação">
+      <mat-nav-list class="nav-list">
+         <a mat-list-item routerLink="home">
+            <i class="material-icons">home</i>
+            Home
+         </a>
+         <a mat-list-item *ngIf="roles.includes('ROLE_ADMIN_GERAL')" routerLink="usuarios">
+            <i class="material-icons">account_circle</i>
+            Usuários
+         </a>
+
+         <!-- Menu Clínica -->
+         <button mat-button [matMenuTriggerFor]="clinicaMenu">
+            <mat-icon>local_hospital</mat-icon>
+            Clínica
+         </button>
+         <mat-menu #clinicaMenu="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="subMenuListarClinica">
+               <mat-icon>list</mat-icon>
+               Listar
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuCadastrarClinica">
+               <mat-icon>add_circle</mat-icon>
+               Cadastrar
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuAgendaClinica">
+               <mat-icon>event</mat-icon>
+               Agenda da Clínica
+            </button>
+         </mat-menu>
+
+         <mat-menu #subMenuListarClinica="matMenu">
+            <button mat-menu-item routerLink="clinicas">
+               <mat-icon>list</mat-icon>
+               Lista de Clínicas
+            </button>
+         </mat-menu>
+
+         <mat-menu #subMenuCadastrarClinica="matMenu">
+            <button mat-menu-item routerLink="clinicas/create">
+               <mat-icon>add_circle</mat-icon>
+               Cadastrar Clínica
+            </button>
+         </mat-menu>
+
+         <mat-menu #subMenuAgendaClinica="matMenu">
+            <button mat-menu-item routerLink="agendas">
+               <mat-icon>event</mat-icon>
+               Agenda da Clínica
+            </button>
+         </mat-menu>
+
+
+         <a mat-list-item routerLink="clientes">
+            <i class="material-icons">person</i>
+            Clientes
+         </a>
          <a mat-list-item routerLink="chamados">
             <i class="material-icons">support</i>
             Chamados
          </a>
-          <a mat-list-item href="https://github.com/RodrigoAguiarS" target="_blank">
-             <i class="material-icons">code</i>
-             Github
-          </a>
-          <a mat-list-item *ngIf="roles.includes('ROLE_ADMIN_GERAL')" routerLink="administrador">
+         <a mat-list-item href="https://github.com/RodrigoAguiarS" target="_blank">
+            <i class="material-icons">code</i>
+            Github
+         </a>
+         <a mat-list-item *ngIf="roles.includes('ROLE_ADMIN_GERAL')" routerLink="administrador">
             <i class="material-icons">supervisor_account</i>
             Adminstração
          </a>
-       </mat-nav-list>
-    </mat-drawer>
- 
-    <div class="sidenav-content">
-        <app-header></app-header>
-       <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
-          <mat-icon>menu</mat-icon>
-       </button>
-       <router-outlet></router-outlet>
-    </div>
- </mat-drawer-container>
+      </mat-nav-list>
+   </mat-drawer>
+   <div class="sidenav-content">
+      <app-header></app-header>
+      <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
+         <mat-icon>menu</mat-icon>
+      </button>
+      <router-outlet></router-outlet>
+   </div>
+</mat-drawer-container>
