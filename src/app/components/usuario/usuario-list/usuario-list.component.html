@@ -33,6 +33,11 @@
              <td mat-cell *matCellDef="let element"> {{element?.email}} </td>
           </ng-container>
 
+          <ng-container matColumnDef="ativo">
+            <th mat-header-cell *matHeaderCellDef> ativo </th>
+            <td mat-cell *matCellDef="let element"> {{ element?.ativo ? 'Sim' : 'Não' }} </td>
+         </ng-container>
+
           <ng-container matColumnDef="clinica">
             <th mat-header-cell *matHeaderCellDef> Clinica </th>
             <td mat-cell *matCellDef="let element"> {{element.clinica?.nome}} </td>

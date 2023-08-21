@@ -42,4 +42,8 @@ export class UsuarioService {
   getUserInfo(token: string): Observable<Usuario> {
     return this.http.get<Usuario>(`${API_CONFIG.baseUrl}/api/admin/info?token=${token}`);
   }
+
+  delete(id: any): Observable<Usuario> {
+    return this.http.delete<Usuario>(`${API_CONFIG.baseUrl}/api/usuarios/${id}`);
+  }
 }
