@@ -84,4 +84,8 @@ export class UsuarioCreateComponent implements OnInit {
   togglePasswordVisibility(): void {
     this.hide = !this.hide;
   }
+
+  retornaStatus(status: boolean): string {
+    return status ? "ATIVO" : "NÃO ATIVO";
+  }
 }
