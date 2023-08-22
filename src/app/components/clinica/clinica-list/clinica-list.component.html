@@ -8,6 +8,11 @@
        <mat-label>Pesquise Aqui</mat-label>
        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. nome da clínica" #input>
     </mat-form-field>
+
+    <mat-radio-group color="primary">
+        <mat-radio-button (click)="orderByStatus(true)" value="0">ATIVO</mat-radio-button>
+        <mat-radio-button (click)="orderByStatus(false)" value="1">NÃO ATIVO</mat-radio-button>
+      </mat-radio-group>
  
     <div class="mat-elevation-z8">
  
@@ -55,7 +60,7 @@
  
           <ng-container matColumnDef="ativo">
              <th mat-header-cell *matHeaderCellDef> Ativo </th>
-             <td mat-cell *matCellDef="let element"> {{element.ativo ? 'Sim' : 'Não'}} </td>
+             <td mat-cell *matCellDef="let element"> {{retornaSituacao(element.ativo)}} </td>
           </ng-container>
  
           <ng-container matColumnDef="acoes">

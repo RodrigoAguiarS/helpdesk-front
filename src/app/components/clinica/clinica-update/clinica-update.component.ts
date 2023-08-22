@@ -74,7 +74,7 @@ export class ClinicaUpdateComponent implements OnInit {
   }
 
   retornaStatus(ativo: boolean): string {
-    return ativo ? "CLINICA ATIVO" : "CLINICA NÃO ATIVO";
+    return ativo ? "CLINICA ATIVA" : "CLINICA NÃO ATIVA";
   }
 }
 

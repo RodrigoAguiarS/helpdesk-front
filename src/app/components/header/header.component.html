@@ -1,8 +1,8 @@
 <mat-toolbar>
-    <!-- Nome e Perfis do usuário -->
+        <!-- E-mail do usuário -->
     <span class="user-info">
-        <mat-icon>account_circle</mat-icon>
-        {{ usuario?.nome }}
+        <mat-icon>email</mat-icon>
+        {{ usuario?.email }}
     </span>
     <span class="user-info">
         <mat-icon>dashboard</mat-icon>
@@ -25,10 +25,10 @@
     <!-- Espaçador flexível -->
     <span class="example-spacer"></span>
 
-    <!-- E-mail do usuário -->
+    <!-- Nome e Perfis do usuário -->
     <span class="user-info">
-        <mat-icon>email</mat-icon>
-        {{ usuario?.email }}
+        <mat-icon>account_circle</mat-icon>
+        {{ usuario?.nome }}
     </span>
 
     <!-- Botão de dropdown -->
@@ -36,6 +36,12 @@
         <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
+        <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-menu-item [routerLink]="'usuarios/create'">
+            Novo Usúario
+        </button>
+        <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-menu-item [routerLink]="'usuarios'">
+            Listar Usúarios
+        </button>
         <button mat-menu-item [routerLink]="'usuarios/update/' + usuario?.id">
             Editar Usuário
         </button>

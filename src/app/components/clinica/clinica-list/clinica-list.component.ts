@@ -12,6 +12,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class ClinicaListComponent implements OnInit {
 
   ELEMENT_DATA: Clinica[] = []
+  FILTERED_DATA: Clinica[] = []
 
   displayedColumns: string[] = [
   'id',
@@ -71,5 +72,24 @@ export class ClinicaListComponent implements OnInit {
     };
   
     this.dataSource.filter = filterValue;
+  }
+
+  orderByStatus(ativo: any): void{
+    let list: Clinica[] = []
+    this.ELEMENT_DATA.forEach(element => {
+      if(element.ativo == ativo)
+        list.push(element)
+    });
+    this.FILTERED_DATA = list;
+    this.dataSource = new MatTableDataSource<Clinica>(list);
+    this.dataSource.paginator = this.paginator;
+  }
+
+  retornaSituacao(ativo: any): string {
+    if(ativo) {
+      return 'SIM'
+    } else {
+      return 'NÃO'
+    }
   }
 }
