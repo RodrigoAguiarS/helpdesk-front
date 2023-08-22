@@ -18,4 +18,12 @@ export class ClinicaService {
   findAll(): Observable<Clinica[]> {
     return this.http.get<Clinica[]>(`${API_CONFIG.baseUrl}/api/clinicas`);
   }
+
+  update(clinica: Clinica): Observable<Clinica> {
+    return this.http.put<Clinica>(`${API_CONFIG.baseUrl}/api/clinicas/${clinica.id}`, clinica);
+  }
+
+  findById(id: any): Observable<Clinica> {
+    return this.http.get<Clinica>(`${API_CONFIG.baseUrl}/api/clinicas/${id}`);
+  }
 }

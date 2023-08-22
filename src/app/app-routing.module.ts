@@ -22,6 +22,7 @@ import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
 import { ClinicaCreateComponent } from './components/clinica/clinica-create/clinica-create.component';
 import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-list.component';
+import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 
 
@@ -38,6 +39,7 @@ const routes: Routes = [
 
             { path: 'clinicas', component: ClinicaListComponent },
             { path: 'clinicas/create', component: ClinicaCreateComponent },
+            { path: 'clinicas/update/:id', component: ClinicaUpdateComponent },
 
             { path: 'administrador', component: AdminComponent },
 

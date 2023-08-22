@@ -58,6 +58,7 @@ import { AdminComponent } from './components/admin/admin/admin.component';
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
 import { ClinicaCreateComponent } from './components/clinica/clinica-create/clinica-create.component';
 import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-list.component';
+import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-
     AdminComponent,
     UsuarioDeleteComponent,
     ClinicaCreateComponent,
-    ClinicaListComponent
+    ClinicaListComponent,
+    ClinicaUpdateComponent
   ],
   imports: [
     BrowserModule,

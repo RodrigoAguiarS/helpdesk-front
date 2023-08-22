@@ -41,7 +41,7 @@ export class UsuarioCreateComponent implements OnInit {
       }
     });
   }
-  
+
   create(): void {
     this.usuario.nome = this.nome.value;
     this.usuario.cpf = this.cpf.value;
@@ -68,7 +68,12 @@ export class UsuarioCreateComponent implements OnInit {
 
   validaCampos(): boolean {
     return (
-      this.nome.valid && this.cpf.valid && this.email.valid && this.senha.valid
+      this.nome.valid &&
+      this.cpf.valid &&
+      this.email.valid &&
+      this.senha.valid &&
+      this.confirmaSenha.valid &&
+      this.senha.value === this.confirmaSenha.value
     );
   }
 
