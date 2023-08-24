@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Clinica } from 'src/app/models/clinica';
 import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from 'src/app/services/auth.service';
+import { ClinicaService } from 'src/app/services/clinica.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -16,21 +18,25 @@ export class UsuarioCreateComponent implements OnInit {
   usuario: Usuario;
   hide = true;
   roles: string[] = [];
+  clinicas: Clinica[] = []
 
   nome: FormControl = new FormControl(null, Validators.minLength(3));
   cpf: FormControl = new FormControl(null, Validators.required);
   email: FormControl = new FormControl(null, Validators.email);
   senha: FormControl = new FormControl(null, Validators.minLength(3));
   confirmaSenha: FormControl = new FormControl(null, Validators.minLength(3));
+  clinica: FormControl = new FormControl(null, [Validators.required]);
 
   constructor(
     private usuarioService: UsuarioService,
     private authService: AuthService,
+    private clinicaService: ClinicaService,
     private mensagemService: MensagemService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.findAllClinicas();
     this.usuario = new Usuario();
     this.authService.getUserRoles().subscribe({
       next: (roles: string[]) => {
@@ -40,6 +46,12 @@ export class UsuarioCreateComponent implements OnInit {
         this.mensagemService.showErrorMensagem(error.error.message)
       }
     });
+  }
+
+  findAllClinicas(): void {
+    this.clinicaService.findAll().subscribe(resposta => {
+      this.clinicas = resposta;
+    })
   }
 
   create(): void {
@@ -73,6 +85,7 @@ export class UsuarioCreateComponent implements OnInit {
       this.email.valid &&
       this.senha.valid &&
       this.confirmaSenha.valid &&
+      this.clinica.valid &&
       this.senha.value === this.confirmaSenha.value
     );
   }

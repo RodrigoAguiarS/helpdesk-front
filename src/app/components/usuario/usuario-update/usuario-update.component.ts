@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Clinica } from 'src/app/models/clinica';
 import { Usuario } from 'src/app/models/usuario';
+import { ClinicaService } from 'src/app/services/clinica.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -14,16 +16,19 @@ export class UsuarioUpdateComponent implements OnInit {
   usuario: Usuario;
   hide = true;
   roles: string[] = [];
+  clinicas: Clinica[] = []
 
   nome: FormControl = new FormControl(null, Validators.minLength(3));
   cpf: FormControl = new FormControl(null, Validators.required);
   email: FormControl = new FormControl(null, Validators.email);
   senha: FormControl = new FormControl(null, Validators.minLength(3));
   confirmaSenha: FormControl = new FormControl(null, Validators.minLength(3));
+  clinica: FormControl = new FormControl(null, [Validators.required]);
 
   constructor(
     private usuarioService: UsuarioService,
     private mensagemService: MensagemService,
+    private clinicaService: ClinicaService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -34,8 +39,10 @@ export class UsuarioUpdateComponent implements OnInit {
     this.usuario.cpf = this.cpf.value;
     this.usuario.email = this.email.value;
     this.usuario.senha = this.senha.value;
+    this.usuario.clinica = this.clinica.value;
     this.usuario.id = this.route.snapshot.paramMap.get("id");
     this.findById();
+    this.findAllClinicas();
   }
 
   findById(): void {
@@ -65,6 +72,12 @@ export class UsuarioUpdateComponent implements OnInit {
     });
   }
 
+  findAllClinicas(): void {
+    this.clinicaService.findAll().subscribe(resposta => {
+      this.clinicas = resposta;
+    })
+  }
+
   addPerfil(perfil: any): void {
     if (this.usuario.perfis.includes(perfil)) {
       this.usuario.perfis.splice(this.usuario.perfis.indexOf(perfil), 1);
@@ -79,6 +92,7 @@ export class UsuarioUpdateComponent implements OnInit {
       this.cpf.valid &&
       this.email.valid &&
       this.senha.valid &&
+      this.clinica.valid &&
       this.confirmaSenha.valid &&
       this.senha.value === this.confirmaSenha.value
     );
@@ -100,5 +114,9 @@ export class UsuarioUpdateComponent implements OnInit {
   retornaStatus(status: boolean): string {
     return status ? "ATIVO" : "NÃO ATIVO";
   }
+
+  compareClinicas(clinica1: any, clinica2: any): boolean {
+    return clinica1 && clinica2 ? clinica1.id === clinica2.id : clinica1 === clinica2;
+}
 }
 

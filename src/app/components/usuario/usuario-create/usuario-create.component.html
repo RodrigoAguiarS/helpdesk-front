@@ -25,6 +25,19 @@
             <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
 
+        <div class="clinicas">
+            <mat-form-field class="full-width" appearance="outline">
+               <mat-label>Selecione um clinica</mat-label>
+               <mat-select 
+               [(ngModel)]="usuario.clinica"
+               name="clinica"
+               [formControl]="clinica" 
+               required>
+                 <mat-option *ngFor="let cli of clinicas" value="{{ cli.id }}">{{ cli.nome }}</mat-option>
+               </mat-select>
+             </mat-form-field>
+          </div>
+
         <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Senha</mat-label>
             <input [(ngModel)]="usuario.senha" name="senha" [formControl]="senha" required matInput
