@@ -4,8 +4,9 @@
         <mat-icon>email</mat-icon>
         {{ usuario?.email }}
     </span>
+
     <span class="user-info">
-        <mat-icon>dashboard</mat-icon>
+        <mat-icon *ngIf="usuario?.perfis" >dashboard</mat-icon>
         {{ usuario?.perfis }}
     </span>
 
@@ -17,18 +18,16 @@
           <input matInput placeholder="Login do Usuário" [(ngModel)]="loginComoUsuario">
         </mat-form-field>
       
-        <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-raised-button (click)="toggleLogarDeslogar()">
+        <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')"  [disabled]="!loginComoUsuario" mat-raised-button (click)="toggleLogarDeslogar()">
           {{ usuarioTrocado ? 'Voltar ao Usuário' : 'Logar' }}
         </button>
     </div>
 
-    <!-- Espaçador flexível -->
-    <span class="example-spacer"></span>
 
     <!-- Nome e Perfis do usuário -->
     <span class="user-info">
         <mat-icon>account_circle</mat-icon>
-        {{ usuario?.nome }}
+        {{ usuario?.pessoa?.nome }}
     </span>
 
     <!-- Botão de dropdown -->

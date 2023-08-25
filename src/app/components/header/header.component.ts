@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     private mensagemService: MensagemService,
     private router: Router,
     private cdRef: ChangeDetectorRef,
-    private userChangeService: UserChangeService
+    private userChangeService: UserChangeService,
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +43,7 @@ export class HeaderComponent implements OnInit {
         this.roles = roles;
         this.usuario = usuario;
         this.usuarioLogado = usuario;
+        this.cdRef.markForCheck();
       },
       error: (error) => {
         this.mensagemService.showErrorMensagem(error.error.message);
@@ -70,6 +71,7 @@ export class HeaderComponent implements OnInit {
               next: (refreshTokenResponse: RefreshTokenResponse) => {
                 localStorage.setItem("token", refreshTokenResponse.newToken);
                 this.atualizarInformacoesUsuario(refreshTokenResponse.newToken);
+                this.router.navigate(['home']);
               },
               error: (error) => {
                 this.mensagemService.showErrorMensagem(error.error.message);

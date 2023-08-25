@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Clinica } from 'src/app/models/clinica';
+import { Pessoa } from 'src/app/models/pessoa';
 import { Usuario } from 'src/app/models/usuario';
 import { ClinicaService } from 'src/app/services/clinica.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
@@ -35,8 +36,9 @@ export class UsuarioUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuario = new Usuario();
-    this.usuario.nome = this.nome.value;
-    this.usuario.cpf = this.cpf.value;
+    this.usuario.pessoa = new Pessoa();
+    this.usuario.pessoa.nome = this.nome.value;
+    this.usuario.pessoa.cpf = this.cpf.value;
     this.usuario.email = this.email.value;
     this.usuario.senha = this.senha.value;
     this.usuario.clinica = this.clinica.value;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Clinica } from 'src/app/models/clinica';
+import { Pessoa } from 'src/app/models/pessoa';
 import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClinicaService } from 'src/app/services/clinica.service';
@@ -38,6 +39,7 @@ export class UsuarioCreateComponent implements OnInit {
   ngOnInit(): void {
     this.findAllClinicas();
     this.usuario = new Usuario();
+    this.usuario.pessoa = new Pessoa();
     this.authService.getUserRoles().subscribe({
       next: (roles: string[]) => {
         this.roles = roles;
@@ -55,8 +57,8 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   create(): void {
-    this.usuario.nome = this.nome.value;
-    this.usuario.cpf = this.cpf.value;
+    this.usuario.pessoa.nome = this.nome.value;
+    this.usuario.pessoa.cpf = this.cpf.value;
     this.usuario.email = this.email.value;
     this.usuario.senha = this.senha.value;
     
