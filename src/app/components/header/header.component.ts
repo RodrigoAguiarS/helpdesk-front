@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
   // Realiza o login como outro usuário
   logarComoUsuario(): void {
     if (this.loginComoUsuario) {
-      this.authService.impersonateUser(this.loginComoUsuario).subscribe({
+      this.authService.executarAcaoComoUsuario(this.loginComoUsuario).subscribe({
         next: (response) => {
           this.mensagemService.showSuccessoMensagem(response.message);
           this.usuarioTrocado = true;

@@ -51,11 +51,11 @@ export class AuthService {
     return this.http.post<RefreshTokenResponse>(`${API_CONFIG.baseUrl}/api/admin/refresh-token`, refreshTokenRequest);
   }
 
-  impersonateUser(username: string): Observable<any> {
+  executarAcaoComoUsuario(username: string): Observable<any> {
     return this.http.get(`${API_CONFIG.baseUrl}/api/admin/impersonate/${username}`);
   }
 
-  revertToOriginalUser(): Observable<any> {
+  reverterParaUsuarioOriginal(): Observable<any> {
     return this.http.get(`${API_CONFIG.baseUrl}/api/admin/revert-to-original`);
   }
 
