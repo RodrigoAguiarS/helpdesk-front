@@ -4,6 +4,13 @@
         <h1 class="fullWidth">Cadastrar Usuários</h1>
         <img class="fullWidth" src="assets/img/usuario-create.svg" alt="Help Desk">
 
+        <section class="section">
+            <mat-checkbox (click)="addPerfil(0)" class="margin" color="primary">Admin</mat-checkbox>
+            <mat-checkbox (click)="addPerfil(1)" class="margin" color="primary">Operadores</mat-checkbox>
+            <mat-checkbox (click)="addPerfil(2)" class="margin" color="primary">Admin Clinica</mat-checkbox>
+            <mat-checkbox (click)="addPerfil(3)" class="margin" color="primary">Operadores Clinica</mat-checkbox>
+        </section>
+
         <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Nome</mat-label>
             <input [(ngModel)]="usuario.pessoa.nome" name="nome" [formControl]="nome" required matInput

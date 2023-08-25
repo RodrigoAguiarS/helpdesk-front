@@ -40,6 +40,7 @@ export class UsuarioCreateComponent implements OnInit {
     this.findAllClinicas();
     this.usuario = new Usuario();
     this.usuario.pessoa = new Pessoa();
+    this.usuario.perfis = [];
     this.authService.getUserRoles().subscribe({
       next: (roles: string[]) => {
         this.roles = roles;
@@ -107,5 +108,13 @@ export class UsuarioCreateComponent implements OnInit {
 
   retornaStatus(status: boolean): string {
     return status ? "ATIVO" : "NÃO ATIVO";
+  }
+
+  addPerfil(perfil: any): void {
+    if(this.usuario.perfis.includes(perfil)) {
+      this.usuario.perfis.splice(this.usuario.perfis.indexOf(perfil), 1);
+    } else {
+      this.usuario.perfis.push(perfil);
+    }
   }
 }
