@@ -31,6 +31,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregarDadosIniciais();
+    this.userChangeService.userChanged$.subscribe(() => {
+      this.carregarDadosIniciais();
+    });
   }
 
   // Carrega as informações iniciais do usuário e suas funções

@@ -6,6 +6,7 @@ import { Pessoa } from 'src/app/models/pessoa';
 import { Usuario } from 'src/app/models/usuario';
 import { ClinicaService } from 'src/app/services/clinica.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
+import { UserChangeService } from 'src/app/services/user-change-service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -31,7 +32,8 @@ export class UsuarioUpdateComponent implements OnInit {
     private mensagemService: MensagemService,
     private clinicaService: ClinicaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userChangeService: UserChangeService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +62,7 @@ export class UsuarioUpdateComponent implements OnInit {
         this.mensagemService.showSuccessoMensagem(
           "Usuário atualizado com sucesso"
         );
+        this.userChangeService.notifyUserChanged();
         this.router.navigate(["usuarios"]);
       },
       error: (ex) => {
