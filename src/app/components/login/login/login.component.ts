@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Credenciais } from 'src/app/models/credenciais';
@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
     email: '',
     senha: ''
   }
+
+  mostrarSenha = true;
 
   email = new FormControl(null, Validators.email);
   senha = new FormControl(null, Validators.minLength(3));
@@ -43,5 +45,9 @@ export class LoginComponent implements OnInit {
   
   validaCampos(): boolean {
     return !!(this.email.valid && this.senha.valid);
+  }
+
+  toggleVisualizarSenha(): void {
+    this.mostrarSenha = !this.mostrarSenha;
   }
 }

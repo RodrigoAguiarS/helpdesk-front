@@ -35,7 +35,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/login/login/login.component';
 import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
 import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
 import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
@@ -59,6 +59,8 @@ import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usua
 import { ClinicaCreateComponent } from './components/clinica/clinica-create/clinica-create.component';
 import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-list.component';
 import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
+import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
+import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,9 @@ import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clin
     UsuarioDeleteComponent,
     ClinicaCreateComponent,
     ClinicaListComponent,
-    ClinicaUpdateComponent
+    ClinicaUpdateComponent,
+    LoginAlterarComponent,
+    LoginRecuperarComponent
   ],
   imports: [
     BrowserModule,
