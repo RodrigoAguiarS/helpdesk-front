@@ -61,6 +61,10 @@ import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-
 import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
+import { ConvenioCreateComponent } from './components/convenio/convenio-create/convenio-create.component';
+import { ConvenioListComponent } from './components/convenio/convenio-list/convenio-list.component';
+import { ConvenioUpdateComponent } from './components/convenio/convenio-update/convenio-update.component';
+import { ConvenioDeleteComponent } from './components/convenio/convenio-delete/convenio-delete.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +97,11 @@ import { LoginRecuperarComponent } from './components/login/login-recuperar/logi
     ClinicaListComponent,
     ClinicaUpdateComponent,
     LoginAlterarComponent,
-    LoginRecuperarComponent
+    LoginRecuperarComponent,
+    ConvenioCreateComponent,
+    ConvenioListComponent,
+    ConvenioUpdateComponent,
+    ConvenioDeleteComponent
   ],
   imports: [
     BrowserModule,

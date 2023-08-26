@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     senha: ''
   }
 
-  mostrarSenha = true;
+  hide = true;
 
   email = new FormControl(null, Validators.email);
   senha = new FormControl(null, Validators.minLength(3));
@@ -48,6 +48,6 @@ export class LoginComponent implements OnInit {
   }
 
   toggleVisualizarSenha(): void {
-    this.mostrarSenha = !this.mostrarSenha;
+    this.hide = !this.hide;
   }
 }

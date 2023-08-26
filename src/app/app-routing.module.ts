@@ -25,6 +25,8 @@ import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-
 import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
+import { ConvenioCreateComponent } from './components/convenio/convenio-create/convenio-create.component';
+import { ConvenioListComponent } from './components/convenio/convenio-list/convenio-list.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 
 
@@ -44,6 +46,9 @@ const routes: Routes = [
             { path: 'clinicas', component: ClinicaListComponent },
             { path: 'clinicas/create', component: ClinicaCreateComponent },
             { path: 'clinicas/update/:id', component: ClinicaUpdateComponent },
+
+            { path: 'convenios', component: ConvenioListComponent },
+            { path: 'convenios/create', component: ConvenioCreateComponent },
 
             { path: 'administrador', component: AdminComponent },
 

@@ -46,12 +46,41 @@
                Agenda da Clínica
             </button>
          </mat-menu>
+         <!-- FIM Menu Clínica -->
+
+         <!-- Menu convenio -->
+         <button mat-button [matMenuTriggerFor]="convenioMenu">
+            <mat-icon>local_hospital</mat-icon>
+            Convênio
+         </button>
+         <mat-menu #convenioMenu="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="subMenuListarConvenio">
+               <mat-icon>list</mat-icon>
+               Listar
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuCadastrarConvenio">
+               <mat-icon>add_circle</mat-icon>
+               Cadastrar
+            </button>
+            <!-- Adicione outros itens do menu de convênio aqui -->
+         </mat-menu>
+         
+         <mat-menu #subMenuListarConvenio="matMenu">
+            <button mat-menu-item routerLink="convenios">
+               <mat-icon>list</mat-icon>
+               Lista de Convênios
+            </button>
+         </mat-menu>
+         
+         <mat-menu #subMenuCadastrarConvenio="matMenu">
+            <button mat-menu-item routerLink="convenios/create">
+               <mat-icon>add_circle</mat-icon>
+               Cadastrar Convênio
+            </button>
+         </mat-menu>
+         <!-- FIM Menu Convênio -->
 
 
-         <a mat-list-item routerLink="clientes">
-            <i class="material-icons">person</i>
-            Clientes
-         </a>
          <a mat-list-item routerLink="chamados">
             <i class="material-icons">support</i>
             Chamados

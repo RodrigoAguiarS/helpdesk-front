@@ -5,9 +5,9 @@
         {{ usuario?.email }}
     </span>
 
-    <span class="user-info">
-        <mat-icon *ngIf="usuario?.perfis" >dashboard</mat-icon>
-        {{ usuario?.perfis }}
+    <span *ngIf="roles.includes('ROLE_ADMIN_GERAL')" class="user-info">
+        <mat-icon>admin_panel_settings</mat-icon>
+        <mat-label>Adminstrador do Sistema</mat-label>
     </span>
 
     <!-- Espaçador flexível -->
