@@ -26,4 +26,8 @@ export class ConvenioService {
   findById(id: any): Observable<Convenio> {
     return this.http.get<Convenio>(`${API_CONFIG.baseUrl}/api/convenios/${id}`);
   }
+
+  delete(id: any): Observable<Convenio> {
+    return this.http.delete<Convenio>(`${API_CONFIG.baseUrl}/api/convenios/${id}`);
+  }
 }

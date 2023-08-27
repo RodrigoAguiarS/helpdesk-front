@@ -26,6 +26,7 @@ export class ConvenioListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
+    // TODO document why this method 'ngAfterViewInit' is empty
   }
 
   findAll() {
@@ -37,15 +38,15 @@ export class ConvenioListComponent implements OnInit {
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filterPredicate = (data: Convenio) => {
+      const situacaoUsuario = this.retornaSituacao(data.ativo).toLowerCase();
+      return situacaoUsuario.includes(filterValue);
+    };
+    this.dataSource.filter = filterValue;
   }
 
-  retornaSituacao(ativo: any): string {
-    if(ativo) {
-      return 'ATIVO'
-    } else {
-      return 'DESATIVADO'
-    }
+  retornaSituacao(ativo: boolean): string {
+    return ativo ? 'ATIVO' : 'DESATIVADO';
   }
 }

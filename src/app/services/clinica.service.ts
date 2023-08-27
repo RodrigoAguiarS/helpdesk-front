@@ -26,4 +26,8 @@ export class ClinicaService {
   findById(id: any): Observable<Clinica> {
     return this.http.get<Clinica>(`${API_CONFIG.baseUrl}/api/clinicas/${id}`);
   }
+
+  delete(id: any): Observable<Clinica> {
+    return this.http.delete<Clinica>(`${API_CONFIG.baseUrl}/api/clinicas/${id}`);
+  }
 }
