@@ -35,7 +35,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/login/login/login.component';
 import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
 import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
 import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
@@ -47,6 +47,8 @@ import { ClienteUpdateComponent } from './components/cliente/cliente-update/clie
 import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-list.component';
 import { ChamadoCreateComponent } from './components/chamado/chamado-create/chamado-create.component';
 import { CPFPipe } from './cpf.pipe';
+import { CnpjFormatPipe } from './cnpjFormatPipe';
+import { InscricaoEstadualFormatPipe } from './inscricaoEstadualFormatPipe';
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
@@ -56,6 +58,19 @@ import { AdminComponent } from './components/admin/admin/admin.component';
 
 
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
+import { ClinicaCreateComponent } from './components/clinica/clinica-create/clinica-create.component';
+import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-list.component';
+import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
+import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
+import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
+import { ConvenioCreateComponent } from './components/convenio/convenio-create/convenio-create.component';
+import { ConvenioListComponent } from './components/convenio/convenio-list/convenio-list.component';
+import { ConvenioUpdateComponent } from './components/convenio/convenio-update/convenio-update.component';
+import { ConvenioDeleteComponent } from './components/convenio/convenio-delete/convenio-delete.component';
+import { EspecialidadeCreateComponent } from './components/especialidade/especialidade-create/especialidade-create.component';
+import { EspecialidadeListComponent } from './components/especialidade/especialidade-list/especialidade-list.component';
+import { EspecialidadeUpdateComponent } from './components/especialidade/especialidade-update/especialidade-update.component';
+import { EspecialidadeDeleteComponent } from './components/especialidade/especialidade-delete/especialidade-delete.component';
 
 
 @NgModule({
@@ -76,16 +91,30 @@ import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usua
     ChamadoListComponent,
     ChamadoCreateComponent,
     CPFPipe,
+    InscricaoEstadualFormatPipe,
+    CnpjFormatPipe,
     ChamadoUpdateComponent,
     ChamadoReadComponent,
     UsuarioCreateComponent,
     UsuarioUpdateComponent,
     UsuarioListComponent,
 
-    AdminComponent
 
     AdminComponent,
-    UsuarioDeleteComponent
+    UsuarioDeleteComponent,
+    ClinicaCreateComponent,
+    ClinicaListComponent,
+    ClinicaUpdateComponent,
+    LoginAlterarComponent,
+    LoginRecuperarComponent,
+    ConvenioCreateComponent,
+    ConvenioListComponent,
+    ConvenioUpdateComponent,
+    ConvenioDeleteComponent,
+    EspecialidadeCreateComponent,
+    EspecialidadeListComponent,
+    EspecialidadeUpdateComponent,
+    EspecialidadeDeleteComponent
 
   ],
   imports: [

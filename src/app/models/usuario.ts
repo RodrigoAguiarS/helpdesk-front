@@ -1,17 +1,12 @@
 import { Clinica } from "./clinica";
+import { Pessoa } from "./pessoa";
 
 export class Usuario {
     id?: any;
     email: string;
     senha: string;
-    nome: string;
     perfis: string[];
-    sexo: string;
-    cpf: string;
-    rg: string;
-    dataNascimento: string;
-    telefonePrincipal: string;
-    telefoneSecundario: string;
+    pessoa: Pessoa;
     clinica: Clinica;
     ativo: boolean;
 }

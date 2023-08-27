@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserChangeService } from 'src/app/services/user-change-service';
 import { Subscription, catchError, switchMap } from 'rxjs';
 import { MensagemService } from 'src/app/services/mensagem.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-nav',

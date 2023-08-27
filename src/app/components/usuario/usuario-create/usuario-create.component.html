@@ -4,16 +4,23 @@
         <h1 class="fullWidth">Cadastrar Usuários</h1>
         <img class="fullWidth" src="assets/img/usuario-create.svg" alt="Help Desk">
 
+        <section class="section">
+            <mat-checkbox (click)="addPerfil(0)" class="margin" color="primary">Admin</mat-checkbox>
+            <mat-checkbox (click)="addPerfil(1)" class="margin" color="primary">Operadores</mat-checkbox>
+            <mat-checkbox (click)="addPerfil(2)" class="margin" color="primary">Admin Clinica</mat-checkbox>
+            <mat-checkbox (click)="addPerfil(3)" class="margin" color="primary">Operadores Clinica</mat-checkbox>
+        </section>
+
         <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Nome</mat-label>
-            <input [(ngModel)]="usuario.nome" name="nome" [formControl]="nome" required matInput
+            <input [(ngModel)]="usuario.pessoa.nome" name="nome" [formControl]="nome" required matInput
                 placeholder="Ex.. fulano de tal" maxlength="50">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>CPF</mat-label>
-            <input [(ngModel)]="usuario.cpf" name="cpf" [formControl]="cpf" required matInput
+            <input [(ngModel)]="usuario.pessoa.cpf" name="cpf" [formControl]="cpf" required matInput
                 placeholder="Ex..000.000.000-00" mask="000.000.000-00">
             <mat-icon matSuffix>pin </mat-icon>
         </mat-form-field>
@@ -24,6 +31,19 @@
                 placeholder="Ex.. fulano@mail.com">
             <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
+
+        <div class="clinicas">
+            <mat-form-field class="full-width" appearance="outline">
+               <mat-label>Selecione um clinica</mat-label>
+               <mat-select 
+               [(ngModel)]="usuario.clinica"
+               name="clinica"
+               [formControl]="clinica" 
+               required>
+                 <mat-option *ngFor="let cli of clinicas" value="{{ cli.id }}">{{ cli.nome }}</mat-option>
+               </mat-select>
+             </mat-form-field>
+          </div>
 
         <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Senha</mat-label>

@@ -14,8 +14,6 @@ export class UsuarioListComponent implements OnInit {
   ELEMENT_DATA: Usuario[] = []
 
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'clinica', 'acoes'];
-
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'clinica', 'ativo', 'acoes'];
 
   dataSource = new MatTableDataSource<Usuario>(this.ELEMENT_DATA);
@@ -41,8 +39,8 @@ export class UsuarioListComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
   
     this.dataSource.filterPredicate = (data: Usuario) => {
-      const nomeUsuario = data.nome?.toLowerCase()|| '';
-      const cpfUsuario = data.cpf?.toLowerCase()|| '';
+      const nomeUsuario = data.pessoa.nome?.toLowerCase()|| '';
+      const cpfUsuario = data.pessoa.cpf?.toLowerCase()|| '';
       const emailUsuario = data.email?.toLowerCase()|| '';
       const clincaUsuario = data.clinica?.nome.toLowerCase()|| '';
 

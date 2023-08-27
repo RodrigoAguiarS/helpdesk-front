@@ -26,11 +26,14 @@ export class HeaderComponent implements OnInit {
     private mensagemService: MensagemService,
     private router: Router,
     private cdRef: ChangeDetectorRef,
-    private userChangeService: UserChangeService
+    private userChangeService: UserChangeService,
   ) {}
 
   ngOnInit(): void {
     this.carregarDadosIniciais();
+    this.userChangeService.userChanged$.subscribe(() => {
+      this.carregarDadosIniciais();
+    });
   }
 
   // Carrega as informações iniciais do usuário e suas funções
@@ -43,6 +46,7 @@ export class HeaderComponent implements OnInit {
         this.roles = roles;
         this.usuario = usuario;
         this.usuarioLogado = usuario;
+        this.cdRef.markForCheck();
       },
       error: (error) => {
         this.mensagemService.showErrorMensagem(error.error.message);
@@ -60,7 +64,7 @@ export class HeaderComponent implements OnInit {
   // Realiza o login como outro usuário
   logarComoUsuario(): void {
     if (this.loginComoUsuario) {
-      this.authService.impersonateUser(this.loginComoUsuario).subscribe({
+      this.authService.executarAcaoComoUsuario(this.loginComoUsuario).subscribe({
         next: (response) => {
           this.mensagemService.showSuccessoMensagem(response.message);
           this.usuarioTrocado = true;
@@ -70,6 +74,7 @@ export class HeaderComponent implements OnInit {
               next: (refreshTokenResponse: RefreshTokenResponse) => {
                 localStorage.setItem("token", refreshTokenResponse.newToken);
                 this.atualizarInformacoesUsuario(refreshTokenResponse.newToken);
+                this.router.navigate(['home']);
               },
               error: (error) => {
                 this.mensagemService.showErrorMensagem(error.error.message);

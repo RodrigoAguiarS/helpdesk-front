@@ -1,5 +1,5 @@
 export class Clinica {
-  id: number;
+  id?: any;
   nome: string;
   razaoSocial: string;
   cnpj: string;

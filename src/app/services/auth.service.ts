@@ -6,6 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { RefreshTokenResponse } from '../models/refreshTokenResponse';
 import { RefreshTokenRequest } from '../models/refreshTokenRequest';
+import { Email } from '../models/email';
 
 @Injectable({
   providedIn: 'root'
@@ -51,11 +52,11 @@ export class AuthService {
     return this.http.post<RefreshTokenResponse>(`${API_CONFIG.baseUrl}/api/admin/refresh-token`, refreshTokenRequest);
   }
 
-  impersonateUser(username: string): Observable<any> {
+  executarAcaoComoUsuario(username: string): Observable<any> {
     return this.http.get(`${API_CONFIG.baseUrl}/api/admin/impersonate/${username}`);
   }
 
-  revertToOriginalUser(): Observable<any> {
+  reverterParaUsuarioOriginal(): Observable<any> {
     return this.http.get(`${API_CONFIG.baseUrl}/api/admin/revert-to-original`);
   }
 
@@ -64,5 +65,22 @@ export class AuthService {
       currentToken: localStorage.getItem('token')
     };
     return this.http.post<RefreshTokenResponse>(`${API_CONFIG.baseUrl}/api/admin/refresh-token?username=${username}`, refreshTokenRequest);
+  }
+
+  recuperarSenha(email: string): Observable<string> {
+    const request: Email = { email: email };
+    return this.http.post<string>(`${API_CONFIG.baseUrl}/api/login-alterar`, request);
+  }
+
+  atualizarSenha(uid: string, novaSenha: string): Observable<string> {
+    const request = {
+      uid: uid,
+      senha: novaSenha
+    };
+    return this.http.post<string>(`${API_CONFIG.baseUrl}/api/login-alterar/${uid}`, request);
+  }
+
+  verificarUid(uid: string): Observable<string> {
+    return this.http.get(`${API_CONFIG.baseUrl}/api/login-alterar/${uid}`, { responseType: 'text' });
   }
 }
