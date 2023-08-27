@@ -1,18 +1,18 @@
 <div class="container mat-elevation-z8">
     <form class="form">
 
-        <h1 class="fullWidth">Cadastrar Convênio</h1>
-        <img class="fullWidth" src="assets/img/convenio-create.svg" alt="Cadastro de Clínica">
+        <h1 class="fullWidth">Cadastrar Especialidade</h1>
+        <img class="fullWidth" src="assets/img/especialidade-create.svg" alt="Cadastro de Clínica">
 
         <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Nome</mat-label>
-            <input [(ngModel)]="convenio.nome" name="nome" [formControl]="nome" required matInput
-                placeholder="Ex.. Nome do Convênio médico" maxlength="50">
+            <input [(ngModel)]="especialidade.nome" name="nome" [formControl]="nome" required matInput
+                placeholder="Ex.. Nome da Especialidade" maxlength="50">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
-        <mat-checkbox [(ngModel)]="convenio.ativo" name="ativo" class="fullWidth" color="primary">
-            <label class="checkbox-label">{{ retornaStatus(convenio.ativo) }}</label>
+        <mat-checkbox [(ngModel)]="especialidade.ativo" name="ativo" class="fullWidth" color="primary">
+            <label class="checkbox-label">{{ retornaStatus(especialidade.ativo) }}</label>
         </mat-checkbox>
 
         <!-- Botões e fechamento do formulário -->

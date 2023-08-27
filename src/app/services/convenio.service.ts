@@ -19,8 +19,8 @@ export class ConvenioService {
     return this.http.get<Convenio[]>(`${API_CONFIG.baseUrl}/api/convenios`);
   }
 
-  update(clinica: Convenio): Observable<Convenio> {
-    return this.http.put<Convenio>(`${API_CONFIG.baseUrl}/api/convenios/${clinica.id}`, clinica);
+  update(convenio: Convenio): Observable<Convenio> {
+    return this.http.put<Convenio>(`${API_CONFIG.baseUrl}/api/convenios/${convenio.id}`, convenio);
   }
 
   findById(id: any): Observable<Convenio> {

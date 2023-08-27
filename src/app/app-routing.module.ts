@@ -29,6 +29,10 @@ import { ConvenioCreateComponent } from './components/convenio/convenio-create/c
 import { ConvenioListComponent } from './components/convenio/convenio-list/convenio-list.component';
 import { ConvenioUpdateComponent } from './components/convenio/convenio-update/convenio-update.component';
 import { ConvenioDeleteComponent } from './components/convenio/convenio-delete/convenio-delete.component';
+import { EspecialidadeCreateComponent } from './components/especialidade/especialidade-create/especialidade-create.component';
+import { EspecialidadeListComponent } from './components/especialidade/especialidade-list/especialidade-list.component';
+import { EspecialidadeUpdateComponent } from './components/especialidade/especialidade-update/especialidade-update.component';
+import { EspecialidadeDeleteComponent } from './components/especialidade/especialidade-delete/especialidade-delete.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 
 
@@ -53,6 +57,11 @@ const routes: Routes = [
             { path: 'convenios/create', component: ConvenioCreateComponent },
             { path: 'convenios/update/:id', component: ConvenioUpdateComponent },
             { path: 'convenios/delete/:id', component: ConvenioDeleteComponent },
+
+            { path: 'especialidades', component: EspecialidadeListComponent },
+            { path: 'especialidades/create', component: EspecialidadeCreateComponent },
+            { path: 'especialidades/update/:id', component: EspecialidadeUpdateComponent },
+            { path: 'especialidades/delete/:id', component: EspecialidadeDeleteComponent },
 
             { path: 'administrador', component: AdminComponent },
 

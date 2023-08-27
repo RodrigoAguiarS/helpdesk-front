@@ -1,7 +1,8 @@
 import { Medico } from "./medico";
 
 export class Especialidade {
-  id?: number;
+  id?: any;
   nome: string;
   medicos: Medico[];
+  ativo: boolean;
 }

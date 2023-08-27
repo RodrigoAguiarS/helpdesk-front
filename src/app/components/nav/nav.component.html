@@ -80,6 +80,37 @@
          </mat-menu>
          <!-- FIM Menu Convênio -->
 
+         <!-- Menu Especialidade -->
+         <button mat-button [matMenuTriggerFor]="especialidadeMenu">
+            <mat-icon>medical_services</mat-icon>
+            Especialidade
+         </button>
+         <mat-menu #especialidadeMenu="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="subMenuListarEspecialidade">
+               <mat-icon>list</mat-icon>
+               Listar
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="subMenuCadastrarEspecialidade">
+               <mat-icon>add_circle</mat-icon>
+               Cadastrar
+            </button>
+            <!-- Adicione outros itens do menu de convênio aqui -->
+         </mat-menu>
+         
+         <mat-menu #subMenuListarEspecialidade="matMenu">
+            <button mat-menu-item routerLink="especialidades">
+               <mat-icon>list</mat-icon>
+               Lista de Especialidade
+            </button>
+         </mat-menu>
+         
+         <mat-menu #subMenuCadastrarEspecialidade="matMenu">
+            <button mat-menu-item routerLink="especialidades/create">
+               <mat-icon>add_circle</mat-icon>
+               Cadastrar Especialidade
+            </button>
+         </mat-menu>
+         <!-- FIM Menu Convênio -->
 
          <a mat-list-item routerLink="chamados">
             <i class="material-icons">support</i>

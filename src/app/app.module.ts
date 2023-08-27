@@ -65,6 +65,10 @@ import { ConvenioCreateComponent } from './components/convenio/convenio-create/c
 import { ConvenioListComponent } from './components/convenio/convenio-list/convenio-list.component';
 import { ConvenioUpdateComponent } from './components/convenio/convenio-update/convenio-update.component';
 import { ConvenioDeleteComponent } from './components/convenio/convenio-delete/convenio-delete.component';
+import { EspecialidadeCreateComponent } from './components/especialidade/especialidade-create/especialidade-create.component';
+import { EspecialidadeListComponent } from './components/especialidade/especialidade-list/especialidade-list.component';
+import { EspecialidadeUpdateComponent } from './components/especialidade/especialidade-update/especialidade-update.component';
+import { EspecialidadeDeleteComponent } from './components/especialidade/especialidade-delete/especialidade-delete.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +105,11 @@ import { ConvenioDeleteComponent } from './components/convenio/convenio-delete/c
     ConvenioCreateComponent,
     ConvenioListComponent,
     ConvenioUpdateComponent,
-    ConvenioDeleteComponent
+    ConvenioDeleteComponent,
+    EspecialidadeCreateComponent,
+    EspecialidadeListComponent,
+    EspecialidadeUpdateComponent,
+    EspecialidadeDeleteComponent
   ],
   imports: [
     BrowserModule,
