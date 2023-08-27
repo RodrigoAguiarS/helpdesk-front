@@ -1,7 +1,7 @@
 import { Medico } from "./medico";
 
 export class Convenio {
-    id?: number;
+    id?: any;
     nome: string;
     medicos: Medico[];
     ativo: boolean;

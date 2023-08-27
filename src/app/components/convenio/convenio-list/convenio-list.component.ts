@@ -14,7 +14,7 @@ export class ConvenioListComponent implements OnInit {
 
   ELEMENT_DATA: Convenio[] = []
 
-  displayedColumns: string[] = ['id', 'nome', 'acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'ativo', 'acoes'];
   dataSource = new MatTableDataSource<Convenio>(this.ELEMENT_DATA);
 
   constructor(private convenioService: ConvenioService) { }
@@ -39,5 +39,13 @@ export class ConvenioListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  retornaSituacao(ativo: any): string {
+    if(ativo) {
+      return 'ATIVO'
+    } else {
+      return 'DESATIVADO'
+    }
   }
 }

@@ -20,10 +20,10 @@ export class ConvenioService {
   }
 
   update(clinica: Convenio): Observable<Convenio> {
-    return this.http.put<Convenio>(`${API_CONFIG.baseUrl}/api/clinicas/${clinica.id}`, clinica);
+    return this.http.put<Convenio>(`${API_CONFIG.baseUrl}/api/convenios/${clinica.id}`, clinica);
   }
 
   findById(id: any): Observable<Convenio> {
-    return this.http.get<Convenio>(`${API_CONFIG.baseUrl}/api/clinicas/${id}`);
+    return this.http.get<Convenio>(`${API_CONFIG.baseUrl}/api/convenios/${id}`);
   }
 }
