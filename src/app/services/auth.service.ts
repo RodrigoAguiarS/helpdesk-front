@@ -56,10 +56,6 @@ export class AuthService {
     return this.http.get(`${API_CONFIG.baseUrl}/api/admin/impersonate/${username}`);
   }
 
-  reverterParaUsuarioOriginal(): Observable<any> {
-    return this.http.get(`${API_CONFIG.baseUrl}/api/admin/revert-to-original`);
-  }
-
   trocarTokenComNovoUsuario(username: string): Observable<RefreshTokenResponse> {
     const refreshTokenRequest = {
       currentToken: localStorage.getItem('token')

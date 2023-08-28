@@ -23,6 +23,7 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.router.navigate(['home']);
     
+    // Subscrição para atualização de papéis de usuário
     this.userChangeSubscription = this.userChangeService.userChanged$.pipe(
       switchMap(() => this.authService.getUserRoles().pipe(
         catchError(error => {
@@ -34,6 +35,7 @@ export class NavComponent implements OnInit {
       this.roles = roles;
     });
 
+    // Obtém papéis de usuário ao iniciar o componente
     this.authService.getUserRoles().subscribe(
       {
         next: (roles: string[]) => {
@@ -52,6 +54,7 @@ export class NavComponent implements OnInit {
     this.mensagemService.showSuccessoMensagem('Logout realizado com sucesso');
   }
 
+  // Limpa a subscrição ao destruir o componente para evitar vazamentos de memória
   ngOnDestroy(): void {
     if (this.userChangeSubscription) {
       this.userChangeSubscription.unsubscribe();

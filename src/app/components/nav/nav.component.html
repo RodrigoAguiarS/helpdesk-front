@@ -7,7 +7,7 @@
             Home
          </a>
          <!-- Menu Clínica -->
-         <button mat-button [matMenuTriggerFor]="clinicaMenu">
+         <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-button [matMenuTriggerFor]="clinicaMenu">
             <mat-icon>local_hospital</mat-icon>
             Clínica
          </button>
@@ -49,7 +49,7 @@
          <!-- FIM Menu Clínica -->
 
          <!-- Menu convenio -->
-         <button mat-button [matMenuTriggerFor]="convenioMenu">
+         <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-button [matMenuTriggerFor]="convenioMenu">
             <mat-icon>local_hospital</mat-icon>
             Convênio
          </button>
@@ -81,7 +81,7 @@
          <!-- FIM Menu Convênio -->
 
          <!-- Menu Especialidade -->
-         <button mat-button [matMenuTriggerFor]="especialidadeMenu">
+         <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-button [matMenuTriggerFor]="especialidadeMenu">
             <mat-icon>medical_services</mat-icon>
             Especialidade
          </button>

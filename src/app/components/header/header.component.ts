@@ -31,9 +31,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregarDadosIniciais();
-    this.userChangeService.userChanged$.subscribe(() => {
-      this.carregarDadosIniciais();
-    });
   }
 
   // Carrega as informações iniciais do usuário e suas funções
@@ -102,6 +99,7 @@ export class HeaderComponent implements OnInit {
               "Volta ao Usuário Original com sucesso!"
             );
             this.atualizarInformacoesUsuario(refreshTokenResponse.newToken);
+            this.router.navigate(['home']);
           },
           error: (error) => {
             this.mensagemService.showErrorMensagem(error.error.message);

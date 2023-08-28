@@ -4,7 +4,7 @@
         <h1 class="fullWidth">Cadastrar Usuários</h1>
         <img class="fullWidth" src="assets/img/usuario-create.svg" alt="Help Desk">
 
-        <section class="section">
+        <section *ngIf="roles.includes('ROLE_ADMIN_GERAL')" class="section">
             <mat-checkbox (click)="addPerfil(0)" class="margin" color="primary">Admin</mat-checkbox>
             <mat-checkbox (click)="addPerfil(1)" class="margin" color="primary">Operadores</mat-checkbox>
             <mat-checkbox (click)="addPerfil(2)" class="margin" color="primary">Admin Clinica</mat-checkbox>
