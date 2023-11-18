@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -25,19 +26,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+
+// Componentes do projeto
 import { NavComponent } from './components/nav/nav.component';
-import { AppRoutingModule } from './app-routing.module';
-import { NgxMaskModule } from 'ngx-mask';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MatMenuModule } from '@angular/material/menu';
-
-
+import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
+import { LoginComponent } from './components/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
-import { LoginComponent } from './components/login/login/login.component';
 import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
-import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
+import { NgxMaskModule } from 'ngx-mask';
 import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
 import { TecnicoDeleteComponent } from './components/tecnico/tecnico-delete/tecnico-delete.component';
 import { ClienteCreateComponent } from './components/cliente/cliente-create/cliente-create.component';
@@ -46,29 +48,10 @@ import { ClienteListComponent } from './components/cliente/cliente-list/cliente-
 import { ClienteUpdateComponent } from './components/cliente/cliente-update/cliente-update.component';
 import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-list.component';
 import { ChamadoCreateComponent } from './components/chamado/chamado-create/chamado-create.component';
-import { CPFPipe } from './cpf.pipe';
-import { CnpjFormatPipe } from './cnpjFormatPipe';
-import { InscricaoEstadualFormatPipe } from './inscricaoEstadualFormatPipe';
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
-import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
-import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
-import { UsuarioListComponent } from './components/usuario/usuario-list/usuario-list.component';
-import { AdminComponent } from './components/admin/admin/admin.component';
-import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
-import { ClinicaCreateComponent } from './components/clinica/clinica-create/clinica-create.component';
-import { ClinicaListComponent } from './components/clinica/clinica-list/clinica-list.component';
-import { ClinicaUpdateComponent } from './components/clinica/clinica-update/clinica-update.component';
-import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
-import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
-import { ConvenioCreateComponent } from './components/convenio/convenio-create/convenio-create.component';
-import { ConvenioListComponent } from './components/convenio/convenio-list/convenio-list.component';
-import { ConvenioUpdateComponent } from './components/convenio/convenio-update/convenio-update.component';
-import { ConvenioDeleteComponent } from './components/convenio/convenio-delete/convenio-delete.component';
-import { EspecialidadeCreateComponent } from './components/especialidade/especialidade-create/especialidade-create.component';
-import { EspecialidadeListComponent } from './components/especialidade/especialidade-list/especialidade-list.component';
-import { EspecialidadeUpdateComponent } from './components/especialidade/especialidade-update/especialidade-update.component';
-import { EspecialidadeDeleteComponent } from './components/especialidade/especialidade-delete/especialidade-delete.component';
+import { PessoaCreateComponent } from './components/pessoa/pessoa-create/pessoa-create.component';
+import { PessoaListComponent } from './components/pessoa/pessoa-list/pessoa-list.component';
 
 @NgModule({
   declarations: [
@@ -87,36 +70,17 @@ import { EspecialidadeDeleteComponent } from './components/especialidade/especia
     ClienteUpdateComponent,
     ChamadoListComponent,
     ChamadoCreateComponent,
-    CPFPipe,
-    InscricaoEstadualFormatPipe,
-    CnpjFormatPipe,
     ChamadoUpdateComponent,
     ChamadoReadComponent,
-    UsuarioCreateComponent,
-    UsuarioUpdateComponent,
-    UsuarioListComponent,
-    AdminComponent,
-    UsuarioDeleteComponent,
-    ClinicaCreateComponent,
-    ClinicaListComponent,
-    ClinicaUpdateComponent,
-    LoginAlterarComponent,
-    LoginRecuperarComponent,
-    ConvenioCreateComponent,
-    ConvenioListComponent,
-    ConvenioUpdateComponent,
-    ConvenioDeleteComponent,
-    EspecialidadeCreateComponent,
-    EspecialidadeListComponent,
-    EspecialidadeUpdateComponent,
-    EspecialidadeDeleteComponent
+    PessoaCreateComponent,
+    PessoaListComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     // Forms
     FormsModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     // Requisições http
     HttpClientModule,
@@ -135,7 +99,9 @@ import { EspecialidadeDeleteComponent } from './components/especialidade/especia
     MatIconModule,
     MatListModule,
     MatCardModule,
-    MatMenuModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
@@ -143,7 +109,7 @@ import { EspecialidadeDeleteComponent } from './components/especialidade/especia
     }),
     NgxMaskModule.forRoot()
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [AuthInterceptorProvider, { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

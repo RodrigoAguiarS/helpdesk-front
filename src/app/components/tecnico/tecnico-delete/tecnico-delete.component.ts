@@ -55,4 +55,5 @@ export class TecnicoDeleteComponent implements OnInit {
       }
     })
   }
+
 }

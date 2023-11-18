@@ -33,8 +33,7 @@ export class TecnicoCreateComponent implements OnInit {
     private router:          Router,
     ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   create(): void {
     this.service.create(this.tecnico).subscribe(() => {
@@ -57,8 +56,9 @@ export class TecnicoCreateComponent implements OnInit {
     } else {
       this.tecnico.perfis.push(perfil);
     }
+    
   }
-
+  
   validaCampos(): boolean {
     return this.nome.valid && this.cpf.valid
      && this.email.valid && this.senha.valid

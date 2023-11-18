@@ -1,12 +1,10 @@
-import { Clinica } from "./clinica";
 import { Pessoa } from "./pessoa";
 
 export class Usuario {
-    id?: any;
-    email: string;
-    senha: string;
+    id?:         any;
+    email:    string;
+    senha:    string;
+    pessoa:   Pessoa;
     perfis: string[];
-    pessoa: Pessoa;
-    clinica: Clinica;
-    ativo: boolean;
-}
+    ativo:      any;
+  }

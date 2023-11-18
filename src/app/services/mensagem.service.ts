@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MensagemService {
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private toast: ToastrService) {}
 
   showSuccessoMensagem(message: string): void {
-    this.snackBar.open(message, 'Fechar', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    });
+    this.toast.success(message);
   }
 
   showErrorMensagem(message: string): void {
-    this.showSuccessoMensagem(message); // Reutiliza a função de sucesso por enquanto
+    this.toast.error(message);
   }
 }

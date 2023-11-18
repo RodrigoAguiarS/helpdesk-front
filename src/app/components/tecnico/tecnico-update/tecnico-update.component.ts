@@ -68,9 +68,9 @@ export class TecnicoUpdateComponent implements OnInit {
     } else {
       this.tecnico.perfis.push(perfil);
     }
-
+    
   }
-
+  
   validaCampos(): boolean {
     return this.nome.valid && this.cpf.valid
      && this.email.valid && this.senha.valid
