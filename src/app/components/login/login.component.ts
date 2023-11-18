@@ -17,28 +17,37 @@ export class LoginComponent implements OnInit {
     senha: ''
   }
 
+  hide = true;
+
   email = new FormControl(null, Validators.email);
   senha = new FormControl(null, Validators.minLength(3));
 
-  constructor(
-    private mensagemService: MensagemService,
+  constructor(private mensagemService: MensagemService,
     private service: AuthService,
     private router: Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    // TODO document why this method 'ngOnInit' is empty
+  }
 
   logar() {
-    this.service.authenticate(this.creds).subscribe(resposta => {
-      this.service.successfulLogin(resposta.headers.get('Authorization').substring(7));
-      this.router.navigate(['']);
-      this.mensagemService.showSuccessoMensagem('Login realizado com sucesso');
-    }, () => {
-      this.mensagemService.showErrorMensagem('Usuário e/ou senha inválidos');
-    })
+    this.service.authenticate(this.creds).subscribe({
+      next: resposta => {
+        this.mensagemService.showSuccessoMensagem('Login Realizado com Sucesso');
+        this.service.successfulLogin(resposta.headers.get('Authorization').substring(7));
+        this.router.navigate(['']);
+      },
+      error: () => {
+        this.mensagemService.showErrorMensagem('Usuário e/ou senha inválidas');
+      }
+    });
   }
-
+  
   validaCampos(): boolean {
-    return this.email.valid && this.senha.valid
+    return !!(this.email.valid && this.senha.valid);
   }
 
+  toggleVisualizarSenha(): void {
+    this.hide = !this.hide;
+  }
 }

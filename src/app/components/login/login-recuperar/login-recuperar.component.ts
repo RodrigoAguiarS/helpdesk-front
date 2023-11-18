@@ -27,17 +27,16 @@ export class LoginRecuperarComponent implements OnInit {
   recuperarSenha() {
     if (this.email.valid) {
       const email = this.email.value;
-      this.authService.recuperarSenha(email).subscribe(
-        (response: string) => {
-          console.log(response); // Imprime a resposta no console para análise
+      this.authService.recuperarSenha(email).subscribe({
+        next: (response: string) => {
+          console.log(response)
           this.mensagemService.showSuccessoMensagem("Link de recuperação de senha enviado para o email.");
           this.router.navigate(['login']);
         },
-        (error) => {
-          console.error(error); // Imprime o erro no console para análise
+        error: (error) => {
           this.mensagemService.showErrorMensagem("Erro ao enviar o email de recuperação de senha: " + error.message);
         }
-      );
+      });
     }
   }
 

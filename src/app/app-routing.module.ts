@@ -17,31 +17,36 @@ import { TecnicoDeleteComponent } from './components/tecnico/tecnico-delete/tecn
 import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
 import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
 import { PessoaCreateComponent } from './components/pessoa/pessoa-create/pessoa-create.component';
-import { PessoaListComponent } from './components/pessoa/pessoa-list/pessoa-list.component'; 
+import { PessoaListComponent } from './components/pessoa/pessoa-list/pessoa-list.component';
+import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
+import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  {
-    path: '', component: NavComponent, canActivate: [AuthGuard], children: [
-      { path: 'home', component: HomeComponent },
+  { path : 'login', component: LoginComponent },
+    { path : 'login-recuperar', component: LoginRecuperarComponent },
+    { path : 'login-alterar/:uid', component: LoginAlterarComponent },
+    {
 
-      { path: 'pessoas',             component:   PessoaListComponent},
-      { path: 'pessoas/create',      component:   PessoaCreateComponent},
+      path: '', component: NavComponent, canActivate: [AuthGuard], children: [
+        { path: 'home', component: HomeComponent },
 
-      { path: 'tecnicos',            component:   TecnicoListComponent },
-      { path: 'tecnicos/create',     component: TecnicoCreateComponent },
-      { path: 'tecnicos/update/:id', component: TecnicoUpdateComponent },
-      { path: 'tecnicos/delete/:id', component: TecnicoDeleteComponent },
+        { path: 'pessoas',             component:   PessoaListComponent},
+        { path: 'pessoas/create',      component:   PessoaCreateComponent},
 
-      { path: 'clientes',            component:   ClienteListComponent },
-      { path: 'clientes/create',     component: ClienteCreateComponent },
-      { path: 'clientes/update/:id', component: ClienteUpdateComponent },
-      { path: 'clientes/delete/:id', component: ClienteDeleteComponent },
+        { path: 'tecnicos',            component:   TecnicoListComponent },
+        { path: 'tecnicos/create',     component: TecnicoCreateComponent },
+        { path: 'tecnicos/update/:id', component: TecnicoUpdateComponent },
+        { path: 'tecnicos/delete/:id', component: TecnicoDeleteComponent },
 
-      { path: 'chamados',                       component:     ChamadoListComponent },
-      { path: 'chamados/create',                component:   ChamadoCreateComponent },
-      { path: 'chamados/update/:id',            component:   ChamadoUpdateComponent },
-      { path: 'chamados/read/:id',              component:     ChamadoReadComponent },
+        { path: 'clientes',            component:   ClienteListComponent },
+        { path: 'clientes/create',     component: ClienteCreateComponent },
+        { path: 'clientes/update/:id', component: ClienteUpdateComponent },
+        { path: 'clientes/delete/:id', component: ClienteDeleteComponent },
+
+        { path: 'chamados',                       component:     ChamadoListComponent },
+        { path: 'chamados/create',                component:   ChamadoCreateComponent },
+        { path: 'chamados/update/:id',            component:   ChamadoUpdateComponent },
+        { path: 'chamados/read/:id',              component:     ChamadoReadComponent },
     ]
   }
 ];

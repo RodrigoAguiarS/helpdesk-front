@@ -52,6 +52,9 @@ import { ChamadoUpdateComponent } from './components/chamado/chamado-update/cham
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { PessoaCreateComponent } from './components/pessoa/pessoa-create/pessoa-create.component';
 import { PessoaListComponent } from './components/pessoa/pessoa-list/pessoa-list.component';
+import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
+import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
+
 
 @NgModule({
   declarations: [
@@ -73,7 +76,9 @@ import { PessoaListComponent } from './components/pessoa/pessoa-list/pessoa-list
     ChamadoUpdateComponent,
     ChamadoReadComponent,
     PessoaCreateComponent,
-    PessoaListComponent
+    PessoaListComponent,
+    LoginAlterarComponent,
+    LoginRecuperarComponent
   ],
   imports: [
     BrowserModule,
