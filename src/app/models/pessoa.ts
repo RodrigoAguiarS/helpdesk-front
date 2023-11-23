@@ -6,6 +6,6 @@ export class Pessoa {
     cpf:      string;
     telefone: string;
     endereco: Endereco;
-    dataNascimento: any;
+    dataNascimento: Date;
     sexo:    string;
   }

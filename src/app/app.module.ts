@@ -29,6 +29,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component';
@@ -54,6 +55,8 @@ import { PessoaCreateComponent } from './components/pessoa/pessoa-create/pessoa-
 import { PessoaListComponent } from './components/pessoa/pessoa-list/pessoa-list.component';
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
+import { CPFPipe } from './cpf.pipe';
+import { TelefonePipe } from './telefone.pipe';
 
 
 @NgModule({
@@ -78,7 +81,9 @@ import { LoginRecuperarComponent } from './components/login/login-recuperar/logi
     PessoaCreateComponent,
     PessoaListComponent,
     LoginAlterarComponent,
-    LoginRecuperarComponent
+    LoginRecuperarComponent,
+    CPFPipe,
+    TelefonePipe
   ],
   imports: [
     BrowserModule,
@@ -107,6 +112,7 @@ import { LoginRecuperarComponent } from './components/login/login-recuperar/logi
     MatStepperModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatMenuModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
