@@ -57,6 +57,7 @@ import { LoginAlterarComponent } from './components/login/login-alterar/login-al
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
 import { CPFPipe } from './cpf.pipe';
 import { TelefonePipe } from './telefone.pipe';
+import { PessoaUpdateComponent } from './components/pessoa/pessoa-update/pessoa-update.component';
 
 
 @NgModule({
@@ -80,10 +81,12 @@ import { TelefonePipe } from './telefone.pipe';
     ChamadoReadComponent,
     PessoaCreateComponent,
     PessoaListComponent,
+    PessoaUpdateComponent,
     LoginAlterarComponent,
     LoginRecuperarComponent,
     CPFPipe,
-    TelefonePipe
+    TelefonePipe,
+    PessoaUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -6,5 +6,5 @@ export class Usuario {
     senha:    string;
     pessoa:   Pessoa;
     perfis: string[];
-    ativo:      any;
+    ativo:      boolean;
   }

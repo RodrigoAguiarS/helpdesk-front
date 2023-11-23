@@ -14,4 +14,16 @@ export class PessoaService {
   create(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${API_CONFIG.baseUrl}/api/pessoas`, usuario);
   }
+
+  findAll(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${API_CONFIG.baseUrl}/api/pessoas`);
+  }
+
+  findById(id: any): Observable<Usuario> {
+    return this.http.get<Usuario>(`${API_CONFIG.baseUrl}/api/pessoas/${id}`);
+  }
+
+  update(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${API_CONFIG.baseUrl}/api/pessoas/${usuario.id}`, usuario);
+  }
 }

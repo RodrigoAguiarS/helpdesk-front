@@ -18,6 +18,7 @@ import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-
 import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
 import { PessoaCreateComponent } from './components/pessoa/pessoa-create/pessoa-create.component';
 import { PessoaListComponent } from './components/pessoa/pessoa-list/pessoa-list.component';
+import { PessoaUpdateComponent } from './components/pessoa/pessoa-update/pessoa-update.component';
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
 
@@ -32,6 +33,7 @@ const routes: Routes = [
 
         { path: 'pessoas',             component:   PessoaListComponent},
         { path: 'pessoas/create',      component:   PessoaCreateComponent},
+        { path: 'pessoas/update/:id',      component:  PessoaUpdateComponent},
 
         { path: 'tecnicos',            component:   TecnicoListComponent },
         { path: 'tecnicos/create',     component: TecnicoCreateComponent },

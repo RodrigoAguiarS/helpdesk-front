@@ -1,29 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Cargo } from 'src/app/models/cargo';
-import { Endereco } from 'src/app/models/endereco';
-import { Pessoa } from 'src/app/models/pessoa';
-import { Usuario } from 'src/app/models/usuario';
-import { AuthService } from 'src/app/services/auth.service';
-import { EnderecoService } from 'src/app/services/endereco.service';
-import { MensagemService } from 'src/app/services/mensagem.service';
-import { PessoaService } from 'src/app/services/pessoa.service';
+import { Component, OnInit } from "@angular/core";
+import { FormControl, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Endereco } from "src/app/models/endereco";
+import { Pessoa } from "src/app/models/pessoa";
+import { Usuario } from "src/app/models/usuario";
+import { EnderecoService } from "src/app/services/endereco.service";
+import { MensagemService } from "src/app/services/mensagem.service";
+import { PessoaService } from "src/app/services/pessoa.service";
+import { UserChangeService } from "src/app/services/user-change-service";
 
 @Component({
-  selector: 'app-pessoa-create',
-  templateUrl: './pessoa-create.component.html',
-  styleUrls: ['./pessoa-create.component.css']
+  selector: "app-pessoa-update",
+  templateUrl: "./pessoa-update.component.html",
+  styleUrls: ["./pessoa-update.component.css"],
 })
-export class PessoaCreateComponent implements OnInit {
+export class PessoaUpdateComponent implements OnInit {
 
   usuario: Usuario;
   hide = true;
   roles: string[] = [];
-  cargos: Cargo[] = []
   
   enderecoPreenchido: boolean = false;
-  
 
   // Definição dos formulários
   nome: FormControl = new FormControl(null, Validators.minLength(3));
@@ -34,52 +31,46 @@ export class PessoaCreateComponent implements OnInit {
   email: FormControl = new FormControl(null, Validators.email);
   senha: FormControl = new FormControl(null, Validators.minLength(3));
   cep: FormControl = new FormControl(null, Validators.required);
-  numero: FormControl = new FormControl(null, Validators.required);
+  numero: FormControl = new FormControl(null, Validators.minLength(1));
   confirmaSenha: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
-    private usuarioService: PessoaService,
-    private authService: AuthService,
+    private pessoaService: PessoaService,
     private mensagemService: MensagemService,
     private enderecoService: EnderecoService,
+    private route: ActivatedRoute,
     private router: Router,
+    private userChangeService: UserChangeService
   ) {}
 
   ngOnInit(): void {
-   // Inicialização do usuário e obtenção de papéis
     this.usuario = new Usuario();
     this.usuario.pessoa = new Pessoa();
     this.usuario.pessoa.endereco = new Endereco();
-    this.usuario.perfis = [];
-    this.authService.getUserRoles().subscribe({
-      next: (roles: string[]) => {
-        this.roles = roles;
-      },
-      error: (error) => {
-        this.mensagemService.showErrorMensagem(error.error.message)
-      }
-    });
-  }
-
-   // Criação de um novo usuário
-  create(): void {
-    // Preenchimento dos dados do usuário
     this.usuario.pessoa.nome = this.nome.value;
     this.usuario.pessoa.cpf = this.cpf.value;
     this.usuario.email = this.email.value;
     this.usuario.senha = this.senha.value;
-    this.usuario.pessoa.dataNascimento = this.dataNascimento.value;
-    this.usuario.pessoa.telefone = this.telefone.value
-    this.usuario.pessoa.sexo = this.sexo.value
-    this.usuario.pessoa.endereco.cep = this.cep.value
-    this.usuario.pessoa.endereco.numero = this.numero.value
-    
-    // Chamada do serviço para criar o usuário
-    this.usuarioService.create(this.usuario).subscribe({
-      next: (resposta) => {
-        console.log("aqui a resposta " + resposta );
-        this.mensagemService.showSuccessoMensagem("Usuário cadastrado com sucesso");
-        this.router.navigate(["home"]);
+    this.usuario.id = this.route.snapshot.paramMap.get("id");
+    this.findById();
+  }
+
+  findById(): void {
+    this.pessoaService.findById(this.usuario.id).subscribe((resposta) => {
+      resposta.perfis = [];
+      this.usuario = resposta;
+    });
+  }
+
+  // adiciona perfil ao usuário
+  update(): void {
+    this.pessoaService.update(this.usuario).subscribe({
+      next: () => {
+        this.mensagemService.showSuccessoMensagem(
+          "Pessoa atualizado com sucesso"
+        );
+        this.userChangeService.notifyUserChanged();
+        this.router.navigate(["pessoas"]);
       },
       error: (ex) => {
         if (ex.error.errors) {
@@ -89,8 +80,17 @@ export class PessoaCreateComponent implements OnInit {
         } else {
           this.mensagemService.showErrorMensagem(ex.error.message);
         }
-      }
+      },
     });
+  }
+
+  // adiciona perfil ao usuário
+  addPerfil(perfil: any): void {
+    if (this.usuario.perfis.includes(perfil)) {
+      this.usuario.perfis.splice(this.usuario.perfis.indexOf(perfil), 1);
+    } else {
+      this.usuario.perfis.push(perfil);
+    }
   }
 
   // Validação dos campos do formulário
@@ -110,7 +110,7 @@ export class PessoaCreateComponent implements OnInit {
     );
   }
 
-   // Verificação se as senhas coincidem
+  // Validação de solos
   checkPasswordMatch(): void {
     if (
       this.confirmaSenha.value !== this.usuario.senha &&
@@ -120,24 +120,13 @@ export class PessoaCreateComponent implements OnInit {
     }
   }
 
-    // Alternar visibilidade da senha
+  // visualizar senha
   togglePasswordVisibility(): void {
     this.hide = !this.hide;
   }
 
-    // Retorna o status formatado
   retornaStatus(status: boolean): string {
     return status ? "ATIVO" : "NÃO ATIVO";
-  }
-
-
-  // Adiciona ou remove um perfil da lista de perfis do usuário
-  addPerfil(perfil: any): void {
-    if(this.usuario.perfis.includes(perfil)) {
-      this.usuario.perfis.splice(this.usuario.perfis.indexOf(perfil), 1);
-    } else {
-      this.usuario.perfis.push(perfil);
-    }
   }
 
   // busca o endereco pelo cep passado
@@ -160,15 +149,15 @@ export class PessoaCreateComponent implements OnInit {
         }
       },
       (erro) => {
-        this.mensagemService.showErrorMensagem("Cep Inváliado realize a buscar novamente");
+        this.mensagemService.showErrorMensagem("Cep Inváliado realize a buscar novamente" + erro);
         this.enderecoPreenchido = false;
         this.limparCampos();
       }
     );
   }
 
-  // metodo de limpar os campos
-  limparCampos(): void {
+   // metodo de limpar os campos
+   limparCampos(): void {
     this.usuario.pessoa.endereco.cep = null;
     this.usuario.pessoa.endereco.rua = null;
     this.usuario.pessoa.endereco.bairro = null;
