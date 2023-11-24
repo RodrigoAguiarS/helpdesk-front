@@ -1,0 +1,35 @@
+<div class="container mat-elevation-z8">
+    <h1 class="full-width">Leitura de Departameto</h1>
+    <img class="full-width" src="assets/img/chamado-create.svg" alt="Chamado image">
+
+    <!-- nome -->
+    <form class="form">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nome do Departamento</mat-label>
+            <input [disabled]="true" [(ngModel)]="departamento.nome" name="titulo" matInput
+                placeholder="Ex. Trocar bateria de notebook">
+        </mat-form-field>
+    </form>
+
+    <!-- data criação -->
+    <mat-form-field class="fullWidth" appearance="outline">
+        <mat-label>Data de Nascimento</mat-label>
+        <input [disabled]="true" [(ngModel)]="departamento.dataCriacao" name="dataCriacao"
+            matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- descrição -->
+    <form class="form">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Deixe uma observação</mat-label>
+            <textarea [disabled]="true" [(ngModel)]="departamento.descricao" name="descricao" class="descricao"
+                matInput></textarea>
+        </mat-form-field>
+    </form>
+
+    <!-- botões -->
+    <button routerLink="../../" class="full-width mat-elevation-z4" mat-stroked-button color="warn">Retornar</button>
+
+</div>

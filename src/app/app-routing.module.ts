@@ -21,6 +21,16 @@ import { PessoaListComponent } from './components/pessoa/pessoa-list/pessoa-list
 import { PessoaUpdateComponent } from './components/pessoa/pessoa-update/pessoa-update.component';
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
+import { PessoaDeleteComponent } from './components/pessoa/pessoa-delete/pessoa-delete.component';
+import { DepartamentoCreateComponent } from './components/departamento/departamento-create/departamento-create.component';
+import { DepartamentoListComponent } from './components/departamento/departamento-list/departamento-list.component';
+import { DepartamentoUpdateComponent } from './components/departamento/departamento-update/departamento-update.component'; 
+import { DepartamentoReadComponent } from './components/departamento/departamento-read/departamento-read.component';
+import { DepartamentoDeleteComponent } from './components/departamento/departamento-delete/departamento-delete.component';
+import { ResponsavelDepartamentoCreateComponent } from './components/responsavel-departamento/responsavel-departamento-create/responsavel-departamento-create.component'; 
+import { ResponsavelDepartamentoListComponent } from './components/responsavel-departamento/responsavel-departamento-list/responsavel-departamento-list.component'; 
+
+
 
 const routes: Routes = [
   { path : 'login', component: LoginComponent },
@@ -34,6 +44,17 @@ const routes: Routes = [
         { path: 'pessoas',             component:   PessoaListComponent},
         { path: 'pessoas/create',      component:   PessoaCreateComponent},
         { path: 'pessoas/update/:id',      component:  PessoaUpdateComponent},
+        { path: 'pessoas/delete/:id',      component:  PessoaDeleteComponent},
+
+        { path: 'departamentos',component:  DepartamentoListComponent},
+        { path: 'departamentos/create',component:  DepartamentoCreateComponent},
+        { path: 'departamentos/update/:id',component:  DepartamentoUpdateComponent},
+        { path: 'departamentos/delete/:id',component:  DepartamentoDeleteComponent},
+        { path: 'departamentos/read/:id',component:  DepartamentoReadComponent },
+
+        { path: 'responsavelDepartamentos',component:  ResponsavelDepartamentoListComponent},
+        { path: 'responsavelDepartamentos/create',component:  ResponsavelDepartamentoCreateComponent},
+
 
         { path: 'tecnicos',            component:   TecnicoListComponent },
         { path: 'tecnicos/create',     component: TecnicoCreateComponent },

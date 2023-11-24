@@ -77,8 +77,7 @@ export class PessoaCreateComponent implements OnInit {
     // Chamada do serviço para criar o usuário
     this.usuarioService.create(this.usuario).subscribe({
       next: (resposta) => {
-        console.log("aqui a resposta " + resposta );
-        this.mensagemService.showSuccessoMensagem("Usuário cadastrado com sucesso");
+        this.mensagemService.showSuccessoMensagem("Usuário " + resposta.pessoa.nome + " cadastrado com sucesso");
         this.router.navigate(["home"]);
       },
       error: (ex) => {

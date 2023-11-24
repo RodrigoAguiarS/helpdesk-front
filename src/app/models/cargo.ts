@@ -1,7 +1,7 @@
 import { Departamento } from "./departamento";
 
 export class Cargo {
-    id: string;
+    id?:     any;
     nome: string;
     descricao: string;
     responsabilidade: string;

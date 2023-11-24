@@ -2,7 +2,7 @@ import { Cargo } from "./cargo";
 import { Pessoa } from "./pessoa";
 
 export class Funcionario {
-    id: string;
+    id:    number;
     pessoa: Pessoa;
     cargo: Cargo;
   }

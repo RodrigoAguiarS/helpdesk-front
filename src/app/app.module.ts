@@ -58,8 +58,14 @@ import { LoginRecuperarComponent } from './components/login/login-recuperar/logi
 import { CPFPipe } from './cpf.pipe';
 import { TelefonePipe } from './telefone.pipe';
 import { PessoaUpdateComponent } from './components/pessoa/pessoa-update/pessoa-update.component';
-
-
+import { PessoaDeleteComponent } from './components/pessoa/pessoa-delete/pessoa-delete.component';
+import { DepartamentoCreateComponent } from './components/departamento/departamento-create/departamento-create.component';
+import { DepartamentoListComponent } from './components/departamento/departamento-list/departamento-list.component';
+import { DepartamentoUpdateComponent } from './components/departamento/departamento-update/departamento-update.component';
+import { DepartamentoReadComponent } from './components/departamento/departamento-read/departamento-read.component';
+import { DepartamentoDeleteComponent } from './components/departamento/departamento-delete/departamento-delete.component';
+import { ResponsavelDepartamentoCreateComponent } from './components/responsavel-departamento/responsavel-departamento-create/responsavel-departamento-create.component';
+import { ResponsavelDepartamentoListComponent } from './components/responsavel-departamento/responsavel-departamento-list/responsavel-departamento-list.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +92,15 @@ import { PessoaUpdateComponent } from './components/pessoa/pessoa-update/pessoa-
     LoginRecuperarComponent,
     CPFPipe,
     TelefonePipe,
-    PessoaUpdateComponent
+    PessoaUpdateComponent,
+    PessoaDeleteComponent,
+    DepartamentoCreateComponent,
+    DepartamentoListComponent,
+    DepartamentoUpdateComponent,
+    DepartamentoReadComponent,
+    DepartamentoDeleteComponent,
+    ResponsavelDepartamentoCreateComponent,
+    ResponsavelDepartamentoListComponent
   ],
   imports: [
     BrowserModule,
