@@ -110,14 +110,7 @@
             </mat-select>
             <mat-icon matSuffix>wc</mat-icon>
         </mat-form-field>
-
-        <!-- senha -->
-        <mat-form-field class="fullWidth" appearance="outline">
-            <mat-label>Senha</mat-label>
-            <input [(ngModel)]="usuario.senha" name="senha" [disabled]="true" required matInput
-                [type]="'password'" placeholder="Ex.. 1234">
-        </mat-form-field>
-
+        
         <!-- ativo-->
         <div class="checkbox-container">
             <mat-checkbox [(ngModel)]="usuario.ativo" [disabled]="true" name="ativo" color="primary"></mat-checkbox>

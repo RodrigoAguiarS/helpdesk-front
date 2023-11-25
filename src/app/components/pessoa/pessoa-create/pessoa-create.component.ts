@@ -32,7 +32,6 @@ export class PessoaCreateComponent implements OnInit {
   cpf: FormControl = new FormControl(null, Validators.required);
   sexo: FormControl = new FormControl(null, Validators.required);
   email: FormControl = new FormControl(null, Validators.email);
-  senha: FormControl = new FormControl(null, Validators.minLength(3));
   cep: FormControl = new FormControl(null, Validators.required);
   numero: FormControl = new FormControl(null, Validators.required);
   confirmaSenha: FormControl = new FormControl(null, Validators.minLength(3));
@@ -67,7 +66,6 @@ export class PessoaCreateComponent implements OnInit {
     this.usuario.pessoa.nome = this.nome.value;
     this.usuario.pessoa.cpf = this.cpf.value;
     this.usuario.email = this.email.value;
-    this.usuario.senha = this.senha.value;
     this.usuario.pessoa.dataNascimento = this.dataNascimento.value;
     this.usuario.pessoa.telefone = this.telefone.value
     this.usuario.pessoa.sexo = this.sexo.value
@@ -76,9 +74,10 @@ export class PessoaCreateComponent implements OnInit {
     
     // Chamada do serviço para criar o usuário
     this.usuarioService.create(this.usuario).subscribe({
-      next: (resposta) => {
-        this.mensagemService.showSuccessoMensagem("Usuário " + resposta.pessoa.nome + " cadastrado com sucesso");
-        this.router.navigate(["home"]);
+      next: () => {
+        this.mensagemService.showSuccessoMensagem("Usuário " 
+        + this.usuario.pessoa?.nome + " cadastrado com sucesso");
+        this.router.navigate(["pessoas"]);
       },
       error: (ex) => {
         if (ex.error.errors) {
@@ -98,30 +97,12 @@ export class PessoaCreateComponent implements OnInit {
       this.nome.valid &&
       this.cpf.valid &&
       this.email.valid &&
-      this.senha.valid &&
       this.dataNascimento.valid &&
       this.telefone.valid &&
       this.sexo.valid &&
       this.cep.valid &&
-      this.numero.valid &&
-      this.confirmaSenha.valid &&
-      this.senha.value === this.confirmaSenha.value
+      this.numero.valid
     );
-  }
-
-   // Verificação se as senhas coincidem
-  checkPasswordMatch(): void {
-    if (
-      this.confirmaSenha.value !== this.usuario.senha &&
-      this.confirmaSenha.dirty
-    ) {
-      this.mensagemService.showErrorMensagem("As senhas não são iguais");
-    }
-  }
-
-    // Alternar visibilidade da senha
-  togglePasswordVisibility(): void {
-    this.hide = !this.hide;
   }
 
     // Retorna o status formatado

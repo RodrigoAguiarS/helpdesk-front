@@ -29,7 +29,6 @@ export class PessoaUpdateComponent implements OnInit {
   cpf: FormControl = new FormControl(null, Validators.required);
   sexo: FormControl = new FormControl(null, Validators.required);
   email: FormControl = new FormControl(null, Validators.email);
-  senha: FormControl = new FormControl(null, Validators.minLength(3));
   cep: FormControl = new FormControl(null, Validators.required);
   numero: FormControl = new FormControl(null, Validators.minLength(1));
   confirmaSenha: FormControl = new FormControl(null, Validators.minLength(3));
@@ -50,7 +49,6 @@ export class PessoaUpdateComponent implements OnInit {
     this.usuario.pessoa.nome = this.nome.value;
     this.usuario.pessoa.cpf = this.cpf.value;
     this.usuario.email = this.email.value;
-    this.usuario.senha = this.senha.value;
     this.usuario.id = this.route.snapshot.paramMap.get("id");
     this.findById();
   }
@@ -66,9 +64,7 @@ export class PessoaUpdateComponent implements OnInit {
   update(): void {
     this.pessoaService.update(this.usuario).subscribe({
       next: () => {
-        this.mensagemService.showSuccessoMensagem(
-          "Pessoa atualizado com sucesso"
-        );
+        this.mensagemService.showSuccessoMensagem(this.usuario.pessoa?.nome + " Atualizado com sucesso");
         this.userChangeService.notifyUserChanged();
         this.router.navigate(["pessoas"]);
       },
@@ -99,30 +95,12 @@ export class PessoaUpdateComponent implements OnInit {
       this.nome.valid &&
       this.cpf.valid &&
       this.email.valid &&
-      this.senha.valid &&
       this.dataNascimento.valid &&
       this.telefone.valid &&
       this.sexo.valid &&
       this.cep.valid &&
-      this.numero.valid &&
-      this.confirmaSenha.valid &&
-      this.senha.value === this.confirmaSenha.value
+      this.numero.valid
     );
-  }
-
-  // Validação de solos
-  checkPasswordMatch(): void {
-    if (
-      this.confirmaSenha.value !== this.usuario.senha &&
-      this.confirmaSenha.dirty
-    ) {
-      this.mensagemService.showErrorMensagem("As senhas não são iguais");
-    }
-  }
-
-  // visualizar senha
-  togglePasswordVisibility(): void {
-    this.hide = !this.hide;
   }
 
   retornaStatus(status: boolean): string {

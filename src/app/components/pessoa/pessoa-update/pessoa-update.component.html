@@ -110,32 +110,7 @@
             </mat-select>
             <mat-icon matSuffix>wc</mat-icon>
         </mat-form-field>
-
-        <!-- senha -->
-        <mat-form-field class="fullWidth" appearance="outline">
-            <mat-label>Senha</mat-label>
-            <input [(ngModel)]="usuario.senha" name="senha" [formControl]="senha" required matInput
-                [type]="hide ? 'password' : 'text'" placeholder="Ex.. 1234">
-            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()"
-                [attr.aria-label]="hide ? 'Show password' : 'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-        </mat-form-field>
-
-        <!-- confirme sua senha -->
-        <mat-form-field class="fullWidth" appearance="outline">
-            <mat-label>Confirme sua senha</mat-label>
-            <input name="confirmaSenha" [formControl]="confirmaSenha" required matInput type="password"
-                placeholder="Ex.. 1234" (blur)="checkPasswordMatch()">
-            <mat-icon matSuffix>password</mat-icon>
-        </mat-form-field>
-
-        <!-- mensagem de erro -->
-        <div class="password-mismatch" *ngIf="confirmaSenha.value !== usuario.senha && confirmaSenha.dirty"
-            (blur)="checkPasswordMatch()">
-            As senhas não são iguais.
-        </div>
-
+        
         <!-- ativo-->
         <div class="checkbox-container">
             <mat-checkbox [(ngModel)]="usuario.ativo" name="ativo" color="primary"></mat-checkbox>

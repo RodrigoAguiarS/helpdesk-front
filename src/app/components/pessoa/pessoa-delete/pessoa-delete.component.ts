@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { PartialObserver } from "rxjs";
-import { Departamento } from "src/app/models/departamento";
+
 import { Endereco } from "src/app/models/endereco";
 import { Pessoa } from "src/app/models/pessoa";
 import { Usuario } from "src/app/models/usuario";
@@ -38,25 +37,20 @@ export class PessoaDeleteComponent implements OnInit {
     });
   }
 
-  // deletar pessoa.
   delete(): void {
-    const observer: PartialObserver<Departamento> = {
-      next: (value: Departamento) => {
-        this.mensagemService.showSuccessoMensagem(
-          "Departamento " + value.nome + " deletado com sucesso"
+    this.pessoaService.delete(this.usuario.id).subscribe(() => {
+      this.mensagemService.showSuccessoMensagem
+      (this.usuario.pessoa?.nome + ' deletado com sucesso');
+      this.router.navigate(['pessoas'])
+    }, ex => {
+      if(ex.error.status == 403) {
+        this.mensagemService.showErrorMensagem(
+          "Usuário não tem Permissão " + ex.error.message
         );
-        this.router.navigate(["departamentos"]);
-      },
-      error: (ex: any) => {
-        if (ex.error.status == 403) {
-          this.mensagemService.showErrorMensagem(
-            "Usuário não tem Permissão " + ex.error.message
-          );
-        } else {
-          this.mensagemService.showErrorMensagem(ex.error.message);
-        }
-      },
-    };
+      } else {
+        this.mensagemService.showErrorMensagem(ex.error.message);
+      }
+    })
   }
 
   // Retorna o status formatado
