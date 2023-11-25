@@ -30,7 +30,7 @@ import { DepartamentoDeleteComponent } from './components/departamento/departame
 import { ResponsavelDepartamentoCreateComponent } from './components/responsavel-departamento/responsavel-departamento-create/responsavel-departamento-create.component'; 
 import { ResponsavelDepartamentoListComponent } from './components/responsavel-departamento/responsavel-departamento-list/responsavel-departamento-list.component'; 
 import { ResponsavelDepartamentoUpdateComponent } from './components/responsavel-departamento/responsavel-departamento-update/responsavel-departamento-update.component';
-
+import { ResponsavelDepartamentoDeleteComponent } from './components/responsavel-departamento/responsavel-departamento-delete/responsavel-departamento-delete.component'; 
 
 const routes: Routes = [
   { path : 'login', component: LoginComponent },
@@ -54,6 +54,7 @@ const routes: Routes = [
 
         { path: 'responsavelDepartamentos',component:  ResponsavelDepartamentoListComponent},
         { path: 'responsavelDepartamentos/create',component:  ResponsavelDepartamentoCreateComponent},
+        { path: 'responsavelDepartamentos/delete/:id',component:  ResponsavelDepartamentoDeleteComponent},
         { path: 'responsavelDepartamentos/update/:id',component:  ResponsavelDepartamentoUpdateComponent},
 
 
