@@ -22,6 +22,7 @@ export class ResponsavelDepartamentoCreateComponent implements OnInit {
 
   funcionario: FormControl = new FormControl(null, [Validators.required]);
   departamento: FormControl = new FormControl(null, [Validators.required]);
+  dataInicioResponsabilidade: FormControl = new FormControl(null, [Validators.required]);
 
   constructor(
     private funcionarioService: FuncionarioService,

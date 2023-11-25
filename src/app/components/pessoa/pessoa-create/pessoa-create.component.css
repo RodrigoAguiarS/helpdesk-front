@@ -42,12 +42,6 @@ img {
     margin-top: 5px;
 }
 
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
 .checkbox-label {
     margin-left: 5px;
 }

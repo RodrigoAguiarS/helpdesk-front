@@ -19,6 +19,7 @@ export class DepartamentoCreateComponent implements OnInit {
     private router: Router
   ) {}
 
+  // Definição dos formulários
   nome: FormControl = new FormControl(null, Validators.minLength(3));
   descricao: FormControl = new FormControl(null, Validators.minLength(3));
 
@@ -51,6 +52,7 @@ export class DepartamentoCreateComponent implements OnInit {
     });
   }
 
+  // validacao de campos
   validaCampos(): boolean {
     return this.nome.valid && this.descricao.valid
   }

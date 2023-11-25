@@ -8,6 +8,10 @@
  .full-width {
     width: 100%;
  }
+
+ .date {
+   width: 40%;
+}
  
  h1, img, p{
     text-align: center;

@@ -55,8 +55,7 @@ export class ResponsavelDepartamentoDeleteComponent implements OnInit {
       .subscribe({
         next: () => {
           this.mensagemService.showSuccessoMensagem(
-            "O vinculo de " + this.responsavelDepartemento.funcionario.pessoa.nome + " do Departamento " 
-            + this.responsavelDepartemento.departamento.nome + " foi deletada com sucesso"
+            "O vinculo do Departamento " + this.responsavelDepartemento.departamento.nome + " foi deletado com sucesso"
           );
           this.router.navigate(["responsavelDepartamentos"]);
         },
