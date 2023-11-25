@@ -66,7 +66,8 @@ import { DepartamentoReadComponent } from './components/departamento/departament
 import { DepartamentoDeleteComponent } from './components/departamento/departamento-delete/departamento-delete.component';
 import { ResponsavelDepartamentoCreateComponent } from './components/responsavel-departamento/responsavel-departamento-create/responsavel-departamento-create.component';
 import { ResponsavelDepartamentoListComponent } from './components/responsavel-departamento/responsavel-departamento-list/responsavel-departamento-list.component';
-import { ResponsavelDepartamentoUpdateComponent } from './components/responsavel-departamento/responsavel-departamento-update/responsavel-departamento-update.component'; 
+import { ResponsavelDepartamentoUpdateComponent } from './components/responsavel-departamento/responsavel-departamento-update/responsavel-departamento-update.component';
+import { ResponsavelDepartamentoDeleteComponent } from './components/responsavel-departamento/responsavel-departamento-delete/responsavel-departamento-delete.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +103,8 @@ import { ResponsavelDepartamentoUpdateComponent } from './components/responsavel
     DepartamentoDeleteComponent,
     ResponsavelDepartamentoCreateComponent,
     ResponsavelDepartamentoListComponent,
-    ResponsavelDepartamentoUpdateComponent
+    ResponsavelDepartamentoUpdateComponent,
+    ResponsavelDepartamentoDeleteComponent
   ],
   imports: [
     BrowserModule,
