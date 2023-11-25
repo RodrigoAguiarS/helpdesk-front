@@ -38,19 +38,19 @@ export class PessoaDeleteComponent implements OnInit {
   }
 
   delete(): void {
-    this.pessoaService.delete(this.usuario.id).subscribe(() => {
-      this.mensagemService.showSuccessoMensagem
-      (this.usuario.pessoa?.nome + ' deletado com sucesso');
-      this.router.navigate(['pessoas'])
-    }, ex => {
-      if(ex.error.status == 403) {
-        this.mensagemService.showErrorMensagem(
-          "Usuário não tem Permissão " + ex.error.message
-        );
-      } else {
-        this.mensagemService.showErrorMensagem(ex.error.message);
+    this.pessoaService.delete(this.usuario.id).subscribe({
+      next: () => {
+        this.mensagemService.showSuccessoMensagem(this.usuario.pessoa?.nome + ' deletado com sucesso');
+        this.router.navigate(['pessoas']);
+      },
+      error: (ex) => {
+        if (ex.error.status == 403) {
+          this.mensagemService.showErrorMensagem("Usuário não tem Permissão " + ex.error.message);
+        } else {
+          this.mensagemService.showErrorMensagem(ex.error.message);
+        }
       }
-    })
+    });
   }
 
   // Retorna o status formatado

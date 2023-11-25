@@ -28,10 +28,13 @@ export class DepartamentoReadComponent implements OnInit {
   }
 
   findById(): void {
-    this.departamentoService.findResponsavelAtualByDepartamento(this.departamento.id).subscribe(resposta => {
-      this.departamento = resposta;
-    }, ex => {
-      this.mensagemService.showErrorMensagem(ex.error.error);
-    })
+    this.departamentoService.findResponsavelAtualByDepartamento(this.departamento.id).subscribe({
+      next: (resposta) => {
+        this.departamento = resposta;
+      },
+      error: (ex) => {
+        this.mensagemService.showErrorMensagem(ex.error.message);
+      }
+    });
   }
 }

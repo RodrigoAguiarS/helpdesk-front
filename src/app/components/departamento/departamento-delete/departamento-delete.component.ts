@@ -32,22 +32,21 @@ export class DepartamentoDeleteComponent implements OnInit {
     });
   }
 
-  // deletar pessoa.
+  // deletar Departamento.
   delete(): void {
-    this.departamentoService.delete(this.departamento.id).subscribe(
-      () => {
+    this.departamentoService.delete(this.departamento.id).subscribe({
+      next: () => {
         this.mensagemService.showSuccessoMensagem(
           "Departamento deletado com sucesso"
         );
-        this.router.navigate(["departamentos"]);
       },
-      (ex) => {
+      error: (ex) => {
         if (ex.error.status == 403) {
           this.mensagemService.showErrorMensagem("Usuário não tem Permissão " + ex.error.message);
         } else {
           this.mensagemService.showErrorMensagem(ex.error.message);
         }
       }
-    );
+    });
   }
 }
