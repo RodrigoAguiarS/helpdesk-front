@@ -29,7 +29,7 @@ import { DepartamentoReadComponent } from './components/departamento/departament
 import { DepartamentoDeleteComponent } from './components/departamento/departamento-delete/departamento-delete.component';
 import { ResponsavelDepartamentoCreateComponent } from './components/responsavel-departamento/responsavel-departamento-create/responsavel-departamento-create.component'; 
 import { ResponsavelDepartamentoListComponent } from './components/responsavel-departamento/responsavel-departamento-list/responsavel-departamento-list.component'; 
-
+import { ResponsavelDepartamentoUpdateComponent } from './components/responsavel-departamento/responsavel-departamento-update/responsavel-departamento-update.component';
 
 
 const routes: Routes = [
@@ -54,6 +54,7 @@ const routes: Routes = [
 
         { path: 'responsavelDepartamentos',component:  ResponsavelDepartamentoListComponent},
         { path: 'responsavelDepartamentos/create',component:  ResponsavelDepartamentoCreateComponent},
+        { path: 'responsavelDepartamentos/update/:id',component:  ResponsavelDepartamentoUpdateComponent},
 
 
         { path: 'tecnicos',            component:   TecnicoListComponent },

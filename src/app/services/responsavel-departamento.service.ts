@@ -18,4 +18,12 @@ export class ResponsavelDepartamentoService {
   findAll(): Observable<ResponsavelDepartamento[]> {
     return this.http.get<ResponsavelDepartamento[]>(`${API_CONFIG.baseUrl}/api/responsavel_departamento`);
   }
+
+  update(responsavelDepartamento: ResponsavelDepartamento): Observable<ResponsavelDepartamento> {
+    return this.http.put<ResponsavelDepartamento>(`${API_CONFIG.baseUrl}/api/responsavel_departamento/${responsavelDepartamento.id}`, responsavelDepartamento);
+  }
+  
+  findById(id: any): Observable<ResponsavelDepartamento> {
+    return this.http.get<ResponsavelDepartamento>(`${API_CONFIG.baseUrl}/api/responsavel_departamento/responsaveis/${id}`);
+  }
 }
