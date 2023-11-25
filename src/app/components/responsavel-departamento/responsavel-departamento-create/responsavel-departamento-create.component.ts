@@ -22,7 +22,9 @@ export class ResponsavelDepartamentoCreateComponent implements OnInit {
 
   funcionario: FormControl = new FormControl(null, [Validators.required]);
   departamento: FormControl = new FormControl(null, [Validators.required]);
-  dataInicioResponsabilidade: FormControl = new FormControl(null, [Validators.required]);
+  dataInicioResponsabilidade: FormControl = new FormControl(null, [
+    Validators.required,
+  ]);
 
   constructor(
     private funcionarioService: FuncionarioService,
@@ -41,15 +43,17 @@ export class ResponsavelDepartamentoCreateComponent implements OnInit {
   create(): void {
     this.responsavelDepartementoService
       .create(this.responsavelDepartemento)
-      .subscribe(
-        (resposta) => {
-          this.mensagemService.showSuccessoMensagem("Responsavel Departamento Cadastrado com Sucesso");
+      .subscribe({
+        next: (resposta) => {
+          this.mensagemService.showSuccessoMensagem(
+            "Responsavel Departamento Cadastrado com Sucesso"
+          );
           this.router.navigate(["responsavelDepartamentos"]);
         },
-        (ex) => {
+        error: (ex) => {
           this.mensagemService.showErrorMensagem(ex.error.message);
-        }
-      );
+        },
+      });
   }
 
   findAllFuncionarios(): void {
@@ -59,12 +63,18 @@ export class ResponsavelDepartamentoCreateComponent implements OnInit {
   }
 
   findAllDepartamentos(): void {
-    this.departamentoService.findAllDepartamentoSemResponsavel().subscribe((resposta) => {
-      this.departamentos = resposta;
-    });
+    this.departamentoService
+      .findAllDepartamentoSemResponsavel()
+      .subscribe((resposta) => {
+        this.departamentos = resposta;
+      });
   }
 
   validaCampos(): boolean {
-    return this.funcionario.valid && this.departamento.valid;
+    return (
+      this.funcionario.valid &&
+      this.dataInicioResponsabilidade.valid &&
+      this.departamento.valid
+    );
   }
 }

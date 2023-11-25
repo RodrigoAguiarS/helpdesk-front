@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Endereco } from "src/app/models/endereco";
+import { EnderecoResposta } from "src/app/models/enderecoReposta";
 import { Pessoa } from "src/app/models/pessoa";
 import { Usuario } from "src/app/models/usuario";
 import { EnderecoService } from "src/app/services/endereco.service";
@@ -110,8 +111,8 @@ export class PessoaUpdateComponent implements OnInit {
   // busca o endereco pelo cep passado
   buscarEnderecoPorCep(): void {
     const cep = this.cep.value;
-    this.enderecoService.buscaEnderecoPorCep(cep).subscribe(
-      (endereco) => {
+    this.enderecoService.buscaEnderecoPorCep(cep).subscribe({
+      next: (endereco: EnderecoResposta) => {
         if (endereco.bairro) {
           this.usuario.pessoa.endereco.cep = endereco.cep;
           this.usuario.pessoa.endereco.rua = endereco.logradouro;
@@ -126,12 +127,12 @@ export class PessoaUpdateComponent implements OnInit {
           this.limparCampos();
         }
       },
-      (erro) => {
-        this.mensagemService.showErrorMensagem("Cep Inváliado realize a buscar novamente" + erro);
+      error: (erro) => {
+        this.mensagemService.showErrorMensagem("Cep Inválido. Realize a busca novamente.");
         this.enderecoPreenchido = false;
         this.limparCampos();
       }
-    );
+    });
   }
 
    // metodo de limpar os campos
