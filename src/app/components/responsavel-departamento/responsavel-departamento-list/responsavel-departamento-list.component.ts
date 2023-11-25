@@ -13,7 +13,7 @@ export class ResponsavelDepartamentoListComponent implements OnInit {
 
   ELEMENT_DATA: ResponsavelDepartamento[] = []
 
-  displayedColumns: string[] = ['id', 'nome', 'cargo', 'departamento', 'acoes'];
+  displayedColumns: string[] = ['id','departamento', 'responsavel', 'cargo', 'dataInicioResponsabilidade', 'dataFimResponsabilidade', 'acoes'];
   dataSource = new MatTableDataSource<ResponsavelDepartamento>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,5 +38,4 @@ export class ResponsavelDepartamentoListComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }

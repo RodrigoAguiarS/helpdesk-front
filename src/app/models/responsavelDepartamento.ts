@@ -5,4 +5,6 @@ export class ResponsavelDepartamento {
     id?:         any;
     funcionario: Funcionario;
     departamento: Departamento;
+    dataInicioResponsabilidade: Date;
+    dataFimResponsabilidade: Date;
   }

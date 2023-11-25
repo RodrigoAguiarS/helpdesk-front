@@ -34,4 +34,8 @@ export class DepartamentoService {
   delete(id: any): Observable<Departamento> {
     return this.http.delete<Departamento>(`${API_CONFIG.baseUrl}/api/departamentos/${id}`);
   }
+
+  findResponsavelAtualByDepartamento(id: any): Observable<Departamento> {
+    return this.http.get<Departamento>(`${API_CONFIG.baseUrl}/api/departamentos/responsavelAtual/${id}`);
+  }
 }
