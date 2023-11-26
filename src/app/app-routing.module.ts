@@ -33,7 +33,8 @@ import { ResponsavelDepartamentoUpdateComponent } from './components/responsavel
 import { ResponsavelDepartamentoDeleteComponent } from './components/responsavel-departamento/responsavel-departamento-delete/responsavel-departamento-delete.component'; 
 import { CargoCreateComponent } from './components/cargo/cargo-create/cargo-create.component';
 import { CargoListComponent } from './components/cargo/cargo-list/cargo-list.component'; 
-import { CargoUpdateComponent } from './components/cargo/cargo-update/cargo-update.component'; 
+import { CargoUpdateComponent } from './components/cargo/cargo-update/cargo-update.component';
+import { CargoReadComponent } from './components/cargo/cargo-read/cargo-read.component'; 
 
 const routes: Routes = [
   { path : 'login', component: LoginComponent },
@@ -58,6 +59,8 @@ const routes: Routes = [
         { path: 'cargos',component:  CargoListComponent},
         { path: 'cargos/create',component:  CargoCreateComponent},
         { path: 'cargos/update/:id',component:  CargoUpdateComponent},
+        { path: 'cargos/read/:id',component:  CargoReadComponent},
+        { path: 'cargos/read/:id/update/:id',component:  CargoUpdateComponent},
 
 
         { path: 'responsavelDepartamentos',component:  ResponsavelDepartamentoListComponent},

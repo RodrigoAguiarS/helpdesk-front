@@ -3,7 +3,7 @@ import { Departamento } from 'src/app/models/departamento';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MensagemService } from 'src/app/services/mensagem.service';
-import { ResponsavelDepartamentoDto } from 'src/app/models/responsavelDepartamentoDto';
+import { DetalhesResponsavel } from 'src/app/models/detalhesResponsavel';
 
 @Component({
   selector: 'app-departamento-read',
@@ -22,7 +22,7 @@ export class DepartamentoReadComponent implements OnInit {
 
   ngOnInit(): void {
     this.departamento = new Departamento();
-    this.departamento.responsavelAtual = new ResponsavelDepartamentoDto();
+    this.departamento.responsavelAtual = new DetalhesResponsavel();
     this.departamento.id = this.route.snapshot.paramMap.get('id');
     this.findById();
   }

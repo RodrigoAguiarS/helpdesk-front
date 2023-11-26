@@ -1,9 +1,12 @@
+import { Departamento } from "./departamento";
 import { DetalhesResponsavel } from "./detalhesResponsavel";
 
-export class Departamento {
+export class DetalhesCargo {
     id?:     any;
     nome: string;
     descricao: string;
-    dataCriacao: Date;
+    responsabilidades: string;
+    salarioBase: string;
+    departamento: Departamento;
     responsavelAtual: DetalhesResponsavel;
   }

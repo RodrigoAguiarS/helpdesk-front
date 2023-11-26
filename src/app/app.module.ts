@@ -71,7 +71,8 @@ import { ResponsavelDepartamentoUpdateComponent } from './components/responsavel
 import { ResponsavelDepartamentoDeleteComponent } from './components/responsavel-departamento/responsavel-departamento-delete/responsavel-departamento-delete.component';
 import { CargoCreateComponent } from './components/cargo/cargo-create/cargo-create.component';
 import { CargoListComponent } from './components/cargo/cargo-list/cargo-list.component';
-import { CargoUpdateComponent } from './components/cargo/cargo-update/cargo-update.component'; 
+import { CargoUpdateComponent } from './components/cargo/cargo-update/cargo-update.component';
+import { CargoReadComponent } from './components/cargo/cargo-read/cargo-read.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,7 +113,8 @@ import { CargoUpdateComponent } from './components/cargo/cargo-update/cargo-upda
     ResponsavelDepartamentoDeleteComponent,
     CargoCreateComponent,
     CargoListComponent,
-    CargoUpdateComponent
+    CargoUpdateComponent,
+    CargoReadComponent
   ],
   imports: [
     BrowserModule,
