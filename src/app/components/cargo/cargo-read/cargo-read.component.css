@@ -1,37 +1,53 @@
 .container {
-    width: 100%;
+    width: 45%;
+    margin: auto;
+    padding: 1rem;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-.cargo-details-table {
-    width: 50%;
-    border-collapse: collapse;
-    margin-top: 20px;
+mat-card {
+    width: 100%;
 }
 
-.cargo-details-table th, .cargo-details-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+mat-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.cargo-details-table th {
-    background-color: #f2f2f2;
+mat-card-title {
+    margin-top: 1rem;
 }
 
-.actions {
-    margin-top: 20px;
+img {
+    height: 15rem;
 }
 
-button {
-    margin-right: 10px;
+p {
+    margin-top: 3rem;
+    opacity: .5;
 }
 
-/* Adiciona estilo para centralizar a tabela em telas menores */
-@media (max-width: 768px) {
-    .cargo-details-table {
-        width: 80%;
-    }
+mat-card-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+}
+
+caption {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+td, th {
+    text-align: left;
 }

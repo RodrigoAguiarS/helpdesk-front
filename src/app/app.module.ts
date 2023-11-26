@@ -72,7 +72,9 @@ import { ResponsavelDepartamentoDeleteComponent } from './components/responsavel
 import { CargoCreateComponent } from './components/cargo/cargo-create/cargo-create.component';
 import { CargoListComponent } from './components/cargo/cargo-list/cargo-list.component';
 import { CargoUpdateComponent } from './components/cargo/cargo-update/cargo-update.component';
-import { CargoReadComponent } from './components/cargo/cargo-read/cargo-read.component'; 
+import { CargoReadComponent } from './components/cargo/cargo-read/cargo-read.component';
+import { CargoDeleteComponent } from './components/cargo/cargo-delete/cargo-delete.component'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,7 +116,8 @@ import { CargoReadComponent } from './components/cargo/cargo-read/cargo-read.com
     CargoCreateComponent,
     CargoListComponent,
     CargoUpdateComponent,
-    CargoReadComponent
+    CargoReadComponent,
+    CargoDeleteComponent
   ],
   imports: [
     BrowserModule,

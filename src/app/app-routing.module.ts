@@ -35,7 +35,7 @@ import { CargoCreateComponent } from './components/cargo/cargo-create/cargo-crea
 import { CargoListComponent } from './components/cargo/cargo-list/cargo-list.component'; 
 import { CargoUpdateComponent } from './components/cargo/cargo-update/cargo-update.component';
 import { CargoReadComponent } from './components/cargo/cargo-read/cargo-read.component'; 
-
+import { CargoDeleteComponent } from './components/cargo/cargo-delete/cargo-delete.component';
 const routes: Routes = [
   { path : 'login', component: LoginComponent },
     { path : 'login-recuperar', component: LoginRecuperarComponent },
@@ -59,8 +59,10 @@ const routes: Routes = [
         { path: 'cargos',component:  CargoListComponent},
         { path: 'cargos/create',component:  CargoCreateComponent},
         { path: 'cargos/update/:id',component:  CargoUpdateComponent},
+        { path: 'cargos/delete/:id',component:  CargoDeleteComponent},
         { path: 'cargos/read/:id',component:  CargoReadComponent},
         { path: 'cargos/read/:id/update/:id',component:  CargoUpdateComponent},
+        { path: 'cargos/read/:id/delete/:id',component:  CargoDeleteComponent},
 
 
         { path: 'responsavelDepartamentos',component:  ResponsavelDepartamentoListComponent},

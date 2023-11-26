@@ -37,8 +37,8 @@ export class DepartamentoDeleteComponent implements OnInit {
     this.departamentoService.delete(this.departamento.id).subscribe({
       next: () => {
         this.mensagemService.showSuccessoMensagem(
-          "Departamento deletado com sucesso"
-        );
+          "Departamento deletado com sucesso");
+          this.router.navigate(["departamentos"]);
       },
       error: (ex) => {
         if (ex.error.status == 403) {

@@ -38,7 +38,7 @@ export class DepartamentoCreateComponent implements OnInit {
         this.mensagemService.showSuccessoMensagem(
           "Departamento " + resposta.nome + " cadastrado com sucesso"
         );
-        this.router.navigate(["home"]);
+        this.router.navigate(["departamentos"]);
       },
       error: (ex) => {
         if (ex.error.errors) {
