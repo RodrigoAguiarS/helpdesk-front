@@ -68,9 +68,9 @@ export class ClienteUpdateComponent implements OnInit {
     } else {
       this.cliente.perfis.push(perfil);
     }
-
+    
   }
-
+  
   validaCampos(): boolean {
     return this.nome.valid && this.cpf.valid
      && this.email.valid && this.senha.valid

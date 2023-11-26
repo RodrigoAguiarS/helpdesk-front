@@ -106,4 +106,5 @@ export class ChamadoUpdateComponent implements OnInit {
       return 'ALTA'
     }
   }
+  
 }

@@ -60,4 +60,5 @@ export class ChamadoReadComponent implements OnInit {
       return 'ALTA'
     }
   }
+  
 }

@@ -1,49 +1,35 @@
 <mat-toolbar>
-        <!-- E-mail do usuário -->
-    <span class="user-info">
-        <mat-icon>email</mat-icon>
-        {{ usuario?.email }}
-    </span>
+  <!-- E-mail do usuário -->
+  <span class="user-info">
+    <mat-icon>email</mat-icon>
+    {{ usuario?.email }}
+  </span>
 
-    <span *ngIf="roles.includes('ROLE_ADMIN_GERAL')" class="user-info">
-        <mat-icon>admin_panel_settings</mat-icon>
-        <mat-label>Adminstrador do Sistema</mat-label>
-    </span>
+  <span *ngIf="roles.includes('ROLE_ADMIN_GERAL')" class="user-info">
+    <mat-icon>admin_panel_settings</mat-icon>
+    <mat-label>Adminstrador do Sistema</mat-label>
+  </span>
 
-    <!-- Espaçador flexível -->
-    <span class="example-spacer"></span>
+  <!-- Espaçador flexível -->
+  <span class="example-spacer"></span>
 
-    <div class="user-actions">
-        <mat-form-field *ngIf="roles.includes('ROLE_ADMIN_GERAL')">
-          <input matInput placeholder="Login do Usuário" [(ngModel)]="loginComoUsuario">
-        </mat-form-field>
-      
-        <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')"  [disabled]="!loginComoUsuario" mat-raised-button (click)="toggleLogarDeslogar()">
-          {{ usuarioTrocado ? 'Voltar ao Usuário' : 'Logar' }}
-        </button>
-    </div>
+  <!-- Nome e Perfis do usuário -->
+  <span class="user-info">
+    <mat-icon>account_circle</mat-icon>
+    {{ usuario?.pessoa?.nome }}
+  </span>
 
-
-    <!-- Nome e Perfis do usuário -->
-    <span class="user-info">
-        <mat-icon>account_circle</mat-icon>
-        {{ usuario?.pessoa?.nome }}
-    </span>
-
-    <!-- Botão de dropdown -->
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
+  <!-- Botão de dropdown -->
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="'pessoas/update/' + usuario?.id">
+      Editar Usuário
     </button>
-    <mat-menu #menu="matMenu">
-        <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-menu-item [routerLink]="'usuarios/create'">
-            Novo Usúario
-        </button>
-        <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-menu-item [routerLink]="'usuarios'">
-            Listar Usúarios
-        </button>
-        <button mat-menu-item [routerLink]="'usuarios/update/' + usuario?.id">
-            Editar Usuário
-        </button>
-        <button mat-menu-item (click)="logout()">Logout</button>
-    </mat-menu>
+    <button
+      mat-menu-item (click)="logout()">Logout
+    </button>
+  </mat-menu>
+
 </mat-toolbar>

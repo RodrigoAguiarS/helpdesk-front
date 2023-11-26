@@ -1,0 +1,125 @@
+<div class="container mat-elevation-z8">
+    <form class="form">
+
+        <h1 class="fullWidth">Deletar Usuários</h1>
+        <img class="fullWidth" src="assets/img/usuario-create.svg" alt="Help Desk">
+
+        <!-- Perfil -->
+        <section class="section">
+            <mat-checkbox [disabled]="true"  class="checkbox-container" color="primary">Admin</mat-checkbox>
+            <mat-checkbox [disabled]="true"  checked="true" class="checkbox-container"
+                color="primary">Operadores</mat-checkbox>
+        </section>
+
+        <!-- Nome -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input [(ngModel)]="usuario.pessoa.nome" name="nome" [disabled]="true" required matInput
+                placeholder="Ex.. fulano de tal" maxlength="50">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <!-- Cpf -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input [(ngModel)]="usuario.pessoa.cpf" name="cpf" [disabled]="true" required matInput
+                placeholder="Ex..000.000.000-00" mask="000.000.000-00">
+            <mat-icon matSuffix>pin </mat-icon>
+        </mat-form-field>
+
+        <!-- data nascimento -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Data de Nascimento</mat-label>
+            <input [(ngModel)]="usuario.pessoa.dataNascimento" [disabled]="true" name="dataNascimento"
+                matInput [matDatepicker]="picker" placeholder="Ex.. 01/01/1990">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- telefone -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input [(ngModel)]="usuario.pessoa.telefone" name="telefone" [disabled]="true" matInput
+                placeholder="Ex.. (99) 99999-9999" mask="(00) 00000-0000">
+            <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+
+        <!-- email -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input [(ngModel)]="usuario.email" name="email" [disabled]="true" required matInput
+                placeholder="Ex.. fulano@mail.com">
+            <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <!-- numero -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Número da Casa</mat-label>
+            <input [(ngModel)]="usuario.pessoa.endereco.numero" name="numeroCasa" [disabled]="true" required
+                matInput placeholder="Ex.. 123">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field>
+
+        <!-- CEP -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>CEP</mat-label>
+            <input [(ngModel)]="usuario.pessoa.endereco.cep" name="cep"
+                [disabled]="true" required matInput placeholder="Ex.. 12345-678" mask="00000-000">
+            <mat-icon matSuffix>location_on</mat-icon>
+        </mat-form-field>
+
+        <!-- rua -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Rua</mat-label>
+            <input [(ngModel)]="usuario.pessoa.endereco.rua" name="rua" [disabled]="true" required
+                matInput placeholder="Ex.. Rua A">
+            <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field>
+
+        <!-- bairro -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Bairro</mat-label>
+            <input [(ngModel)]="usuario.pessoa.endereco.bairro" name="bairro" [disabled]="true" required
+                matInput placeholder="Ex.. Bairro B">
+            <mat-icon matSuffix>location_city</mat-icon>
+        </mat-form-field>
+
+        <!-- cidade -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Cidade</mat-label>
+            <input [(ngModel)]="usuario.pessoa.endereco.cidade" name="cidade" [disabled]="true" required
+                matInput placeholder="Ex.. Cidade C">
+            <mat-icon matSuffix>location_city</mat-icon>
+        </mat-form-field>
+
+        <!-- estado -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Estado</mat-label>
+            <input [(ngModel)]="usuario.pessoa.endereco.estado" name="estado" [disabled]="true" required
+                matInput placeholder="Ex.. Estado E">
+            <mat-icon matSuffix>location_city</mat-icon>
+        </mat-form-field>
+
+        <!-- sexo -->
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Sexo</mat-label>
+            <mat-select [(ngModel)]="usuario.pessoa.sexo" [disabled]="true" name="sexo" required>
+                <mat-option value="Masculino">Masculino</mat-option>
+                <mat-option value="Feminino">Feminino</mat-option>
+                <mat-option value="outro">Outro</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>wc</mat-icon>
+        </mat-form-field>
+        
+        <!-- ativo-->
+        <div class="checkbox-container">
+            <mat-checkbox [(ngModel)]="usuario.ativo" [disabled]="true" name="ativo" color="primary"></mat-checkbox>
+            <label class="checkbox-label">{{ retornaStatus(usuario.ativo) }}</label>
+        </div>
+
+        <!-- butões -->
+        <button (click)="delete()" class="fullWidth mat-elevation-z4" mat-flat-button
+            color="primary">Deletar</button>
+        <button routerLink="../../" class="fullWidth mat-elevation-z4" mat-stroked-button color="warn">Cancelar</button>
+    </form>
+</div>

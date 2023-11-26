@@ -1,4 +1,3 @@
-
 export interface Chamado {
    id?:                any;
    dataAbertura?:   string;
