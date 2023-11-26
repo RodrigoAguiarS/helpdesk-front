@@ -1,0 +1,45 @@
+.container {
+    width: 45%;
+    margin: auto auto 3rem auto;
+    padding: 1rem;
+    border-radius: 1rem;
+ }
+ 
+ .full-width {
+    width: 100%;
+ }
+ 
+ h1, h2, img, p{
+    text-align: center;
+ }
+ 
+ img {
+    height: 15rem;
+ }
+ 
+ .textarea {
+    min-height: 6rem;
+    max-height: 10rem;
+ }
+ 
+ button {
+    margin-top: .5rem;
+ }
+ 
+ p {
+    margin-top: 3rem;
+    opacity: .5;
+ }
+ .contador {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 8px;
+    display: block;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 8px;
+    display: block;
+}

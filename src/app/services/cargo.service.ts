@@ -14,4 +14,8 @@ export class CargoService {
   findAll(): Observable<Cargo[]> {
     return this.http.get<Cargo[]>(`${API_CONFIG.baseUrl}/api/cargos/`);
   }
+
+  create(cargo: Cargo): Observable<Cargo> {
+    return this.http.post<Cargo>(`${API_CONFIG.baseUrl}/api/cargos/`, cargo);
+  }
 }
