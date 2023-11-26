@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Cargo } from 'src/app/models/cargo';
 import { Endereco } from 'src/app/models/endereco';
 import { EnderecoResposta } from 'src/app/models/enderecoReposta';
 import { Pessoa } from 'src/app/models/pessoa';
@@ -21,7 +20,6 @@ export class PessoaCreateComponent implements OnInit {
   usuario: Usuario;
   hide = true;
   roles: string[] = [];
-  cargos: Cargo[] = []
   
   enderecoPreenchido: boolean = false;
   

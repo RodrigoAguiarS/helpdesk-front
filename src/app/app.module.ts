@@ -56,6 +56,7 @@ import { PessoaListComponent } from './components/pessoa/pessoa-list/pessoa-list
 import { LoginAlterarComponent } from './components/login/login-alterar/login-alterar.component';
 import { LoginRecuperarComponent } from './components/login/login-recuperar/login-recuperar.component';
 import { CPFPipe } from './cpf.pipe';
+import { CurrencyPipe } from './currency.pipe';
 import { TelefonePipe } from './telefone.pipe';
 import { PessoaUpdateComponent } from './components/pessoa/pessoa-update/pessoa-update.component';
 import { PessoaDeleteComponent } from './components/pessoa/pessoa-delete/pessoa-delete.component';
@@ -67,7 +68,9 @@ import { DepartamentoDeleteComponent } from './components/departamento/departame
 import { ResponsavelDepartamentoCreateComponent } from './components/responsavel-departamento/responsavel-departamento-create/responsavel-departamento-create.component';
 import { ResponsavelDepartamentoListComponent } from './components/responsavel-departamento/responsavel-departamento-list/responsavel-departamento-list.component';
 import { ResponsavelDepartamentoUpdateComponent } from './components/responsavel-departamento/responsavel-departamento-update/responsavel-departamento-update.component';
-import { ResponsavelDepartamentoDeleteComponent } from './components/responsavel-departamento/responsavel-departamento-delete/responsavel-departamento-delete.component'; 
+import { ResponsavelDepartamentoDeleteComponent } from './components/responsavel-departamento/responsavel-departamento-delete/responsavel-departamento-delete.component';
+import { CargoCreateComponent } from './components/cargo/cargo-create/cargo-create.component';
+import { CargoListComponent } from './components/cargo/cargo-list/cargo-list.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +97,7 @@ import { ResponsavelDepartamentoDeleteComponent } from './components/responsavel
     LoginRecuperarComponent,
     CPFPipe,
     TelefonePipe,
+    CurrencyPipe,
     PessoaUpdateComponent,
     PessoaDeleteComponent,
     DepartamentoCreateComponent,
@@ -104,7 +108,9 @@ import { ResponsavelDepartamentoDeleteComponent } from './components/responsavel
     ResponsavelDepartamentoCreateComponent,
     ResponsavelDepartamentoListComponent,
     ResponsavelDepartamentoUpdateComponent,
-    ResponsavelDepartamentoDeleteComponent
+    ResponsavelDepartamentoDeleteComponent,
+    CargoCreateComponent,
+    CargoListComponent
   ],
   imports: [
     BrowserModule,

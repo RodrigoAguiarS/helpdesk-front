@@ -4,7 +4,7 @@ export class Cargo {
     id?:     any;
     nome: string;
     descricao: string;
-    responsabilidade: string;
+    responsabilidades: string;
     salarioBase: string;
     departamento: Departamento;
   }
