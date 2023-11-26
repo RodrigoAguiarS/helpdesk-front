@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Cargo</h1>
+
+    <table class="cargo-details-table">
+        <caption>Detallhes do Cargo {{cargo.nome}}</caption>
+        <tr>
+            <th>Nome do Cargo</th>
+            <td>{{ cargo.nome }}</td>
+        </tr>
+        <tr>
+            <th>Salário</th>
+            <td>{{ cargo.salarioBase }}</td>
+        </tr>
+        <tr>
+            <th>Departamento</th>
+            <td>{{ cargo.departamento.nome }}</td>
+        </tr>
+        <tr>
+            <th>Gestor do Departamento</th>
+            <td>{{ cargo.responsavelAtual.nomeFuncionarioResponsavel }}</td>
+        </tr>
+        <tr>
+            <th>Descrição</th>
+            <td>{{ cargo.descricao }}</td>
+        </tr>
+        <tr>
+            <th>Responsabilidades</th>
+            <td>{{ cargo.responsabilidades }}</td>
+        </tr>
+    </table>
+
+    <div class="actions">
+        <button mat-button routerLink="../..">
+            <i class="material-icons votlar">arrow_back</i> Voltar
+        </button>
+        <button mat-button routerLink="update/{{ cargo.id }}">
+            <i class="material-icons edit">edit</i> Editar
+        </button>
+        <button mat-button routerLink="delete/{{ cargo.id }}">
+            <i class="material-icons delete">delete</i> Excluir
+        </button>
+    </div>
+</div>

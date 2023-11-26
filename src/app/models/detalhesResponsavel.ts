@@ -1,5 +1,5 @@
 
-export class ResponsavelDepartamentoDto {
+export class DetalhesResponsavel {
     id?:         any;
     nomeDepartamento: string;
     descricaoDepartamento: string;
