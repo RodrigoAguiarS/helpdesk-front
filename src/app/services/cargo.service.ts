@@ -31,4 +31,8 @@ export class CargoService {
   detalhesCargoById(id: any): Observable<DetalhesCargo> {
     return this.http.get<DetalhesCargo>(`${API_CONFIG.baseUrl}/api/cargos/detalhes/${id}`);
   }
+
+  delete(id: any): Observable<Cargo> {
+    return this.http.delete<Cargo>(`${API_CONFIG.baseUrl}/api/cargos/${id}`);
+  }
 }
