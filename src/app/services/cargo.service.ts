@@ -18,4 +18,12 @@ export class CargoService {
   create(cargo: Cargo): Observable<Cargo> {
     return this.http.post<Cargo>(`${API_CONFIG.baseUrl}/api/cargos/`, cargo);
   }
+
+  findById(id: any): Observable<Cargo> {
+    return this.http.get<Cargo>(`${API_CONFIG.baseUrl}/api/cargos/${id}`);
+  }
+
+  update(cargo: Cargo): Observable<Cargo> {
+    return this.http.put<Cargo>(`${API_CONFIG.baseUrl}/api/cargos/${cargo.id}`, cargo);
+  }
 }

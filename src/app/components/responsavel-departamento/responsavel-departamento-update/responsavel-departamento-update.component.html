@@ -33,8 +33,7 @@
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>DEPARTAMENTO ({{ responsavelDepartemento.departamento?.nome }})</mat-label>
             <mat-select [(ngModel)]="responsavelDepartemento.departamento" name="departamento"
-                [formControl]="departamento" required [compareWith]="compareFuncionarios">
-                <!-- Usar a função de comparação -->
+                [formControl]="departamento" required [compareWith]="compareDerpatamentos">
                 <mat-option *ngFor="let dep of departamentos" [value]="dep">{{ dep.nome }}</mat-option>
             </mat-select>
         </mat-form-field>
