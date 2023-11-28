@@ -12,7 +12,7 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   obterDadosUsuario(): Observable<Usuario> {
-    return this.http.get<Usuario>(`${API_CONFIG.baseUrl}/api/pessoas/dados`);
+    return this.http.get<Usuario>(`${API_CONFIG.baseUrl}/api/usuarios/dados`);
   }
 
   findAll(): Observable<Usuario[]> {

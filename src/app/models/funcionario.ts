@@ -5,4 +5,5 @@ export class Funcionario {
     id:    number;
     pessoa: Pessoa;
     cargo: Cargo;
+    dataEntrada: Date;
   }

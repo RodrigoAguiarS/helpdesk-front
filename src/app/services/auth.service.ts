@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   getUserRoles(): Observable<string[]> {
-    return this.http.get<string[]>(`${API_CONFIG.baseUrl}/api/pessoas/papel`);
+    return this.http.get<string[]>(`${API_CONFIG.baseUrl}/api/usuarios/papel`);
   }
 
   recuperarSenha(email: string): Observable<string> {

@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Cargo } from "src/app/models/cargo";
 import { Endereco } from "src/app/models/endereco";
 import { EnderecoResposta } from "src/app/models/enderecoReposta";
 import { Pessoa } from "src/app/models/pessoa";
 import { Usuario } from "src/app/models/usuario";
+import { CargoService } from "src/app/services/cargo.service";
 import { EnderecoService } from "src/app/services/endereco.service";
 import { MensagemService } from "src/app/services/mensagem.service";
 import { PessoaService } from "src/app/services/pessoa.service";
@@ -20,15 +22,18 @@ export class PessoaUpdateComponent implements OnInit {
   usuario: Usuario;
   hide = true;
   roles: string[] = [];
+  cargos: Cargo[] = [];
   
   enderecoPreenchido: boolean = false;
 
   // Definição dos formulários
   nome: FormControl = new FormControl(null, Validators.minLength(3));
   dataNascimento: FormControl = new FormControl(null, Validators.required);
+  dataEntrada: FormControl = new FormControl(null, Validators.required);
   telefone: FormControl = new FormControl(null, Validators.required);
   cpf: FormControl = new FormControl(null, Validators.required);
   sexo: FormControl = new FormControl(null, Validators.required);
+  cargo: FormControl = new FormControl(null, Validators.required);
   email: FormControl = new FormControl(null, Validators.email);
   cep: FormControl = new FormControl(null, Validators.required);
   numero: FormControl = new FormControl(null, Validators.minLength(1));
@@ -38,6 +43,7 @@ export class PessoaUpdateComponent implements OnInit {
     private pessoaService: PessoaService,
     private mensagemService: MensagemService,
     private enderecoService: EnderecoService,
+    private cargoService: CargoService,
     private route: ActivatedRoute,
     private router: Router,
     private userChangeService: UserChangeService
@@ -47,15 +53,18 @@ export class PessoaUpdateComponent implements OnInit {
     this.usuario = new Usuario();
     this.usuario.pessoa = new Pessoa();
     this.usuario.pessoa.endereco = new Endereco();
+    this.usuario.dataEntrada = this.dataEntrada.value;
+    this.usuario.cargo = new Cargo();
     this.usuario.pessoa.nome = this.nome.value;
     this.usuario.pessoa.cpf = this.cpf.value;
     this.usuario.email = this.email.value;
     this.usuario.id = this.route.snapshot.paramMap.get("id");
+    this.findAllCargos();
     this.findById();
   }
 
   findById(): void {
-    this.pessoaService.findById(this.usuario.id).subscribe((resposta) => {
+    this.pessoaService.findByIdPessoa(this.usuario.id).subscribe((resposta) => {
       resposta.perfis = [];
       this.usuario = resposta;
     });
@@ -98,6 +107,8 @@ export class PessoaUpdateComponent implements OnInit {
       this.email.valid &&
       this.dataNascimento.valid &&
       this.telefone.valid &&
+      this.dataEntrada.valid &&
+      this.cargo.valid &&
       this.sexo.valid &&
       this.cep.valid &&
       this.numero.valid
@@ -142,5 +153,17 @@ export class PessoaUpdateComponent implements OnInit {
     this.usuario.pessoa.endereco.bairro = null;
     this.usuario.pessoa.endereco.cidade = null;
     this.usuario.pessoa.endereco.estado = null;
+  }
+
+  findAllCargos(): void {
+    this.cargoService.findAll().subscribe((resposta) => {
+      this.cargos = resposta;
+    });
+  }
+
+  compareCargos(cargo1: any, cargo2: any): boolean {
+    return cargo1 && cargo2
+      ? cargo1.id === cargo2.id
+      : cargo1 === cargo2;
   }
 }

@@ -1,3 +1,4 @@
+import { Cargo } from "./cargo";
 import { Pessoa } from "./pessoa";
 
 export class Usuario {
@@ -6,5 +7,7 @@ export class Usuario {
     senha:    string;
     pessoa:   Pessoa;
     perfis: string[];
+    cargo:   Cargo;
+    dataEntrada: Date;
     ativo:      boolean;
   }
