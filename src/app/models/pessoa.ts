@@ -1,3 +1,4 @@
+import { Cargo } from "./cargo";
 import { Endereco } from "./endereco";
 
 export class Pessoa {

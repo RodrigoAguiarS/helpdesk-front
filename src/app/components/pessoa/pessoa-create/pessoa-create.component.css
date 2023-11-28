@@ -1,47 +1,68 @@
 .container {
-    width: 90rem;
-    margin: auto;
-    padding: 1rem;
-    border-radius: .6rem;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.fullWidth {
     width: 50%;
-    margin-top: 10px;
+    margin: auto auto 3rem auto;
+    padding: 1rem;
+    border-radius: 1rem;
 }
-
-h1,
-p {
+ .fullWidth {
+    width: 100%;
+ }
+ 
+ h1, img, p, h3{
     text-align: center;
-}
+ }
 
-img {
-    height: 12rem;
-    margin: auto;
+ .checkbox-container {
+    margin-right: 10px;
+    justify-content: center;
+    display: flex;
 }
+ 
+ img {
+    height: 15rem;
+    margin: 10px 0;
+ }
 
-.section {
+ .section {
+    display: flex;
+    justify-content: center; /* Alterado para centralizar os elementos */
+}
+ 
+ .row-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
-}
-
-.checkbox-container {
+ }
+ 
+ .row-container mat-form-field {
+    width: 49%;
+ }
+ 
+ button {
+    margin-top: .5rem;
     margin-right: 10px;
-}
-
-.password-mismatch {
-    color: red;
-    margin-top: 5px;
-}
-
-.checkbox-label {
+ }
+ 
+ p {
+    margin-top: 3rem;
+    opacity: .5;
+ }
+ .checkbox-label {
     margin-left: 5px;
-}
+ }
+
+ /* Se desejar adicionar uma linha ou borda abaixo do título: */
+ h3::after {
+   content: '';
+   display: block;
+   width: 100%;
+   height: 2px; /* Espessura da linha */
+   background-color: #007bff; /* Cor da linha */
+   margin-top: 5px; /* Espaçamento entre o texto e a linha */
+ }
+
+ h3 {
+   font-size: 15px; /* Ajuste o tamanho da fonte conforme necessário */
+   font-weight: bold;
+   margin-bottom: 10px; /* Adicione um espaçamento na parte inferior para separar dos campos */
+   color: #333; /* Cor do texto */
+ }
