@@ -54,7 +54,6 @@ export class PessoaUpdateComponent implements OnInit {
     this.usuario.pessoa = new Pessoa();
     this.usuario.pessoa.endereco = new Endereco();
     this.usuario.dataEntrada = this.dataEntrada.value;
-    this.usuario.cargo = new Cargo();
     this.usuario.pessoa.nome = this.nome.value;
     this.usuario.pessoa.cpf = this.cpf.value;
     this.usuario.email = this.email.value;

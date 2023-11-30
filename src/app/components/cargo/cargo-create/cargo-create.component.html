@@ -12,22 +12,25 @@
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
 
-        <!-- Salário Base -->
-        <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Salário Base</mat-label>
-            <mat-icon matSuffix>attach_money</mat-icon>
-            <input matInput type="text" [(ngModel)]="cargo.salarioBase" name="salarioBase" [formControl]="salarioBase"
-                required placeholder="Ex. 5000" mask="separator.2" thousandSeparator="," decimalMarker=".">
-        </mat-form-field>
+        <div class="row-container">
+            <!-- Salário Base -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Salário Base</mat-label>
+                <mat-icon matSuffix>attach_money</mat-icon>
+                <input matInput type="text" [(ngModel)]="cargo.salarioBase" name="salarioBase"
+                    [formControl]="salarioBase" required placeholder="Ex. 5000" mask="separator.2" thousandSeparator=","
+                    decimalMarker=".">
+            </mat-form-field>
 
-        <!-- departamento -->
-        <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Selecione um departamento</mat-label>
-            <mat-select [(ngModel)]="cargo.departamento" name="departamento" [formControl]="departamento" required>
-                <mat-option *ngFor="let dep of departamentos" value="{{ dep.id }}">{{ dep.nome }}</mat-option>
-            </mat-select>
-        </mat-form-field>
-
+            <!-- departamento -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Selecione o Departamento</mat-label>
+                <mat-select [(ngModel)]="cargo.departamento" name="departamento" [formControl]="departamento" required
+                    [compareWith]="compareDerpatamentos">
+                    <mat-option *ngFor="let dep of departamentos" [value]="dep">{{ dep.nome }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
         <!-- Descricao do Cargo -->
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Descricao do Cargo</mat-label>
@@ -37,16 +40,17 @@
             <span class="contador">{{ descricao.value ? descricao.value.length : 0 }}/255</span>
         </mat-form-field>
 
-        <!-- Responsabilidades do Cargo -->
-        <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Responsabilidades do Cargo</mat-label>
-            <textarea maxlength="255" [(ngModel)]="cargo.responsabilidades" name="responsabilidades"
-                [formControl]="responsabilidades" required class="responsabilidades" matInput
-                placeholder="Ex. trocar bateria de notebook queimada..."></textarea>
-            <mat-icon matSuffix>assignment</mat-icon>
-            <span class="contador">{{ responsabilidades.value ? responsabilidades.value.length : 0 }}/255</span>
-        </mat-form-field>
-
+        <form class="form">
+            <!-- Responsabilidades do Cargo -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Responsabilidades do Cargo</mat-label>
+                <textarea maxlength="255" [(ngModel)]="cargo.responsabilidades" name="responsabilidades"
+                    [formControl]="responsabilidades" required class="responsabilidades" matInput
+                    placeholder="Ex. trocar bateria de notebook queimada..."></textarea>
+                <mat-icon matSuffix>assignment</mat-icon>
+                <span class="contador">{{ responsabilidades.value ? responsabilidades.value.length : 0 }}/255</span>
+            </mat-form-field>
+        </form>
         <!-- span de erros -->
         <span *ngIf="!validaCampos()" class="error-message">
             Por favor, preencha todos os campos para criar um cargo.

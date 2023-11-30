@@ -32,6 +32,6 @@ export class PessoaService {
   }
 
   findByIdPessoa(id: any): Observable<Usuario> {
-    return this.http.get<Usuario>(`${API_CONFIG.baseUrl}/api/usuarios/${id}/completo`);
+    return this.http.get<Usuario>(`${API_CONFIG.baseUrl}/api/usuarios/${id}/dados`);
   }
 }

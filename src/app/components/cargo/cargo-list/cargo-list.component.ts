@@ -14,7 +14,7 @@ export class CargoListComponent implements OnInit {
   ELEMENT_DATA: Cargo[] = []
   FILTERED_DATA: Cargo[] = []
 
-  displayedColumns: string[] = ['id', 'nome', 'salarioBase', 'departamento', 'acoes'];
+  displayedColumns: string[] = ['id', 'cargo', 'salarioBase', 'departamento', 'acoes'];
   dataSource = new MatTableDataSource<Cargo>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

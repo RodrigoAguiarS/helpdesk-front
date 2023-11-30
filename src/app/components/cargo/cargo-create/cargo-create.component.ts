@@ -50,7 +50,7 @@ export class CargoCreateComponent implements OnInit {
         this.mensagemService.showSuccessoMensagem(
           "Cargo " + resposta.nome + " cadastrado com sucesso"
         );
-        this.router.navigate(["home"]);
+        this.router.navigate(["cargos"]);
       },
       error: (ex) => {
         if (ex.error.errors) {
@@ -75,5 +75,11 @@ export class CargoCreateComponent implements OnInit {
     return this.nome.valid && this.descricao.valid
     && this.responsabilidades.valid && this.salarioBase.valid
     && this.departamento.valid
+  }
+
+  compareDerpatamentos(derpatamento1: any, derpatamento2: any): boolean {
+    return derpatamento1 && derpatamento2
+      ? derpatamento1.id === derpatamento2.id
+      : derpatamento1 === derpatamento2;
   }
 }

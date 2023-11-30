@@ -4,6 +4,7 @@ import { Departamento } from 'src/app/models/departamento';
 import { DetalhesCargo } from 'src/app/models/detalhesCargo';
 import { DetalhesResponsavel } from 'src/app/models/detalhesResponsavel';
 import { CargoService } from 'src/app/services/cargo.service';
+import { DepartamentoService } from 'src/app/services/departamento.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
 
 @Component({
@@ -14,9 +15,11 @@ import { MensagemService } from 'src/app/services/mensagem.service';
 export class CargoReadComponent implements OnInit {
 
   cargo: DetalhesCargo;
+  departamentos: Departamento[] = []
 
   constructor(
     private mensagemService: MensagemService,
+    private departamentoService: DepartamentoService,
     private route: ActivatedRoute,
     private cargoService: CargoService,
   ) {}
@@ -38,5 +41,11 @@ export class CargoReadComponent implements OnInit {
         this.mensagemService.showErrorMensagem(ex.error.message);
       }
     });
+  }
+
+  findAllDepartamentos(): void {
+    this.departamentoService.findAll().subscribe(resposta => {
+      this.departamentos = resposta;
+    })
   }
 }
