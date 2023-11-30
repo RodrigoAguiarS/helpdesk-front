@@ -3,38 +3,37 @@
     <img class="full-width" src="assets/img/chamado-create.svg" alt="Chamado image">
 
     <!-- nome -->
-    <form class="form">
+    <form>
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Nome do Departamento</mat-label>
-            <input [disabled]="true" [(ngModel)]="departamento.nome" name="titulo" matInput
+            <input readonly [(ngModel)]="departamento.nome" name="titulo" matInput
                 placeholder="Ex. Trocar bateria de notebook">
         </mat-form-field>
     </form>
 
-    <!-- data criação -->
-    <mat-form-field class="date" appearance="outline">
-        <mat-label>Data de Cadastro</mat-label>
-        <input [disabled]="true" [(ngModel)]="departamento.dataCriacao" name="dataCriacao" matInput
-            [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <!-- responsavel -->
-    <form class="form">
+    <div class="row-container">
+        <!-- data criação -->
         <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Nome do Responsavel pelo departamento</mat-label>
-            <input [disabled]="true" [(ngModel)]="departamento.responsavelAtual.nomeFuncionarioResponsavel" name="responsavelAtual" 
-            matInput
-                placeholder="Ex. Trocar bateria de notebook">
+            <mat-label>Data de Cadastro</mat-label>
+            <input readonly [(ngModel)]="departamento.dataCriacao" name="dataCriacao" matInput
+                [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-    </form>
+    
+        <!-- responsavel -->
+        <mat-form-field *ngIf="departamento.responsavelAtual" class="full-width" appearance="outline">
+            <mat-label>Nome do Responsavel pelo departamento</mat-label>
+            <input readonly [(ngModel)]="departamento.responsavelAtual.nomeFuncionarioResponsavel"
+                name="responsavelAtual" matInput placeholder="Responsável atual">
+        </mat-form-field>
+    </div>
 
     <!-- descrição -->
-    <form class="form">
+    <form class="descricao">
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Descricões</mat-label>
-            <textarea [disabled]="true" [(ngModel)]="departamento.descricao" name="descricao" class="descricao"
+            <textarea readonly [(ngModel)]="departamento.descricao" name="descricao" class="descricao"
                 matInput></textarea>
         </mat-form-field>
     </form>

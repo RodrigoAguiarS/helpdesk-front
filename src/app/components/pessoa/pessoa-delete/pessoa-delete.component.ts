@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Cargo } from "src/app/models/cargo";
 
 import { Endereco } from "src/app/models/endereco";
 import { Pessoa } from "src/app/models/pessoa";
 import { Usuario } from "src/app/models/usuario";
+import { CargoService } from "src/app/services/cargo.service";
 import { MensagemService } from "src/app/services/mensagem.service";
 import { PessoaService } from "src/app/services/pessoa.service";
 
@@ -14,10 +16,12 @@ import { PessoaService } from "src/app/services/pessoa.service";
 })
 export class PessoaDeleteComponent implements OnInit {
   usuario: Usuario;
+  cargos: Cargo[] = [];
 
   constructor(
     private pessoaService: PessoaService,
     private mensagemService: MensagemService,
+    private cargoService: CargoService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -26,12 +30,14 @@ export class PessoaDeleteComponent implements OnInit {
     this.usuario = new Usuario();
     this.usuario.pessoa = new Pessoa();
     this.usuario.pessoa.endereco = new Endereco();
+    this.usuario.cargo = new Cargo();
     this.usuario.id = this.route.snapshot.paramMap.get("id");
     this.findById();
+    this.findAllCargos();
   }
 
   findById(): void {
-    this.pessoaService.findById(this.usuario.id).subscribe((resposta) => {
+    this.pessoaService.findByIdPessoa(this.usuario.id).subscribe((resposta) => {
       resposta.perfis = [];
       this.usuario = resposta;
     });
@@ -50,6 +56,12 @@ export class PessoaDeleteComponent implements OnInit {
           this.mensagemService.showErrorMensagem(ex.error.message);
         }
       }
+    });
+  }
+
+  findAllCargos(): void {
+    this.cargoService.findAll().subscribe((resposta) => {
+      this.cargos = resposta;
     });
   }
 

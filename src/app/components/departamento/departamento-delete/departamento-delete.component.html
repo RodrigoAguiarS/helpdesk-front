@@ -1,30 +1,28 @@
 <div class="container mat-elevation-z8">
     <h1 class="full-width">Deletando Departameto</h1>
     <img class="full-width" src="assets/img/chamado-create.svg" alt="Chamado image">
-
-    <!-- nome -->
-    <form class="form">
+    <div class="row-container">
+        <!-- nome -->
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Nome do Departamento</mat-label>
-            <input [disabled]="true" [(ngModel)]="departamento.nome" name="titulo" matInput
+            <input readonly [(ngModel)]="departamento.nome" name="titulo" matInput
                 placeholder="Ex. Trocar bateria de notebook">
         </mat-form-field>
-    </form>
 
-    <!-- data criacao -->
-    <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Data de Cadastro</mat-label>
-        <input [disabled]="true" [(ngModel)]="departamento.dataCriacao" name="dataCriacao" matInput
-            [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+        <!-- data criacao -->
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Data de Cadastro</mat-label>
+            <input readonly [(ngModel)]="departamento.dataCriacao" name="dataCriacao" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
 
     <!-- observação -->
     <form class="form">
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Deixe uma observação</mat-label>
-            <textarea [disabled]="true" [(ngModel)]="departamento.descricao" name="descricao" class="descricao"
+            <textarea readonly [(ngModel)]="departamento.descricao" name="descricao" class="descricao"
                 matInput></textarea>
         </mat-form-field>
     </form>
