@@ -1,4 +1,5 @@
 import { Cargo } from "./cargo";
+import { DetalhesResponsavel } from "./detalhesResponsavel";
 import { Pessoa } from "./pessoa";
 
 export class Funcionario {
@@ -6,4 +7,5 @@ export class Funcionario {
     pessoa: Pessoa;
     cargo: Cargo;
     dataEntrada: Date;
+    gestor: DetalhesResponsavel;
   }

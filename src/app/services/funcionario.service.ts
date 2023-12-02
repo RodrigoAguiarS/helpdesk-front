@@ -14,4 +14,8 @@ export class FuncionarioService {
   findAll(): Observable<Funcionario[]> {
     return this.http.get<Funcionario[]>(`${API_CONFIG.baseUrl}/api/funcionarios`);
   }
+
+  findAllFuncinarios(): Observable<Funcionario[]> {
+    return this.http.get<Funcionario[]>(`${API_CONFIG.baseUrl}/api/funcionarios/detalhes`);
+  }
 }

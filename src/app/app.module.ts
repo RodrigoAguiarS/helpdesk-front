@@ -73,7 +73,8 @@ import { CargoCreateComponent } from './components/cargo/cargo-create/cargo-crea
 import { CargoListComponent } from './components/cargo/cargo-list/cargo-list.component';
 import { CargoUpdateComponent } from './components/cargo/cargo-update/cargo-update.component';
 import { CargoReadComponent } from './components/cargo/cargo-read/cargo-read.component';
-import { CargoDeleteComponent } from './components/cargo/cargo-delete/cargo-delete.component'; 
+import { CargoDeleteComponent } from './components/cargo/cargo-delete/cargo-delete.component';
+import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component'; 
 
 @NgModule({
   declarations: [
@@ -117,7 +118,8 @@ import { CargoDeleteComponent } from './components/cargo/cargo-delete/cargo-dele
     CargoListComponent,
     CargoUpdateComponent,
     CargoReadComponent,
-    CargoDeleteComponent
+    CargoDeleteComponent,
+    FuncionarioListComponent
   ],
   imports: [
     BrowserModule,
